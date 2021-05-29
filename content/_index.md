@@ -6,3 +6,7 @@ type: docs
 
 # ویکی سانسور
 دانشنامه ای برای بررسی سانسور اینترنت
+<center>
+
+![filternet](./filternet.png)
+</center>
