@@ -1,7 +1,7 @@
-baseURL = "https://ewikicensorship.github.io/"
+baseURL = "https://wikicensorship.github.io/"
 languageCode = "fa-ir"
 title = "ویکی سانسور"
-theme = 'hugo-book'
+theme = 'book'
 
 # Book configuration
 disablePathToLower = true

@@ -30,4 +30,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          
+
+      - name: Copy static
+        run: |
+          cp -f static/* ./public
+          touch ./public/.nojekyll
