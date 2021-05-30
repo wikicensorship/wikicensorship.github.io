@@ -37,12 +37,18 @@ enableGitInfo = true
 [menu]
 # [[menu.before]]
 [[menu.after]]
+  name = "ЯE文پ"
+  identifier = "translate"
+  weight = 20
+[[menu.after]]
   name = "فارسی"
   url = "/fa/"
+  parent = "translate"
   weight = 20
 [[menu.after]]
   name = "English"
   url = "/"
+  parent = "translate"
   weight = 30
 [[menu.after]]
   name = "GitHub"
