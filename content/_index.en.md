@@ -8,7 +8,7 @@ tags: ["Censorship", "OONI", "OONI Probe", "Filtering", "Filternet", "Sanctions"
 # Wiki Censorship
 <center>
 
-![filternet](./android-chrome-192x192.png)
+![filternet](/android-chrome-192x192.png)
 </center>
 
 An open encyclopedia of Internet censorship

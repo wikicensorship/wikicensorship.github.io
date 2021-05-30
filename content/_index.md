@@ -8,7 +8,7 @@ type: docs
 # ویکی سانسور
 <center>
 
-![filternet](./android-chrome-192x192.png)
+![filternet](/android-chrome-192x192.png)
 </center>
 
 دانشنامه ای آزاد برای بررسی سانسور اینترنت
