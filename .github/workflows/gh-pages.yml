@@ -33,5 +33,5 @@ jobs:
 
       - name: Copy static
         run: |
-          cp -f static/* ./public
+          cp -rf static/* ./public
           touch ./public/.nojekyll

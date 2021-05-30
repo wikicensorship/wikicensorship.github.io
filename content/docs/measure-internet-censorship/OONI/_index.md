@@ -4,12 +4,14 @@ bookFlatSection: true
 title: "بررسی سانسور اینترنت از طریق کاوشگر OONI"
 description: "کاوشگر OONI چیست و چطور می توان از آن استفاده کرد. هر نتچیه چه معانی هایی دارند. آنالیز پیشرفته ی نتایج OONI"
 tags: ["سانسور", "OONI", "OONI Probe", "کاوشگر OONI", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
+images:
+- "/images/docs/measure-internet-censorship/OONI/OONI-run-web-generate.png"
 ---
 
 # بررسی سانسور اینترنت از طریق کاوشگر OONI
 <center>
 
-![ooni-logo](./OONI-logo.png)
+![ooni-logo](/images/docs/measure-internet-censorship/OONI/OONI-logo.png)
 </center>
 OONI و یا Open Observatory of Network Interference، ترجمه شده به فارسی: «رصد خانه آزاد دخالت در شبکه»، یک پروژه ی نرم افزاری متن باز و آزاد با  هدف توانمند سازی تلاش های غیرمتمرکز در افزایش شفافیت سانسور اینترنت در سراسر جهان است. OONI یک سَمَن یا سازمان غیردولتی است که توسط پروژه ی Tor راه اندازی شد و اکنون به صورت نیمه مستقل فعالیت می کند. 
 
@@ -17,16 +19,16 @@ OONI و یا Open Observatory of Network Interference، ترجمه شده به �
 
 <center>
 
-![ooni mobile](./OONI-mobile.png)
+![ooni mobile](/images/docs/measure-internet-censorship/OONI/OONI-mobile.png)
 <br/>
 
-![ooni desktop](./OONI-desktop.png)
+![ooni desktop](/images/docs/measure-internet-censorship/OONI/OONI-desktop.png)
 </center>
 
  به صورت پیشفرض این اطلاعات با حفظ حریم خصوصی کاربران، برای سرور OONI ارسال می شوند. اطلاعات دریافتی در سرور دوباره پردازش می شوند و در اکثر مواقع در کمتر از یک دقیقه در بخشی به نام Explorer تحت وب در دسترس همگان خواهد بود. 
 <center>
 
-![ooni explorer](./OONI-explorer.png)
+![ooni explorer](/images/docs/measure-internet-censorship/OONI/OONI-explorer.png)
 </center>
 
 از سال 2012 تاکنون از بیش از 200 کشور نتایج اندازه گیری دریافت کرده.
@@ -48,20 +50,20 @@ OONI و یا Open Observatory of Network Interference، ترجمه شده به �
 
 <center>
 
-![OONI mobile webconnectivity first page](./OONI-mobile-webconnectivity-first-page.png)
+![OONI mobile webconnectivity first page](/images/docs/measure-internet-censorship/OONI/OONI-mobile-webconnectivity-first-page.png)
 <br/>
 
-![OONI mobile webconnectivity first page](./OONI-desktop-webconnectivity-first-page.png)
+![OONI mobile webconnectivity first page](/images/docs/measure-internet-censorship/OONI/OONI-desktop-webconnectivity-first-page.png)
 </center>
 آدرس های مورد نظر خود را وارد کنید. و در انتها دکمه ی Run در پایین صفحه را بزنید.
 
 
 <center>
 
-![OONI mobile webconnectivity add urls page](./OONI-mobile-webconnectivity-add-urls-page.png)
+![OONI mobile webconnectivity add urls page](/images/docs/measure-internet-censorship/OONI/OONI-mobile-webconnectivity-add-urls-page.png)
 <br/>
 
-![OONI desktop webconnectivity add urls page](./OONI-desktop-webconnectivity-add-urls-page.png)
+![OONI desktop webconnectivity add urls page](/images/docs/measure-internet-censorship/OONI/OONI-desktop-webconnectivity-add-urls-page.png)
 </center>
 
 و در انتها بر روی دکمه ی Run و یا اجرا کلیک کنید تا اندازه گیری آغاز شود.
@@ -74,7 +76,7 @@ OONI و یا Open Observatory of Network Interference، ترجمه شده به �
 
 <center>
 
-![OONI cli](./OONI-cli.png)
+![OONI cli](/images/docs/measure-internet-censorship/OONI/OONI-cli.png)
 </center>
 
 در این حالت نتیجه ی هر تست و تفاوت ها به صورت لحظه ای نشان داده می شود.
@@ -85,34 +87,34 @@ https://run.ooni.io/
 
 <center>
 
-![OONI run web](./OONI-run-web.png)
+![OONI run web](/images/docs/measure-internet-censorship/OONI/OONI-run-web.png)
 </center>
 
 بعد از اضافه کردن آدرس های دلخواه از طریق دکمه ی Add URL دکمه ی Generate را بزنید.
 <center>
 
-![OONI run web generate](./OONI-run-web-generate.png)
+![OONI run web generate](/images/docs/measure-internet-censorship/OONI/OONI-run-web-generate.png)
 </center>
 
 آدرس داده شده را کپی کرده و از طریق شبکه های اجتماعی برای دیگران بفرستید.
 
 <center>
 
-![OONI share social network](./OONI-share-social-network.png)
+![OONI share social network](/images/docs/measure-internet-censorship/OONI/OONI-share-social-network.png)
 </center>
 
 کاربران در موبایل می توانند فقط با زدن بر روی لینک، اپ OONI Probe را انتخاب کرده:
 
 <center>
 
-![OONI open shared social network](./OONI-open-shared-social-network.png)
+![OONI open shared social network](/images/docs/measure-internet-censorship/OONI/OONI-open-shared-social-network.png)
 </center>
 
 و با زدن دکمه ی Run اندازه گیری را شروع کنند.
 
 <center>
 
-![OONI run mobile](./OONI-run-mobile.png)
+![OONI run mobile](/images/docs/measure-internet-censorship/OONI/OONI-run-mobile.png)
 </center>
 
 
@@ -121,7 +123,7 @@ https://run.ooni.io/
 
 <center>
 
-![OONI mobile websites test results](./OONI-mobile-websites-test-results.png)
+![OONI mobile websites test results](/images/docs/measure-internet-censorship/OONI/OONI-mobile-websites-test-results.png)
 </center>
 
 از 7 مورد آزمایش شده، دو مورد را با اطمینان می توان گفت که ارتباطشان به دلیلی در آن لحظه مسدود شده است و چهار مورد در دسترس بودند. 
@@ -135,7 +137,7 @@ https://run.ooni.io/
 
 <center>
 
-![OONI mobile websites failed test again](./OONI-mobile-websites-failed-test-again.png)
+![OONI mobile websites failed test again](/images/docs/measure-internet-censorship/OONI/OONI-mobile-websites-failed-test-again.png)
 </center>
 
 ### آنالیز ساده ی نتایج
@@ -144,7 +146,7 @@ https://run.ooni.io/
 #### HTTP blocking (a blockpage might be served)
 <center>
 
-![OONI result HTTP blocking blockpage served](./OONI-result-HTTP-blocking-blockpage.png)
+![OONI result HTTP blocking blockpage served](/images/docs/measure-internet-censorship/OONI/OONI-result-HTTP-blocking-blockpage.png)
 </center>
 
 در این تست احتمال می رود که ممکن است صفحه ی مربوط به سانسور به جای صفحه ی اصلی دریافت شده است. این اتفاق فقط در ارتباط های غیر رمزنگاری شده و مخصوصا HTTP ممکن است. در این حالت چهار دلیل ممکن است:
@@ -156,7 +158,7 @@ https://run.ooni.io/
 #### DNS tampering
 <center>
 
-![OONI result DNS tampering](./OONI-result-DNS-tampering.png)
+![OONI result DNS tampering](/images/docs/measure-internet-censorship/OONI/OONI-result-DNS-tampering.png)
 </center>
 
 در این تست احتمال می رود که یک IP ی جعلی دریافت شده است. در این حالت، از DNS مسدود شده است.
@@ -165,7 +167,7 @@ https://run.ooni.io/
 #### TCP/IP based blocking
 <center>
 
-![OONI result tcp ip blocking](./OONI-result-tcp-ip-blocking.png)
+![OONI result tcp ip blocking](/images/docs/measure-internet-censorship/OONI/OONI-result-tcp-ip-blocking.png)
 </center>
 
 در این تست عمل TCP Handshake انجام نشده. که ممکن است به دلیل وارد سیاهچاله شدن ارتباط باشد و یا ارسال packet های RST. در این حالت IP مسدود شده است.
@@ -175,7 +177,7 @@ https://run.ooni.io/
 #### HTTP blocking (HTTP requests failed)
 <center>
 
-![OONI result HTTP blocking failed](./OONI-result-HTTP-blocking-failed.png)
+![OONI result HTTP blocking failed](/images/docs/measure-internet-censorship/OONI/OONI-result-HTTP-blocking-failed.png)
 </center>
 
 در این تست TCP Hnadshake انجام شده است (IP مسدود نیست) اما بعد از آن ناموفق بوده است. این خطا ممکن است در هر دو ارتباط HTTP و HTTPS مشاهده شود.
@@ -188,14 +190,14 @@ https://run.ooni.io/
 
 <center>
 
-![OONI android result menu](./OONI-android-result-menu.png)
+![OONI android result menu](/images/docs/measure-internet-censorship/OONI/OONI-android-result-menu.png)
 </center>
 
 این دیتا از طریق آدرس اختصاصی Explorer نیز در دسترس است.
 
 <center>
 
-![OONI explorer result data](./OONI-explorer-result-data.png)
+![OONI explorer result data](/images/docs/measure-internet-censorship/OONI/OONI-explorer-result-data.png)
 </center>
 
 در این دیتا، اطلاعات کلی و جزئی هر اندازه گیری به صورت مجزا وجود دارد.
@@ -210,35 +212,35 @@ https://run.ooni.io/
 مقدار resolver_ip برابر IP سرور ای است که کاربر احتمالا در این تست از آن استفاده کرده است. این مقدار با [درخواست DNS مستقل](https://developer.akamai.com/blog/2018/05/10/introducing-new-whoami-tool-dns-resolver-information) به آدرس whoami.akamai.net محاسبه می شود. به صورت زیر:
 <center>
 
-![Akamai DNS resolver information whoami](./Akamai-DNS-resolver-information-whoami.png)
+![Akamai DNS resolver information whoami](/images/docs/measure-internet-censorship/OONI/Akamai-DNS-resolver-information-whoami.png)
 </center>
 
 #### test_keys
 دیتای اصلی هر تست، در بخش test_keys قرار دارد:
 <center>
 
-![OONI result data test keys](./OONI-result-data-test-keys.png)
+![OONI result data test keys](/images/docs/measure-internet-censorship/OONI/OONI-result-data-test-keys.png)
 </center>
 
 #### network_events
 بخش network_events شامل رویداد های ارتباطی مابین کلاینت و سرور است. ساده تر از چیزی که با capture کردن packet ها به دست می آوریم. برای اینکه ببینیم که مسدود شدن بعد از Client hello بوده است و یا بعد از TLS handshake.
 <center>
 
-![OONI result data network events](./OONI-result-data-network-events.png)
+![OONI result data network events](/images/docs/measure-internet-censorship/OONI/OONI-result-data-network-events.png)
 </center>
 
 #### tls_handshakes
 بخش tls_handshakes شامل certificate هایی است که در هر بار request از سرور دریافت می شود.
 <center>
 
-![OONI result data tls handshakes](./OONI-result-data-tls-handshakes.png)
+![OONI result data tls handshakes](/images/docs/measure-internet-censorship/OONI/OONI-result-data-tls-handshakes.png)
 </center>
 
 در صورت حمله ی MITM این دیتا بسیار مفید خواهد بود.
  و در صورت خطا در زمان TLS handshake، توضیح آن بیان می شود:
 <center>
 
-![OONI result data tls handshakes error](./OONI-result-data-tls-handshakes-error.png)
+![OONI result data tls handshakes error](/images/docs/measure-internet-censorship/OONI/OONI-result-data-tls-handshakes-error.png)
 </center>
 
 
@@ -246,7 +248,7 @@ https://run.ooni.io/
 بخش queries شامل درخواست های DNS و جواب های دریافت شده می شود:
 <center>
 
-![OONI result data queries](./OONI-result-data-queries.png)
+![OONI result data queries](/images/docs/measure-internet-censorship/OONI/OONI-result-data-queries.png)
 </center>
 
 #### dns_consistency
@@ -256,7 +258,7 @@ https://run.ooni.io/
 بخش control مربوط می شود به تست های انجام شده در سرور OONI که همزمان صورت می گیرد.
 <center>
 
-![OONI result data control](./OONI-result-data-control.png)
+![OONI result data control](/images/docs/measure-internet-censorship/OONI/OONI-result-data-control.png)
 </center>
 
 
@@ -264,19 +266,19 @@ https://run.ooni.io/
 بخش tcp_connect مربوط می شود به تست TCP handshake تمام IP هایی که از درخواست DNS به دست آمد.
 <center>
 
-![OONI result data tcp connect](./OONI-result-data-tcp-connect.png)
+![OONI result data tcp connect](/images/docs/measure-internet-censorship/OONI/OONI-result-data-tcp-connect.png)
 </center>
 
 #### requests
 بخش requests مربوط می شود به درخواست ها و جواب هایی که در سطح HTTP انجام می شوند.
 <center>
 
-![OONI result data requests](./OONI-result-data-requests.png)
+![OONI result data requests](/images/docs/measure-internet-censorship/OONI/OONI-result-data-requests.png)
 </center>
 در اینجا درخواست انجام نشده.
 <center>
 
-![OONI result data requests error](./OONI-result-data-requests-error.png)
+![OONI result data requests error](/images/docs/measure-internet-censorship/OONI/OONI-result-data-requests-error.png)
 </center>
 
 در اینجا جوابی با iframe از صفحه ی سیستم سانسور جمهوری اسلامی بازگردانده شده.
@@ -287,13 +289,13 @@ https://run.ooni.io/
 در اینجا نشان می دهد که تبادل HTTP در HTTPS به درستی انجام نشده است:
 <center>
 
-![OONI result data match HTTPS reset](./OONI-result-data-match-HTTPS-reset.png)
+![OONI result data match HTTPS reset](/images/docs/measure-internet-censorship/OONI/OONI-result-data-match-HTTPS-reset.png)
 </center>
  
 و یا مقادیر دو تست درون و بیرون شبکه در ارتباط HTTP یکسان نیست:
 <center>
 
-![OONI result data match HTTP different](./OONI-result-data-match-HTTP-diff.png)
+![OONI result data match HTTP different](/images/docs/measure-internet-censorship/OONI/OONI-result-data-match-HTTP-diff.png)
 </center>
 
 ### تشخیص تحریم
@@ -304,28 +306,28 @@ https://run.ooni.io/
 
 <center>
 
-![OONI result data sanction ok](./OONI-result-data-sanction-ok.png)
+![OONI result data sanction ok](/images/docs/measure-internet-censorship/OONI/OONI-result-data-sanction-ok.png)
 </center>
 
 در نتیجه ی آنالیز می بینیم که به رنگ سبز است و این یعنی مشکلی در ارتباط وجود ندارد.
 
 <center>
 
-![OONI result data sanction failure null](./OONI-result-data-sanction-failure-null.png)
+![OONI result data sanction failure null](/images/docs/measure-internet-censorship/OONI/OONI-result-data-sanction-failure-null.png)
 </center>
 
 در بخش Failure نیز می بینیم که تمام آنها null هستند و این یعنی هیچ دستکاری ای در شبکه انجام نشده است.
 
 <center>
 
-![OONI result data sanction control](./OONI-result-data-sanction-control.png)
+![OONI result data sanction control](/images/docs/measure-internet-censorship/OONI/OONI-result-data-sanction-control.png)
 </center>
 
 در بخش داده ها و در زیرمجموعه ی control می بنیم که مقدار عنوان درست است و همینطور کد دریافتی برابر با 200 است. که این یعنی سرور سایت به شبکه ای دیگر در خارج از کشور به درستی جواب می دهد.
 
 <center>
 
-![OONI result data sanction response](./OONI-result-data-sanction-response.png)
+![OONI result data sanction response](/images/docs/measure-internet-censorship/OONI/OONI-result-data-sanction-response.png)
 </center>
 
 
@@ -337,7 +339,7 @@ https://run.ooni.io/
 
 <center>
 
-![OONI result data sanction match](./OONI-result-data-sanction-match.png)
+![OONI result data sanction match](/images/docs/measure-internet-censorship/OONI/OONI-result-data-sanction-match.png)
 </center>
 
 **ذکر این نکته مهم است که طی یک سال اخیر مورد ای از تحریم مشاهده نشده که بدون نمایش خطای 403 و یا 404 در ارتباط HTTPS از درخواست ها به دلیل تحریم جلوگیری کنند. در نتیجه اگر نتیجه غیر از سبز بود، احتمالا سایت به طریقی در شبکه ی شما سانسور شده است.**
@@ -348,7 +350,7 @@ https://run.ooni.io/
 
 <center>
 
-![OONI probe service failed](./OONI-probe-service-failed.png)
+![OONI probe service failed](/images/docs/measure-internet-censorship/OONI/OONI-probe-service-failed.png)
 </center>
 
 برای حل این مشکل، تیم OONI دو تغییر مهم ایجاد کردند:
@@ -358,7 +360,7 @@ https://run.ooni.io/
 برای فعال کردن proxy، به بخش تنظیمات رفته و OONI backend Proxy را انتخاب می کنیم:
 <center>
 
-![OONI android settings backend proxy](./OONI-android-settings-backend-proxy.png)
+![OONI android settings backend proxy](/images/docs/measure-internet-censorship/OONI/OONI-android-settings-backend-proxy.png)
 </center>
 
 در این بخش (در زمان نوشتن این مقاله) سه گزینه ی اصلی داریم:
@@ -368,13 +370,13 @@ https://run.ooni.io/
 
 <center>
 
-![OONI android backend proxy settings](./OONI-android-backend-proxy-settings.png)
+![OONI android backend proxy settings](/images/docs/measure-internet-censorship/OONI/OONI-android-backend-proxy-settings.png)
 </center>
 
 تنظیماتی که در تصویر می بینید (127.0.0.1:9050) متعلق به SOCKS5 ای است که توسط Orbot ایجاد می شود.
 <center>
 
-![Orbot connected SOCKS5](./Orbot-connected-SOCKS5.png)
+![Orbot connected SOCKS5](/images/docs/measure-internet-censorship/OONI/Orbot-connected-SOCKS5.png)
 </center>
 
 توجه داشته باشید که برای استفاده از OONI، نباید حالت VPN فعال باشد.
@@ -383,13 +385,13 @@ https://run.ooni.io/
 بعد از فعال کردن یکی از این گزینه ها. ارتباط با backend توسط آن proxy صورت می گیرد اما تست ها از طریق خود شبکه:
 <center>
 
-![OONI android runnig test with Psiphon as proxy](./OONI-android-Psiphon-as-proxy.png)
+![OONI android runnig test with Psiphon as proxy](/images/docs/measure-internet-censorship/OONI/OONI-android-Psiphon-as-proxy.png)
 </center>
 
 در تصویر می بینید که ابتدا به Psiphon متصل می شود.
 <center>
 
-![OONI android measurement result page](./OONI-android-measurement-result-page.png)
+![OONI android measurement result page](/images/docs/measure-internet-censorship/OONI/OONI-android-measurement-result-page.png)
 </center>
 
 اما تست ها از طریق شبکه ی کاربر انجام می شود.

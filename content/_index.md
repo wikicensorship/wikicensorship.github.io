@@ -3,6 +3,8 @@ weight: 1
 title: ویکی سانسور
 description: "دانشنامه ای آزاد برای بررسی سانسور اینترنت"
 type: docs
+images:
+- "/images/filternet.png"
 ---
 
 # ویکی سانسور
@@ -15,5 +17,5 @@ type: docs
 
 <center>
 
-![filternet](./filternet.png)
+![filternet](/images/filternet.png)
 </center>

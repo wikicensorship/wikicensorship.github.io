@@ -3,6 +3,8 @@ title: Wiki Censorship
 description: "An open encyclopedia of Internet censorship"
 type: docs
 tags: ["Censorship", "OONI", "OONI Probe", "Filtering", "Filternet", "Sanctions", "Internet", "Measuring Internet censorship", "Internet censorship"]
+images:
+- "/images/filternet.png"
 ---
 
 # Wiki Censorship
@@ -15,5 +17,5 @@ An open encyclopedia of Internet censorship
 
 <center>
 
-![filternet](./filternet.png)
+![filternet](/images/filternet.png)
 </center>

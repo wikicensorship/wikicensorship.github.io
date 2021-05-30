@@ -4,6 +4,8 @@ bookFlatSection: true
 title: "مقدمه ی بررسی سانسور اینترنت"
 description: "بخش مقدماتی بررسی سانسور اینترنت که شامل تعاریف واژه ها و اصطلاحات نیز می شود."
 tags: ["سانسور", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
+images:
+- "/images/docs/measure-internet-censorship/blackhole-null-route.png"
 ---
 
 # بررسی سانسور اینترنت
@@ -20,7 +22,7 @@ tags: ["سانسور", "فیلتر", "فیلترنت", "تحریم", "اینتر
 
 <center>
 
-![internet surveillance](./internet-surveillance.png)\
+![internet surveillance](/images/docs/measure-internet-censorship/internet-surveillance.png)\
 (با کمی تغییرات از طرح اصلی سازمان EFF)</center>
 
 
@@ -28,7 +30,7 @@ tags: ["سانسور", "فیلتر", "فیلترنت", "تحریم", "اینتر
 [null route](https://downloads.avaya.com/elmodocs2/p882/v6.2/p580_p882ms/IP-Ch1227.html) یا black hole route روشی است که packet ها توسط سیستم سانسور دور ریخته می شوند و به طریقی که درخواست کلاینت و یا درخواست سرور به یکدیگر نمی رسد را سیاه چاله می گوییم. در این حالت ارتباط در حالت بلاتکلیفی می ماند و سیستم عامل کلاینت و یا سرور و یا هر دو، مدام retransmission انجام می دهند اما جوابی دریافت نمی کنند.
 <center>
 
-![blackhole - null route](./blackhole-null-route.png)\
+![blackhole - null route](/images/docs/measure-internet-censorship/blackhole-null-route.png)\
 (طراحی شده با draw.io)</center>
 
 به جای این کار سیستم سانسور می تواند packet ای با Flag ای شامل RST ارسال کند و یا RST را در packet ای که از سمت سرور ارسال می شود تزریق کند اما این کار را نمی کند. این روش دو سود برای سیستم سانسور دارد: اول اینکه زمان بیشتری از کاربران اینترنت هدر می دهد و کاربران را بیشتر منتظر می گذارد. دوم اینکه این سانسور بالاتر از سطح ISP انجام می شود و این retransmission ها که معمولا packet ای با حجم قابل توجه ای هستند، در تعداد زیاد و مداوم، برای ISP ها سودآور خواهند بود. هر دو از نظر اخلاقی، همانند وضع سانسور فعلی، درست نیستند، اما متاسفانه واقعیت دارند.
@@ -38,7 +40,7 @@ tags: ["سانسور", "فیلتر", "فیلترنت", "تحریم", "اینتر
 حتی طبق [داده های یکی از VPN های معروف](https://twitter.com/xhdix/status/1383951384580526086) که به صورت جهانی سرویس ارائه می دهد، حدود 400 هزار نفر روزه داران ایرانی که امسال (1400) برای سحر بیدار می شدند و از این VPN استفاده می کردند، بعد از وصل شدن به اینترنت، این VPN را نیز فعال می کردند.
 <center>
 
-![a global vpn - connections from iran.png](./a-global-vpn-connections-from-iran.png)
+![a global vpn - connections from iran.png](/images/docs/measure-internet-censorship/a-global-vpn-connections-from-iran.png)
 </center>
 با توجه به این مسئله که این آمار فقط مربوط به یک VPN از بسیار فیلترشکن موجود است، به وضوح نشان می دهد که اکثریت مردم مذهبی و غیرمذهبی ایران، با سانسور اینترنت مخالف هستند.
 
