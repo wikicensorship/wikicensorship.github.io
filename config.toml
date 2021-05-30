@@ -21,7 +21,7 @@ enableGitInfo = true
 # And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
 [languages]
 [languages.fa]
-  languagedirection: rtl
+  languagedirection= 'rtl'
   languageName = 'Persian'
   contentDir = 'content'
   weight = 1
@@ -39,6 +39,14 @@ enableGitInfo = true
 [[menu.after]]
   name = "گیتهاب"
   url = "https://github.com/wikicensorship"
+  weight = 10
+[[menu.main]]
+  name = "فارسی"
+  url = "/fa/"
+  weight = 10
+[[menu.main]]
+  name = "English"
+  url = "/"
   weight = 10
 
 
