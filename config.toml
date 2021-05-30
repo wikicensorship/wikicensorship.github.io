@@ -21,6 +21,7 @@ enableGitInfo = true
 # And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
 [languages]
 [languages.fa]
+  languagedirection: rtl
   languageName = 'Persian'
   contentDir = 'content'
   weight = 1
