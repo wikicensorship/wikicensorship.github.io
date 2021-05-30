@@ -37,18 +37,17 @@ enableGitInfo = true
 [menu]
 # [[menu.before]]
 [[menu.after]]
-  name = "گیتهاب"
-  url = "https://github.com/wikicensorship"
-  weight = 10
-[[menu.main]]
   name = "فارسی"
   url = "/fa/"
-  weight = 10
-[[menu.main]]
+  weight = 20
+[[menu.after]]
   name = "English"
   url = "/"
-  weight = 10
-
+  weight = 30
+[[menu.after]]
+  name = "GitHub"
+  url = "https://github.com/wikicensorship"
+  weight = 40
 
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
