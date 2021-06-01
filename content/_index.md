@@ -10,7 +10,7 @@ images:
 # ویکی سانسور
 <center>
 
-![filternet](/logo.png)
+[![filternet](/logo.png)](https://en.wikipedia.org/wiki/2_%2B_2_%3D_5)
 </center>
 
 دانشنامه ای آزاد برای بررسی سانسور اینترنت

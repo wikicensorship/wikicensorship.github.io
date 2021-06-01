@@ -10,7 +10,7 @@ images:
 # Wiki Censorship
 <center>
 
-![filternet](/logo.png)
+[![filternet](/logo.png)](https://en.wikipedia.org/wiki/2_%2B_2_%3D_5)
 </center>
 
 An open encyclopedia of Internet censorship
