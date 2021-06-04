@@ -5,7 +5,7 @@ title: "بررسی سانسور در ارتباط با سرور در لایه‌
 description: "بررسی وجود سانسور و یا امکان درسترسی به سرور در لایه ی شبکه"
 tags: ["سانسور", "IP blocking", "RST injection", "null route", "فیلتر", "فیلترنت", "آی پی", "ICMP", "trace", "traceroute", "ping", "UDP", "اینترنت", "TCP", "شبکه", "Network", "بررسی سانسور اینترنت", "سانسور اینترنت"]
 images:
-- "/images/docs/measure-internet-censorship/Network/windows-ping-google.png"
+- "/images/docs/measure-internet-censorship/Network/reverse-traceroute-to-firewall.png"
 ---
 
 # بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه
