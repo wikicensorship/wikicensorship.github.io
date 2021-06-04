@@ -2,7 +2,7 @@
 weight: 30
 bookFlatSection: true
 title: "بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه"
-description: "بررسی وجود سانسور و یا امکان درسترسی به سرور در لایه ی شبکه"
+description: "بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی شبکه. معنای نتایج ping و traceroute و محدودیت های آنها در اندازه گیری سانسور."
 tags: ["سانسور", "IP blocking", "RST injection", "null route", "فیلتر", "فیلترنت", "آی پی", "ICMP", "trace", "traceroute", "ping", "UDP", "اینترنت", "TCP", "شبکه", "Network", "بررسی سانسور اینترنت", "سانسور اینترنت"]
 images:
 - "/images/docs/measure-internet-censorship/Network/reverse-traceroute-to-firewall.png"
