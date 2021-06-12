@@ -88,10 +88,16 @@ OONI یک سَمَن یا سازمان غیردولتی است که توسط پ�
 
 در نسخه ی cli، به این صورت می توان انجام داد:
 اگر تابحال اجرا نکردید، کی بار مراحل و شرایط استفاده را بخوانید و در صورت موافقت تایید کنید:
-> .\ooniprobe.exe
-سپس لیست انتخابی خود را به این صورت اجرا کنید:
-> .\ooniprobe.exe run websites --input=https://yahoo.com/ --input=https://yimg.com/
+<div dir="ltr">
 
+`> .\ooniprobe.exe`
+</div>
+
+سپس لیست انتخابی خود را به این صورت اجرا کنید:
+<div dir="ltr">
+
+`> .\ooniprobe.exe run websites --input=https://yahoo.com/ --input=https://yimg.com/`
+</div>
 <center>
 
 ![OONI cli](/images/docs/measure-internet-censorship/OONI/OONI-cli.png)
@@ -431,7 +437,7 @@ https://run.ooni.io/
 ![OONI android backend proxy settings](/images/docs/measure-internet-censorship/OONI/OONI-android-backend-proxy-settings.png)
 </center>
 
-تنظیماتی که در تصویر می بینید (127.0.0.1:9050) متعلق به SOCKS5 ای است که توسط Orbot ایجاد می شود.
+تنظیماتی که در تصویر می بینید (`127.0.0.1:9050`) متعلق به SOCKS5 ای است که توسط Orbot ایجاد می شود.
 <center>
 
 ![Orbot connected SOCKS5](/images/docs/measure-internet-censorship/OONI/Orbot-connected-SOCKS5.png)
