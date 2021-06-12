@@ -2,7 +2,7 @@
 weight: 10
 bookFlatSection: true
 title: "بررسی سانسور اینترنت از طریق کاوشگر OONI"
-description: "کاوشگر OONI چیست و چطور می توان از آن استفاده کرد. هر نتچیه چه معانی هایی دارند. آنالیز پیشرفته ی نتایج OONI"
+description: "کاوشگر OONI چیست و چطور می توان از آن استفاده کرد. هر نتیجه چه معانی هایی دارند. آنالیز پیشرفته ی نتایج OONI"
 tags: ["سانسور", "OONI", "OONI Probe", "کاوشگر OONI", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
 images:
 - "/images/docs/measure-internet-censorship/OONI/OONI-run-web-generate.png"
