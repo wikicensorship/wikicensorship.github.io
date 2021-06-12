@@ -396,3 +396,94 @@ https://run.ooni.io/
 
 اما تست ها از طریق شبکه ی کاربر انجام می شود.
 
+## داده کاوی در داده های نتایج OONI
+
+اگر قصد دارید که نتایج OONI را بیشتر از چیزی که در Explorer مشاهده می کنید، بررسی و آنالیز کنید، این امکان فراهم است تا بتوانید تمام داده ها را از [سرویس عمومی S3 آمازون مخصوص OONI](https://s3.console.aws.amazon.com/s3/buckets/ooni-data-eu-fra?region=eu-central-1&prefix=raw) به صورت دسته بندی شده به تاریخ، کشور، نوع تست و ساعت دریافت کنید.
+
+به عنوان مثال در ادامه، تمام نتایج مربوط به تست webconnectivity را از طریق [ابزار aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) دانلود می کنیم:
+
+<div dir="ltr">
+
+```sh
+aws --no-sign-request s3 sync --exclude '*' --include '*/IR/webconnectivity/*.jsonl.gz' 's3://ooni-data-eu-fra/raw/' ./ooni-data-iran
+```
+<br/>
+
+![OONI s3 download IR webconnectivity data](/images/docs/measure-internet-censorship/OONI/OONI-s3-download-IR-webconnectivity-data.png)
+</div>
+
+حجم این نتایج برای هر روز متغیر است:
+<div dir="ltr">
+
+`du -h --max-depth=0 ./ooni-data-iran/202106* `
+<br/>
+
+![OONI s3 downloaded webconnectivity data size](/images/docs/measure-internet-censorship/OONI/OONI-s3-downloaded-webconnectivity-data-size.png)
+</div>
+
+و بیشترین اندازه را در روز می توان نزدیک به 150 مگابایت در نظر گرفت.
+<div dir="ltr">
+
+`du -h --max-depth=1 ./ooni-data-iran | sort -hr`
+<br/>
+
+![OONI s3 downloaded webconnectivity data size sort](/images/docs/measure-internet-censorship/OONI/OONI-s3-downloaded-webconnectivity-data-size-sort.png)
+</div>
+
+البته داده این داده ها فقط مربوط به تست webconnectivity بودند. 
+برای دانلود تمام نتایج، به عنوان مثال در روز 22 ماه May به این صورت عمل می کنیم:
+<div dir="ltr">
+
+```sh
+aws --no-sign-request s3 sync --exclude '*' --include '*/IR/*.jsonl.gz' 's3://ooni-data-eu-fra/raw/20210522' ./ooni-data-iran
+```
+<br/>
+
+![OONI s3 download all data IR](/images/docs/measure-internet-censorship/OONI/OONI-s3-download-all-data-IR.png)
+</div>
+
+که کل حجم آن برابر است با 137 مگابایت.
+<div dir="ltr">
+
+```sh
+$ du -sch 
+137M    .
+137M    total
+```
+</div>
+
+این فایل ها با نسبت حدود 80٪ فشرده سازی شده اند.
+<div dir="ltr">
+
+```sh
+$ gzip -l *
+         compressed        uncompressed  ratio uncompressed_name
+            2277712            12444162  81.7% ./2021052222_IR_webconnectivity.n0.0.jsonl
+```
+</div>
+
+به عنوان مثال یک فایل حدود 2 مگابایتی، بعد از decompress کردن حدود 12 مگابایت فضا را اشغال خواهد کرد.
+<div dir="ltr">
+
+```sh
+$ ls -shi
+total 15M
+1082  12M 2021052222_IR_webconnectivity.n0.0.jsonl
+1071 2.2M 2021052222_IR_webconnectivity.n0.0.jsonl.gz
+```
+
+</div>
+
+در این فایل ها، هر خط جدید شامل یک نتیجه ی مجزا می شود:
+<div dir="ltr">
+
+![OONI s3 downloaded webconnectivity data content](/images/docs/measure-internet-censorship/OONI/OONI-s3-downloaded-webconnectivity-data-content.png)
+</div>
+
+یک طرح ساده از مورد استفاده شده از داده های NDT ی OONI را می توانید در اینجا ببینید:
+
+<center>
+<iframe width="600" height="1080" src="https://datastudio.google.com/embed/reporting/07f6c648-1551-4a62-9865-6d509594273f/page/3lYOC" frameborder="0" style="border:0" allowfullscreen></iframe>
+</center>
+
+برای دریافت توضیحات بیشتر در این رابطه، می توانید [متن OONI در مورد داده کاوی نتایج](https://ooni.org/post/mining-ooni-data/) را مطالعه کنید.
