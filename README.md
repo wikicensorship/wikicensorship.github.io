@@ -12,6 +12,7 @@ An open encyclopedia of Internet censorship
   - [ ] Find the source of the DNS injection
   - [ ] Find the DNS caching system
 - [x] Network and Transport Layers
+  - [ ] Fingerprint blocking
 - [ ] Application Layer
   - [ ] Fingerprint blocking
 - [ ] Bandwidth throttling 
