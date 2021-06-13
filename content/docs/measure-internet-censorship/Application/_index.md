@@ -3,8 +3,8 @@
 weight: 30
 bookFlatSection: true
 title: "بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد"
-description: "بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای نتایج ping و traceroute و محدودیت های آنها در اندازه گیری سانسور."
-tags: ["سانسور", "Application", "RST injection", "null route", "فیلتر", "فیلترنت", "curl", "صفحه‌ی پیوندها", "HTTP", "HTTP", "Application layer", "اینترنت", "لایه ی کاربرد", "non-transparent proxy", "Host name blocking", "بررسی سانسور اینترنت", "سانسور اینترنت"]
+description: "بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر"
+tags: ["سانسور", "Application", "RST injection", "null route", "فیلتر", "فیلترنت", "curl", "صفحه‌ی پیوندها", "HTTP", "HTTP", "Application layer", "اینترنت", "تحریم", "خطای 403", "خطای 503", "لایه ی کاربرد", "non-transparent proxy", "Host name blocking", "بررسی سانسور اینترنت", "سانسور اینترنت"]
 images:
 - "/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png"
 ---
