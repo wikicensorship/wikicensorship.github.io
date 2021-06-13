@@ -13,10 +13,11 @@ An open encyclopedia of Internet censorship
   - [ ] Find the DNS caching system
 - [x] Network and Transport Layers
   - [ ] Fingerprint blocking
-- [ ] Application Layer
+- [x] Application Layer
   - [ ] Fingerprint blocking
 - [ ] Bandwidth throttling 
 - [ ] Packet analysis
   - [ ] Random blocking
 - [ ] Global data analysis for Internet outages
+- [ ] Sanctions
 - [ ] Translations
