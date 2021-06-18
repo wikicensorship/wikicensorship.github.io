@@ -1,6 +1,6 @@
 ---
 weight: 20
-bookFlatSection: true
+bookCollapseSection: true
 title: "بررسی سانسور اینترنت در ارتباط DNS"
 description: "انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."
 tags: ["سانسور", "DNS", "DoH", "DoT", "دی ان اس", "Do53", "DNS over UDP", "DNS over TCP", "DNS over HTTPS", "DNS over TLS", "DNSCrypt", "بررسی DNS", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
@@ -30,6 +30,8 @@ DNS over UDP روش پیشفرض اکثر سیستم عامل ها است.
 این روش توسط شخص ناشناس قابل مشاهده و یا دستکاری است. 
 اکثر سیستم های سانسور و بدافزار های شبکه، از این روش برای تغییر مسیر کاربران استفاده می کنند. 
 در ایران معمولا جواب درخواست های DNS سایت های فیلتر شده به یکی از سه آدرس `10.10.34.34`، `10.10.34.35`، `10.10.34.36`، تغییر می کنند.
+
+در ارتباط IPv6 نیز، سانسور به صورت سیاهچاله عمل می کند و یا آدرس `d0::11` را بر می گرداند.
 
 درخواست DNS از طریق مقدار پیشفرض DNS تنظیم شده در سیستم عامل:
 <div dir="ltr">
@@ -146,6 +148,101 @@ IP ای از `10.10.34.3x` را بر می گرداند:
 مانند IP ای که ایران استفاده می کرده تا افرادی که سهوا و یا عمدا به سرویس های ممنوعه، همانند سایت قمار و شرطبندی، [تلگرام](https://persian.iranhumanrights.org/1398/01/rapid-response-center-of-the-office-of-the-prosecutors-cyberspace/)، [سرویس کوتاه کننده ی لینک](https://twitter.com/xhdix/status/1101586440025227264) و غیره رجوع می کردند، تحت پیگرد قانونی قرار دهد.
 
 ![prosecute the internet users for visiting a site in iran - pooyesh pardaz sorkh company](/images/docs/measure-internet-censorship/DNS/prosecute-for-visiting-site-iran-pooyesh-pardaz-sorkh.png)
+
+### IPv6
+
+برای دریافت IPv6 یک سایت، به صورت زیر عمل می کنیم:
+
+<div dir="ltr">
+
+```sh
+$ dig AAAA facebook.com @1.1.1.1
+
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> AAAA facebook.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1468
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;facebook.com.      IN  AAAA
+
+;; ANSWER SECTION:
+facebook.com.    1  IN  A  10.10.34.35
+
+;; Query time: 35 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1)
+;; WHEN: Tue Dec 29 22:52:29 +0330 2020
+;; MSG SIZE  rcvd: 46
+```
+</div>
+
+درخواست از نوع AAAA بوده اما جواب از نوع A و سانسور شده.
+
+و یا در ویندوز به صورت زیر عمل می کنیم :
+
+<div dir="ltr">
+
+```sh
+> nslookup -type=AAAA facebook.com  217.219.103.5
+
+Server:  UnKnown
+Address:  217.219.103.5
+
+DNS request timed out.
+    timeout was 2 seconds.
+Non-authoritative answer:
+Name:    facebook.com
+Address:  10.10.34.35
+```
+</div>
+
+البته این رفتار در هر شبکه و نسبت به هر resolver متفاوت است:
+
+<div dir="ltr">
+
+```sh
+> nslookup -type=AAAA facebook.com 5.200.200.200
+
+DNS request timed out.
+    timeout was 2 seconds.
+Server:  UnKnown
+Address:  5.200.200.200
+
+Non-authoritative answer:
+Name:    facebook.com
+Address:  2a03:2880:f11c:8183:face:b00c:0:25de
+```
+</div>
+
+در اینجا جواب صحیح برگردانده شده است. اما اگر در شبکه ای که دارای IPv6 است و به سمت یک resolver با IPv6 تست کنیم نتیجه متفاوت خواهد بود:
+
+<div dir="ltr">
+
+```sh
+$ dig AAAA facebook.com @2001:4860:4860::8888
+
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> AAAA facebook.com @2001:4860:4860::8888
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 56730
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;facebook.com.      IN  AAAA
+
+;; ANSWER SECTION:
+facebook.com.    1  IN  AAAA  d0::11
+
+;; Query time: 28 msec
+;; SERVER: 2001:4860:4860::8888#53(2001:4860:4860::8888)
+;; WHEN: Tue Dec 29 22:56:41 +0330 2020
+;; MSG SIZE  rcvd: 58
+```
+</div>
+
+در اینجا جواب نیز از نوع AAAA است اما آدرس `d0::11` که در پاسخ آمده، یک آدرس معتبر در IPv6 نیست. در نتیجه، همچون آدرس های `10.10.34.3x` دارای صفحه ی «پیوند ها» نیست.
+
 
 ## DNS over TCP
 DNS over TCP هم از پورت مشابه DNS over UDP استفاده می کند و مشترکا Do53 معرفی می شوند. 
