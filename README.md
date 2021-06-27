@@ -20,4 +20,5 @@ An open encyclopedia of Internet censorship
   - [ ] Random blocking
 - [ ] Global data analysis for Internet outages
 - [ ] Sanctions
+- [ ] Glossary
 - [ ] Translations
