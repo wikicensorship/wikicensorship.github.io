@@ -283,10 +283,10 @@ SNI در Client Hello قرار دارد.
 به عنوان مثال، تست های بالا را که در مخابرات (AS58224) انجام شده بود را در همراه اول (AS197207) تکرار می کنیم:
 <div dir="ltr">
 
-`$ curl -v -m30 --resolve dns.google:443:8.8.4.4  https://dns.google/`
+`$ curl -v -m30 --resolve dns.google:443:8.8.4.4 https://dns.google/`
 <br/>
 
-![HTTPS mci curl dns.google 8.8.4.4 ip](/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-8844-ip.jpg)
+![HTTPS mci curl dns.google with 8.8.4.4 ip](/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-8844-ip.jpg)
 
 </div>
 
@@ -299,7 +299,7 @@ SNI در Client Hello قرار دارد.
 
 <div dir="ltr">
 
-`$ curl -v -m30 -k --resolve dns.google:443:93.184.216.34  https://dns.google/`
+`$ curl -v -m30 -k --resolve dns.google:443:93.184.216.34 https://dns.google/`
 <br/>
 
 ![HTTPS mci curl dns.google with example.com ip part 1](/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-with-exampledotcom-ip-1.jpg)
@@ -316,7 +316,7 @@ SNI در Client Hello قرار دارد.
 `$ curl -v -m30 -k --resolve example.com:443:8.8.4.4 https://example.com/`
 <br/>
 
-![HTTPS mci curl example.com with dns.google ip](/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-exampledotcom-with-dnsgoogle-ip.jpg)
+![HTTPS mci curl example.com with dns.google 8.8.4.4 ip](/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-exampledotcom-with-dnsgoogle-ip.jpg)
 </div>
 
 در نتیجه در این شبکه، بعضی از سرویس ها فقط در صورت ای مسدود خواهند شد که هم آدرس در SNI و هم آدرس IP با rule تنظیم شده در سیستم سانسور مطابقت داشته باشند.
