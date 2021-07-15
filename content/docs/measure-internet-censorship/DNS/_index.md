@@ -250,7 +250,7 @@ facebook.com.    1  IN  AAAA  d0::11
 
 * [`10.10.34.34`](https://explorer.ooni.org/measurement/20170525T030641Z_AS50810_5iVwM98EMQORqXeZtbhiDquo9zifyYSMmE5AWTARCw3XJ1R4is?input=http://pesareghabile.blogspot.com)
 * [`10.10.34.35`](https://explorer.ooni.org/measurement/20210715T123812Z_webconnectivity_IR_58224_n1_9T08osRqZrcngBFZ?input=http%3A%2F%2Fwww.facebook.com%2F)
-* [`10.10.34.36`](https://explorer.ooni.org/measurement/20210715T025932Z_webconnectivity_IR_197207_n1_XlC4vAtUorJcaomS?input=http%3A%2F%2Fbit.ly%2F)
+* [`10.10.34.36`](https://explorer.ooni.org/measurement/20210701T022229Z_webconnectivity_IR_197207_n1_1gpWGw5V9YWvEa44?input=http%3A%2F%2Fwww.freeexpression.org%2F)
 * [`d0:0:0:0:0:0:0:11`](https://explorer.ooni.org/measurement/20180627T180515Z_AS44244_Z8V0i4Cr6PoJHByQQ89uN3meAmQbvdUrBli1NqYU8786BLquMk?input=http://alone-persian-man.blogspot.com)
 * [`d0::11`](https://explorer.ooni.org/measurement/20210715T094141Z_webconnectivity_IR_44244_n1_GFBhOu2puPdz4SSt?input=https%3A%2F%2Fwww.sbs.com.au%2Flanguage%2Fcoronavirus%3Fcid%3Dinfocus)
 
