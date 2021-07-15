@@ -246,7 +246,7 @@ facebook.com.    1  IN  AAAA  d0::11
 
 ### لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی
 
-برای پیگیری راحت تر موارد سانسور، آدرس هایی که توسط سیستم سانسور جمهوری اسلامی استفاده می شوند در ادامه همراه با لینک به یک نتیجه ی تست OONI حاوی آن آدرس است، لیست می شوند:
+برای پیگیری راحت تر موارد سانسور، آدرس هایی که توسط سیستم سانسور جمهوری اسلامی استفاده می شوند در ادامه همراه با لینک به یک نتیجه ی تست OONI که حاوی آن آدرس است، لیست می شوند:
 
 * [`10.10.34.34`](https://explorer.ooni.org/measurement/20170525T030641Z_AS50810_5iVwM98EMQORqXeZtbhiDquo9zifyYSMmE5AWTARCw3XJ1R4is?input=http://pesareghabile.blogspot.com)
 * [`10.10.34.35`](https://explorer.ooni.org/measurement/20210715T123812Z_webconnectivity_IR_58224_n1_9T08osRqZrcngBFZ?input=http%3A%2F%2Fwww.facebook.com%2F)
