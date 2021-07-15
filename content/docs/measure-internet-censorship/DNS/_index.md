@@ -1,6 +1,6 @@
 ---
 weight: 20
-bookCollapseSection: true
+bookCollapseSection: false
 title: "بررسی سانسور اینترنت در ارتباط DNS"
 description: "انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."
 tags: ["سانسور", "DNS", "DoH", "DoT", "دی ان اس", "Do53", "DNS over UDP", "DNS over TCP", "DNS over HTTPS", "DNS over TLS", "DNSCrypt", "بررسی DNS", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
@@ -215,7 +215,8 @@ Address:  2a03:2880:f11c:8183:face:b00c:0:25de
 ```
 </div>
 
-در اینجا جواب صحیح برگردانده شده است. اما اگر در شبکه ای که دارای IPv6 است و به سمت یک resolver با IPv6 تست کنیم نتیجه متفاوت خواهد بود:
+در اینجا جواب صحیح برگردانده شده است. 
+اما اگر در شبکه ای که دارای IPv6 است و به سمت یک resolver با IPv6 تست کنیم نتیجه متفاوت خواهد بود:
 
 <div dir="ltr">
 
@@ -242,6 +243,16 @@ facebook.com.    1  IN  AAAA  d0::11
 </div>
 
 در اینجا جواب نیز از نوع AAAA است اما آدرس `d0::11` که در پاسخ آمده، یک آدرس معتبر در IPv6 نیست. در نتیجه، همچون آدرس های `10.10.34.3x` دارای صفحه ی «پیوند ها» نیست.
+
+### لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی
+
+برای پیگیری راحت تر موارد سانسور، آدرس هایی که توسط سیستم سانسور جمهوری اسلامی استفاده می شوند در ادامه همراه با لینک به یک نتیجه ی تست OONI حاوی آن آدرس است، لیست می شوند:
+
+* [`10.10.34.34`](https://explorer.ooni.org/measurement/20170525T030641Z_AS50810_5iVwM98EMQORqXeZtbhiDquo9zifyYSMmE5AWTARCw3XJ1R4is?input=http://pesareghabile.blogspot.com)
+* [`10.10.34.35`](https://explorer.ooni.org/measurement/20210715T123812Z_webconnectivity_IR_58224_n1_9T08osRqZrcngBFZ?input=http%3A%2F%2Fwww.facebook.com%2F)
+* [`10.10.34.36`](https://explorer.ooni.org/measurement/20210715T025932Z_webconnectivity_IR_197207_n1_XlC4vAtUorJcaomS?input=http%3A%2F%2Fbit.ly%2F)
+* [`d0:0:0:0:0:0:0:11`](https://explorer.ooni.org/measurement/20180627T180515Z_AS44244_Z8V0i4Cr6PoJHByQQ89uN3meAmQbvdUrBli1NqYU8786BLquMk?input=http://alone-persian-man.blogspot.com)
+* [`d0::11`](https://explorer.ooni.org/measurement/20210715T094141Z_webconnectivity_IR_44244_n1_GFBhOu2puPdz4SSt?input=https%3A%2F%2Fwww.sbs.com.au%2Flanguage%2Fcoronavirus%3Fcid%3Dinfocus)
 
 
 ## DNS over TCP
