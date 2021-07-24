@@ -1,59 +1,481 @@
-<!doctype html><html lang=fa dir=rtl><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر"><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد"><meta property="og:description" content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر"><meta property="og:type" content="website"><meta property="og:url" content="https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/"><meta property="og:image" content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png"><meta name=twitter:title content="بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد"><meta name=twitter:description content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر"><title>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد | ویکی سانسور</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.ico type=image/x-icon><link rel=stylesheet href=/book.min.9f6235ecf09d876f5ca0cc5cb4ae005fc907bd8c23450f5e9fcb2f4b66cb7e5e.css integrity="sha256-n2I17PCdh29coMxctK4AX8kHvYwjRQ9en8svS2bLfl4=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/fa.search.min.7803af8a41d15a70038690948afa545e689ad6dcea6b04e00a977d5d8c9a68f2.js integrity="sha256-eAOvikHRWnADhpCUivpUXmia1tzqawTgCpd9XYyaaPI=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/index.xml title="ویکی سانسور"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"></head><body dir=rtl><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/fa/><span>ویکی سانسور</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a><ul></ul></li><li><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a><ul></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a><ul></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/ class=active>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a><ul></ul></li></ul></li></ul><ul><li><a href=/fa/glossary/>فرهنگ لغات فنی</a></li><li><a href=/fa/posts/>بلاگ</a></li><li><a href=https://github.com/wikicensorship target=_blank rel=noopener>GitHub</a></li></ul></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Languages</li></ul><ul class=book-languages-list><li class=active><a href=https://wikicensorship.github.io/fa/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</a></li><li><a href=https://wikicensorship.github.io/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-English</a></li><li><a href=https://wikicensorship.github.io/ru/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Russian</a></li></ul></div></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+<!doctype html><html lang=fa dir=rtl>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر">
+<meta name=theme-color content="#FFFFFF">
+<meta property="og:title" content="بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد">
+<meta property="og:description" content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/">
+<meta property="og:image" content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png">
+<meta name=twitter:title content="بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد">
+<meta name=twitter:description content="بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر">
+<title>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد | ویکی سانسور</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.ico type=image/x-icon>
+<link rel=stylesheet href=/book.min.9f6235ecf09d876f5ca0cc5cb4ae005fc907bd8c23450f5e9fcb2f4b66cb7e5e.css integrity="sha256-n2I17PCdh29coMxctK4AX8kHvYwjRQ9en8svS2bLfl4=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/fa.search.min.d6c7a05125a1ba0d0c338bd75c2cafb6f5540eb9fa9dc705f7b400aaea2f3bbb.js integrity="sha256-1segUSWhug0MM4vXXCyvtvVUDrn6nccF97QAquovO7s=" crossorigin=anonymous></script>
+<script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
+<link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/index.xml title="ویکی سانسور">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+</head>
+<body dir=rtl>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a href=/fa/><span>ویکی سانسور</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a>
+<ul>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/ class=active>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=/fa/glossary/>
+فرهنگ لغات فنی
+</a>
+</li>
+<li>
+<a href=/fa/posts/>
+بلاگ
+</a>
+</li>
+<li>
+<a href=https://github.com/wikicensorship target=_blank rel=noopener>
+GitHub
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+<div class=book-languages tabindex=0 aria-haspopup=true>
+<ul>
+<li class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Languages
+</li>
+</ul>
+<ul class=book-languages-list>
+<li class=active>
+<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+English
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Russian
+</a>
+</li>
+</ul>
+</div>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
 <strong>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>بررسی سانسور در ارتباط در لایه ی کاربرد</a><ul><li><a href=#ارتباط-http>ارتباط HTTP</a></li><li><a href=#ارتباط-https>ارتباط HTTPS</a><ul><li><a href=#بررسی-ساده-ی-sni-و-tls>بررسی ساده ی SNI و TLS</a></li></ul></li><li><a href=#تشخیص-تحریم-از-فیلتر>تشخیص تحریم از فیلتر</a></li></ul></li></ul></nav></aside></header><article class=markdown ondblclick="this.setAttribute('contenteditable','true')"><h1 id=بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>بررسی سانسور در ارتباط در لایه ی کاربرد
-<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%af%d8%b1-%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-%d8%af%d8%b1-%d9%84%d8%a7%db%8c%d9%87-%db%8c-%da%a9%d8%a7%d8%b1%d8%a8%d8%b1%d8%af>#</a></h1><p>در ارتباط عادی، سومین مرحله از بازدید یک سایت و یا استفاده از سرویس، ارتباط با برنامه ی نصب شده در سرور است. به عنوان مثال Apache، IIS، و یا هر سرویس ساده ی دیگر.</p><p>بهترین ابزار بررسی ارتباط با پروتکل های HTTP، HTTPS، MQTT و FTP و غیره،
-<a href=https://curl.se/download.html>curl</a> است که اکثر سیستم عامل ها را پشتیبانی می کند.</p><p>برای بررسی روش هایی که یک سایت در لایه ی بالاتر از IP مسدود شده، اولین قدم بررسی ارتباط HTTP است.
-اما توجه به این نکته مهم است که در این بررسی نیز باید از IP اصلی استفاده کنیم، نه چیزی که سیستم سانسور به ما می دهد.</p><h2 id=ارتباط-http>ارتباط HTTP
-<a class=anchor href=#%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-http>#</a></h2><p>در این سطح ما می خواهیم که DNS Hijacking در تست ما دخیل نباشد و در قدم اول فقط می خواهیم ببینیم که اگر از IP ی درست استفاده کنیم، باز هم ارتباط HTTP سانسور می شود؟ :</p><div dir=ltr><p><code>> .\curl -v --doh-url "https://mozilla.cloudflare-dns.com/dns-query" http://twitter.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-doh.png alt="HTTP curl twitter with doh"></p></div><p>(تصویر از انتهای لاگ &ndash; تست شده در ویندوز)</p><p>در خط اول می بینید که درخواست DoH به درستی کامل شد. در نتیجه IP ی دریافت شده درست است.</p><p>در ادامه، به سایت توییتر با آدرس دریافت شده، درخواست فرستاده شد و چون ارتباط HTTP است، یعنی رمزنگاری نیست و به راحتی توسط شخص ناشناس قابل دستکاری است، خطای 403 در Header و iframe ای که صفحه ی سانسور جمهوری اسلامی را نمایش خواهد داد، دریافت شد.</p><p>برای آزمایش مشابه، اگر قصد وصل شدن به یک IP ی خاص داریم، می توانیم به این صورت از curl استفاده کنیم:</p><div dir=ltr><p><code>> .\curl -v --resolve twitter.com:80:104.244.42.193 http://twitter.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-resolve-cache-ip.png alt="HTTP curl twitter with resolve cache ip"></p></div><p>مقدار 80 به معنای Port ای است که قصد وصل شدن به آن را داریم.</p><p><code>--resolve</code> برای قرار دادن یک IP در DNS cache موقت curl است.</p><p>حال سوالی که پیش می آید این است که آیا این سانسور، بر مبنای مقدار Host در header است و یا بر مبنای محتوای درخواست، و یا هر دو؟</p><p>برای بررسی، می توانیم از آدرسی که می دانیم که سانسور نیست استفاده کنیم. مانند <code>example.com</code> :</p><div dir=ltr><p><code>> .\curl -v http://example.com</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-exampledotcom.png alt="HTTP curl exampledotcom"></p></div><p>در اینجا می بینیم که HTTP 200 OK دریافت شده و مقدار title برابر با مقداری است که با اینترنت بدون سانسور به دست می آوریم.
-این بدان معناست که در این شبکه ارتباط با این دامنه و IP سانسور نمی شود.</p><p>حال که از مسدود نبودن آن مطمئن هستیم، می توانیم از این IP برای آزمایش استفاده کنیم.
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>بررسی سانسور در ارتباط در لایه ی کاربرد</a>
+<ul>
+<li><a href=#ارتباط-http>ارتباط HTTP</a></li>
+<li><a href=#ارتباط-https>ارتباط HTTPS</a>
+<ul>
+<li><a href=#بررسی-ساده-ی-sni-و-tls>بررسی ساده ی SNI و TLS</a></li>
+</ul>
+</li>
+<li><a href=#تشخیص-تحریم-از-فیلتر>تشخیص تحریم از فیلتر</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown ondblclick="this.setAttribute('contenteditable','true')"><h1 id=بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>
+بررسی سانسور در ارتباط در لایه ی کاربرد
+<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%af%d8%b1-%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-%d8%af%d8%b1-%d9%84%d8%a7%db%8c%d9%87-%db%8c-%da%a9%d8%a7%d8%b1%d8%a8%d8%b1%d8%af>#</a>
+</h1>
+<p>در ارتباط عادی، سومین مرحله از بازدید یک سایت و یا استفاده از سرویس، ارتباط با برنامه ی نصب شده در سرور است. به عنوان مثال Apache، IIS، و یا هر سرویس ساده ی دیگر.</p>
+<p>بهترین ابزار بررسی ارتباط با پروتکل های HTTP، HTTPS، MQTT و FTP و غیره،
+<a href=https://curl.se/download.html>curl</a> است که اکثر سیستم عامل ها را پشتیبانی می کند.</p>
+<p>برای بررسی روش هایی که یک سایت در لایه ی بالاتر از IP مسدود شده، اولین قدم بررسی ارتباط HTTP است.
+اما توجه به این نکته مهم است که در این بررسی نیز باید از IP اصلی استفاده کنیم، نه چیزی که سیستم سانسور به ما می دهد.</p>
+<h2 id=ارتباط-http>
+ارتباط HTTP
+<a class=anchor href=#%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-http>#</a>
+</h2>
+<p>در این سطح ما می خواهیم که DNS Hijacking در تست ما دخیل نباشد و در قدم اول فقط می خواهیم ببینیم که اگر از IP ی درست استفاده کنیم، باز هم ارتباط HTTP سانسور می شود؟ :</p>
+<div dir=ltr>
+<p><code>> .\curl -v --doh-url "https://mozilla.cloudflare-dns.com/dns-query" http://twitter.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-doh.png alt="HTTP curl twitter with doh"></p>
+</div>
+<p>(تصویر از انتهای لاگ &ndash; تست شده در ویندوز)</p>
+<p>در خط اول می بینید که درخواست DoH به درستی کامل شد. در نتیجه IP ی دریافت شده درست است.</p>
+<p>در ادامه، به سایت توییتر با آدرس دریافت شده، درخواست فرستاده شد و چون ارتباط HTTP است، یعنی رمزنگاری نیست و به راحتی توسط شخص ناشناس قابل دستکاری است، خطای 403 در Header و iframe ای که صفحه ی سانسور جمهوری اسلامی را نمایش خواهد داد، دریافت شد.</p>
+<p>برای آزمایش مشابه، اگر قصد وصل شدن به یک IP ی خاص داریم، می توانیم به این صورت از curl استفاده کنیم:</p>
+<div dir=ltr>
+<p><code>> .\curl -v --resolve twitter.com:80:104.244.42.193 http://twitter.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-resolve-cache-ip.png alt="HTTP curl twitter with resolve cache ip"></p>
+</div>
+<p>مقدار 80 به معنای Port ای است که قصد وصل شدن به آن را داریم.</p>
+<p><code>--resolve</code> برای قرار دادن یک IP در DNS cache موقت curl است.</p>
+<p>حال سوالی که پیش می آید این است که آیا این سانسور، بر مبنای مقدار Host در header است و یا بر مبنای محتوای درخواست، و یا هر دو؟</p>
+<p>برای بررسی، می توانیم از آدرسی که می دانیم که سانسور نیست استفاده کنیم. مانند <code>example.com</code> :</p>
+<div dir=ltr>
+<p><code>> .\curl -v http://example.com</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-exampledotcom.png alt="HTTP curl exampledotcom"></p>
+</div>
+<p>در اینجا می بینیم که HTTP 200 OK دریافت شده و مقدار title برابر با مقداری است که با اینترنت بدون سانسور به دست می آوریم.
+این بدان معناست که در این شبکه ارتباط با این دامنه و IP سانسور نمی شود.</p>
+<p>حال که از مسدود نبودن آن مطمئن هستیم، می توانیم از این IP برای آزمایش استفاده کنیم.
 در curl، علاوه بر <code>--connect-to</code> و <code>--resolve</code> می توانیم از <code>-H</code> یا <code>--header</code> نیز استفاده کنیم.
-به این معنا که ما قصد اضافه کردن و یا باز نویسی یک header در HTTP داریم. به این صورت:</p><div dir=ltr><p><code>> .\curl -v -H 'Host: twitter.com' http://93.184.216.34</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-exampledotcom-ip.png alt="HTTP curl twitter with example.com ip.png"></p></div><p>در اینجا آدرس توییتر در header به عنوان Host انتخاب شد اما خطای 503 دریافت کردیم.</p><p>درخواست مشابه را از طریق سرور خارجی انجام می دهیم تا واکنش سرور را نسبت به این درخواست ببینیم و مطمئن شویم که این خطا، خطایی مربوط به سرور نیست:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-twitter-with-exampledotcom-ip.png alt="HTTP germany curl twitter with example.com ip"></p></div><p>همانطور که انتظار می رفت، این خطا خارج از سیستم سانسور جمهوری اسلامی مشاهده نشده است.</p><p>این خطایی است که از سمت سیستم سانسور جمهوری اسلامی، به دلیل ناتوانی در تحلیل به موقع درخواست باز می گرداند.
-<a href=https://github.com/net4people/bbs/issues/42>در اینجا می توانید ببینید که در یک تست کامل توسط OONI-probe تعداد 329 آدرس این خطا را دریافت کردند</a>. حدود 15٪ از کل لیست (شامل اکثریت پروتکل HTTPS).</p><p>حال برای بررسی دقیق زمان واکنش <code>--trace-time</code> را اضافه می کنیم:</p><div dir=ltr><p><code>> .\curl -v --trace-time -H 'Host: twitter.com' http://93.184.216.34</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-trace-time-twitter-with-exampledotcom-ip-repeat.png alt="HTTP curl trace time twitter with example.com ip repeat"></p></div><p>زمان پاسخگویی با خطای 503، دقیقا 30 ثانیه تنظیم شده است.
-چند بار این تست را تکرار می کنیم و بعد از گذشت چند دقیقه از درخواست اولیه، سیستم سانسور جواب معمول خود را برای سانسور، ارسال می کند:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-trace-time-twitter-with-exampledotcom-ip-repeat.png alt="HTTP curl trace time twitter with example.com ip repeat"></p></div><p>حال آزمایش می کنیم که سیستم سانسور جمهوری اسلامی نسبت به ارتباط با IP ی توییتر، اما دامنه ی <code>example.com</code> در header چه واکنشی نشان می دهد:</p><div dir=ltr><p><code>> .\curl -v -H 'Host: example.com' http://104.244.42.193/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-exampledotcom-with-twitter-ip.png alt="HTTP curl example.com with twitter ip"></p></div><p>جواب تعجب برانگیزی دریافت شده است.
+به این معنا که ما قصد اضافه کردن و یا باز نویسی یک header در HTTP داریم. به این صورت:</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: twitter.com' http://93.184.216.34</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-twitter-with-exampledotcom-ip.png alt="HTTP curl twitter with example.com ip.png"></p>
+</div>
+<p>در اینجا آدرس توییتر در header به عنوان Host انتخاب شد اما خطای 503 دریافت کردیم.</p>
+<p>درخواست مشابه را از طریق سرور خارجی انجام می دهیم تا واکنش سرور را نسبت به این درخواست ببینیم و مطمئن شویم که این خطا، خطایی مربوط به سرور نیست:</p>
+<div dir=ltr>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-twitter-with-exampledotcom-ip.png alt="HTTP germany curl twitter with example.com ip"></p>
+</div>
+<p>همانطور که انتظار می رفت، این خطا خارج از سیستم سانسور جمهوری اسلامی مشاهده نشده است.</p>
+<p>این خطایی است که از سمت سیستم سانسور جمهوری اسلامی، به دلیل ناتوانی در تحلیل به موقع درخواست باز می گرداند.
+<a href=https://github.com/net4people/bbs/issues/42>در اینجا می توانید ببینید که در یک تست کامل توسط OONI-probe تعداد 329 آدرس این خطا را دریافت کردند</a>. حدود 15٪ از کل لیست (شامل اکثریت پروتکل HTTPS).</p>
+<p>حال برای بررسی دقیق زمان واکنش <code>--trace-time</code> را اضافه می کنیم:</p>
+<div dir=ltr>
+<p><code>> .\curl -v --trace-time -H 'Host: twitter.com' http://93.184.216.34</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-trace-time-twitter-with-exampledotcom-ip-repeat.png alt="HTTP curl trace time twitter with example.com ip repeat"></p>
+</div>
+<p>زمان پاسخگویی با خطای 503، دقیقا 30 ثانیه تنظیم شده است.
+چند بار این تست را تکرار می کنیم و بعد از گذشت چند دقیقه از درخواست اولیه، سیستم سانسور جواب معمول خود را برای سانسور، ارسال می کند:</p>
+<div dir=ltr>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-trace-time-twitter-with-exampledotcom-ip-repeat.png alt="HTTP curl trace time twitter with example.com ip repeat"></p>
+</div>
+<p>حال آزمایش می کنیم که سیستم سانسور جمهوری اسلامی نسبت به ارتباط با IP ی توییتر، اما دامنه ی <code>example.com</code> در header چه واکنشی نشان می دهد:</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: example.com' http://104.244.42.193/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-exampledotcom-with-twitter-ip.png alt="HTTP curl example.com with twitter ip"></p>
+</div>
+<p>جواب تعجب برانگیزی دریافت شده است.
 در حالت عادی شما نمی توانید از IP یک سایت دیگر استفاده کنید و جواب یکسان بگیرید.
-مگر اینکه هر دو بر روی یک هاست اشتراکی باشند و یا هر دو از CDN خاصی استفاده کنند که از domain-fronting پشتیبانی می کند.</p><p>برای اطمینان دوباره از سرور خارجی همین درخواست را تکرار می کنیم:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-exampledotcom-with-twitter-ip.png alt="HTTP germany curl example.com with twitter ip"></p></div><p>جواب متفاوت است.
+مگر اینکه هر دو بر روی یک هاست اشتراکی باشند و یا هر دو از CDN خاصی استفاده کنند که از domain-fronting پشتیبانی می کند.</p>
+<p>برای اطمینان دوباره از سرور خارجی همین درخواست را تکرار می کنیم:</p>
+<div dir=ltr>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-exampledotcom-with-twitter-ip.png alt="HTTP germany curl example.com with twitter ip"></p>
+</div>
+<p>جواب متفاوت است.
 در نتیجه، پاسخ قبلی احتمالا به دلیل وجود سیستم Cache در اینترنت آن شبکه است.
 در بخش «لایه ی شبکه و انتقال»، نشان داده شد که در دستور traceroute با Port <code>80</code> و به صورت TCP، بعد از فقط ۳ Hop، با تاخیر بسیار پایین، از سرور مقصد جواب دریافت می کردیم.
-این سیستم احتمالا فقط بر مبنای مقدار Host کار می کند و IP را برای درخواست نهایی مد نظر قرار نمی دهد.</p><p>یک تست دیگر انجام می دهیم. با IP ی تلگرام و دامنه ی iran.ir :</p><div dir=ltr><p><code>> .\curl -v -H 'Host: iran.ir' http://149.154.167.99/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-irandotir-with-telegram-ip.png alt="HTTP curl iran.ir with telegram ip"></p></div><p>در نتیجه، IP اگر مسدود باشد، از آن جلوگیری می شود، تفاوتی وجود ندارد.
-به جای تلگرام از IP ی Wikipedia استفاده می کنیم:</p><div dir=ltr><p><code>> .\curl -v -H 'Host: iran.ir' http://91.198.174.192/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-irandotir-with-wikipedia-ip.png alt="HTTP curl iran.ir with wikipedia ip"></p></div><p>دوباره خطای 503 دریافت کردیم که به نظر سیستم Cache جمهوری اسلامی برای آدرس iran.ir آماده نبود.</p><p>این بار به جای آدرس iran.ir از google.com استفاده می کنیم که می دانیم که به تازگی حداقل یک بار توسط مردم درخواست داده شده است:</p><div dir=ltr><p><code>> .\curl -v -H 'Host: google.com' http://91.198.174.192/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-googledotcom-with-wikipedia-ip.png alt="HTTP curl google.com with wikipedia ip"></p></div><p>همانطور که انتظار می رفت، جواب داده شد. همین درخواست را دوباره از سرور خارج انجام می دهیم:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-googledotcom-with-wikipedia-ip.png alt="HTTP germany curl google.com with wikipedia ip"></p></div><p>می بینیم که جواب متفاوت است.
-دوباره همین درخواست را از ایران انجام می دهیم و www. را اضافه می کنیم:</p><div dir=ltr><p><code>> .\curl -v -H 'Host: www.google.com' http://91.198.174.192/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-wwwgoogledotcom-with-wikipedia-ip.png alt="HTTP curl www.google.com with wikipedia ip"></p></div><p>محتوای صفحه ی گوگل از طریق IP ی ویکی‌پدیا به صورت کامل دریافت شده است. با توجه به ساعت درخواست، به نظر درخواست در همان لحظه انجام شده و در نتیجه این یک middle box در سیستم سانسور جمهوری اسلامی است.</p><p>در این رابطه، در گذشته
-<a href=https://citizenlab.ca/2018/04/planet-netsweeper/>گزارشی توسط Citizenlab</a> منتشر شده که رویکرد سیستم سانسور ای که توسط شرکت کانادایی Netsweeper ساخته شده را به صورت زیر به تصویر کشیده است:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/Application/Citizenlab-planet-netsweeper.png alt="Citizenlab planet netsweeper"></p></div><h2 id=ارتباط-https>ارتباط HTTPS
-<a class=anchor href=#%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-https>#</a></h2><p>همانند HTTP ما نباید سانسور از طریق DNS hijacking را در این سطح از آزمایش ها دخیل کنیم.
+این سیستم احتمالا فقط بر مبنای مقدار Host کار می کند و IP را برای درخواست نهایی مد نظر قرار نمی دهد.</p>
+<p>یک تست دیگر انجام می دهیم. با IP ی تلگرام و دامنه ی iran.ir :</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: iran.ir' http://149.154.167.99/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-irandotir-with-telegram-ip.png alt="HTTP curl iran.ir with telegram ip"></p>
+</div>
+<p>در نتیجه، IP اگر مسدود باشد، از آن جلوگیری می شود، تفاوتی وجود ندارد.
+به جای تلگرام از IP ی Wikipedia استفاده می کنیم:</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: iran.ir' http://91.198.174.192/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-irandotir-with-wikipedia-ip.png alt="HTTP curl iran.ir with wikipedia ip"></p>
+</div>
+<p>دوباره خطای 503 دریافت کردیم که به نظر سیستم Cache جمهوری اسلامی برای آدرس iran.ir آماده نبود.</p>
+<p>این بار به جای آدرس iran.ir از google.com استفاده می کنیم که می دانیم که به تازگی حداقل یک بار توسط مردم درخواست داده شده است:</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: google.com' http://91.198.174.192/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-googledotcom-with-wikipedia-ip.png alt="HTTP curl google.com with wikipedia ip"></p>
+</div>
+<p>همانطور که انتظار می رفت، جواب داده شد. همین درخواست را دوباره از سرور خارج انجام می دهیم:</p>
+<div dir=ltr>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-germany-curl-googledotcom-with-wikipedia-ip.png alt="HTTP germany curl google.com with wikipedia ip"></p>
+</div>
+<p>می بینیم که جواب متفاوت است.
+دوباره همین درخواست را از ایران انجام می دهیم و www. را اضافه می کنیم:</p>
+<div dir=ltr>
+<p><code>> .\curl -v -H 'Host: www.google.com' http://91.198.174.192/ </code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTP-curl-wwwgoogledotcom-with-wikipedia-ip.png alt="HTTP curl www.google.com with wikipedia ip"></p>
+</div>
+<p>محتوای صفحه ی گوگل از طریق IP ی ویکی‌پدیا به صورت کامل دریافت شده است. با توجه به ساعت درخواست، به نظر درخواست در همان لحظه انجام شده و در نتیجه این یک middle box در سیستم سانسور جمهوری اسلامی است.</p>
+<p>در این رابطه، در گذشته
+<a href=https://citizenlab.ca/2018/04/planet-netsweeper/>گزارشی توسط Citizenlab</a> منتشر شده که رویکرد سیستم سانسور ای که توسط شرکت کانادایی Netsweeper ساخته شده را به صورت زیر به تصویر کشیده است:</p>
+<div dir=ltr>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/Citizenlab-planet-netsweeper.png alt="Citizenlab planet netsweeper"></p>
+</div>
+<h2 id=ارتباط-https>
+ارتباط HTTPS
+<a class=anchor href=#%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-https>#</a>
+</h2>
+<p>همانند HTTP ما نباید سانسور از طریق DNS hijacking را در این سطح از آزمایش ها دخیل کنیم.
 برای این کار، از همان روش های توضیح داده شده در ارتباط HTTP میتوانیم استفاده کنیم.
 بجز اینکه تمام header ها و آدرس ها رمزنگاری می شوند و در نتیجه توسط سیستم سانسور قابل مشاهده نیستند تا نسبت به آنها سانسور شدن یا نشدن تصمیم گیری شود.
-اما موارد جدیدی وجود دارند که سیستم سانسور نسبت به آنها تصمیم گیری کند و در صورت تمایل، از ادامه ی ارتباط جلوگیری کند.</p><p>اولین مورد می تواند
+اما موارد جدیدی وجود دارند که سیستم سانسور نسبت به آنها تصمیم گیری کند و در صورت تمایل، از ادامه ی ارتباط جلوگیری کند.</p>
+<p>اولین مورد می تواند
 <a href=https://en.wikipedia.org/wiki/Server_Name_Indication>SNI</a> باشد.
-بخشی در ارتباط TLS که به سرور این اطلاع را می دهد که کاربر قصد وصل شدن به چه host ای دارد.</p><p>SNI در Client Hello قرار دارد.
+بخشی در ارتباط TLS که به سرور این اطلاع را می دهد که کاربر قصد وصل شدن به چه host ای دارد.</p>
+<p>SNI در Client Hello قرار دارد.
 اما بعد از این packet، سرور Server Hello را ارسال می کند که اگر زیر نسخه ی TLSv1.3 باشد، محتوای сerfiticate به صورت plain text ارسال می شود.
 در گذشته از این طریق شناسایی محتوای رمزنگاری نشده در این packet،
-<a href=https://ooni.org/post/2018-iran-protests-pt2/>ارتباط سرورهای اینستاگرام در ایران مسدود شده بود</a>. (تنها کشوری که تاکنون مشاهده شده که چنین کاری انجام داده است)</p><p>اما با پیشرفت تکنولوژی این ضعف دیگر در نسخه های جدید وجود ندارد.
+<a href=https://ooni.org/post/2018-iran-protests-pt2/>ارتباط سرورهای اینستاگرام در ایران مسدود شده بود</a>. (تنها کشوری که تاکنون مشاهده شده که چنین کاری انجام داده است)</p>
+<p>اما با پیشرفت تکنولوژی این ضعف دیگر در نسخه های جدید وجود ندارد.
 البته برای حل مشکل SNI نیز استانداردی در حال نوشته شدن است که extension های با اطلاعات حساس در Client Hello به صورت رمزنگاری شده در
-<a href=https://blog.cloudflare.com/encrypted-client-hello/>extension جدیدی به نام ECH</a> قرار بگیرند.</p><p>در حال حاضر ارتباط HTTPS به چند صورت مسدود می شوند:</p><ul><li>از طریق SNI</li><li>از طریق fingerprint در TLS</li><li>مسدود سازی TLS به صورت کلی</li><li>مسدود سازی ارتباط به صورت random</li></ul><p>در مورد مسدود سازی ها از طریق fingerprint و مسدود کردن های random، در بخش هایی مجزا توضیح داده خواهد شد.
-در ادامه به دو مورد ساده تر می پردازیم.</p><h3 id=بررسی-ساده-ی-sni-و-tls>بررسی ساده ی SNI و TLS
-<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%af%d9%87-%db%8c-sni-%d9%88-tls>#</a></h3><p>دسترسی به توییتر را با تنظیم دستی timeout به مدت 30 ثانیه مورد آزمایش قرار می دهیم:</p><div dir=ltr><p><code>$ curl -v -m 30 --doh-url https://mozilla.cloudflare-dns.com/dns-query https://twitter.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-twitter-with-doh-timeout30.png alt="HTTPS curl twitter with doh and timeout30"></p></div><p>در اینجا می بینیم که بعد از Client hello و بعد از گذشت 30 ثانیه، با پیام timeout ارتباط بسته شده است. این به این دلیل است که در این اتفاق احتمالا به دلیل SNI است اما برای اطمینان باید بررسی بیشتر انجام دهیم.</p><p>برای اینکه ببینیم که آیا سیستم سانسور به نام توییتر در SNI حساس است یا مسئله ی دیگر، باید از IP سایتی که می دانیم فیلتر نیست استفاده کنیم و اما از آدرس توییتر در SNI استفاده کنیم. مانند دستور زیر که از IP ی سایت example.org استفاده کردیم:</p><div dir=ltr><p><code>$ curl -v -m30 --resolve 'twitter.com:443:93.184.216.34' https://twitter.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-twitter-with-exampledotcom-ip-timeout30.png alt="HTTPS curl twitter with resolve cache example.com ip timeout30"></p></div><p>به دلیل اینکه پیامدی مشابه داشته، به این نتیجه می رسیم که این مسدود سازی از طریق شناسایی آدرس twitter.com در بخش SNI در Client hello صورت گرفته است.</p><p>اما سیستم سانسور جمهوری اسلامی گاهی رفتاری متفاوت نیز دارد.</p><p>برای نشان دادن نمونه های بیشتر، این بار آدرس dns.google را امتحان می کنیم:</p><div dir=ltr><p><code>$ curl -v -m30 https://dns.google/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-dnsgoogle.png alt="HTTPS curl dns.google"></p></div><p>همانند قبل ارتباط بعد از Client hello وارد سیاه چاله شده است.</p><p>در ادامه تست مسدود بودن SNI را انجام می دهیم و از IP ی سایت example.org استفاده می کنیم:</p><div dir=ltr><p><code>$ curl -v -m30 --resolve dns.google:443:93.184.216.34 https://dns.google/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-dnsgoogle-with-exampledotcom-ip.png alt="HTTPS curl dns.google with example.com ip"></p></div><p>در ایجا می بینیم که TLS handshake به صورت کامل انجام شده است.
-(خطا به خاطر همسان نبودن Certificate ارسالی از سرور و آدرس درخواستی است)</p><p>بنابراین مسدود سازی نمی تواند صرفا به خاطر آدرس dns.google باشد.
+<a href=https://blog.cloudflare.com/encrypted-client-hello/>extension جدیدی به نام ECH</a> قرار بگیرند.</p>
+<p>در حال حاضر ارتباط HTTPS به چند صورت مسدود می شوند:</p>
+<ul>
+<li>از طریق SNI</li>
+<li>از طریق fingerprint در TLS</li>
+<li>مسدود سازی TLS به صورت کلی</li>
+<li>مسدود سازی ارتباط به صورت random</li>
+</ul>
+<p>در مورد مسدود سازی ها از طریق fingerprint و مسدود کردن های random، در بخش هایی مجزا توضیح داده خواهد شد.
+در ادامه به دو مورد ساده تر می پردازیم.</p>
+<h3 id=بررسی-ساده-ی-sni-و-tls>
+بررسی ساده ی SNI و TLS
+<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d8%af%d9%87-%db%8c-sni-%d9%88-tls>#</a>
+</h3>
+<p>دسترسی به توییتر را با تنظیم دستی timeout به مدت 30 ثانیه مورد آزمایش قرار می دهیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m 30 --doh-url https://mozilla.cloudflare-dns.com/dns-query https://twitter.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-twitter-with-doh-timeout30.png alt="HTTPS curl twitter with doh and timeout30"></p>
+</div>
+<p>در اینجا می بینیم که بعد از Client hello و بعد از گذشت 30 ثانیه، با پیام timeout ارتباط بسته شده است. این به این دلیل است که در این اتفاق احتمالا به دلیل SNI است اما برای اطمینان باید بررسی بیشتر انجام دهیم.</p>
+<p>برای اینکه ببینیم که آیا سیستم سانسور به نام توییتر در SNI حساس است یا مسئله ی دیگر، باید از IP سایتی که می دانیم فیلتر نیست استفاده کنیم و اما از آدرس توییتر در SNI استفاده کنیم. مانند دستور زیر که از IP ی سایت example.org استفاده کردیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 --resolve 'twitter.com:443:93.184.216.34' https://twitter.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-twitter-with-exampledotcom-ip-timeout30.png alt="HTTPS curl twitter with resolve cache example.com ip timeout30"></p>
+</div>
+<p>به دلیل اینکه پیامدی مشابه داشته، به این نتیجه می رسیم که این مسدود سازی از طریق شناسایی آدرس twitter.com در بخش SNI در Client hello صورت گرفته است.</p>
+<p>اما سیستم سانسور جمهوری اسلامی گاهی رفتاری متفاوت نیز دارد.</p>
+<p>برای نشان دادن نمونه های بیشتر، این بار آدرس dns.google را امتحان می کنیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 https://dns.google/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-dnsgoogle.png alt="HTTPS curl dns.google"></p>
+</div>
+<p>همانند قبل ارتباط بعد از Client hello وارد سیاه چاله شده است.</p>
+<p>در ادامه تست مسدود بودن SNI را انجام می دهیم و از IP ی سایت example.org استفاده می کنیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 --resolve dns.google:443:93.184.216.34 https://dns.google/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-dnsgoogle-with-exampledotcom-ip.png alt="HTTPS curl dns.google with example.com ip"></p>
+</div>
+<p>در ایجا می بینیم که TLS handshake به صورت کامل انجام شده است.
+(خطا به خاطر همسان نبودن Certificate ارسالی از سرور و آدرس درخواستی است)</p>
+<p>بنابراین مسدود سازی نمی تواند صرفا به خاطر آدرس dns.google باشد.
 سوال این است:
-آیا از هر ارتباط TLS به سمت آدرس 8.8.4.4 جلوگیری می شود؟</p><p>برای پاسخ به این سوال، این بار از آدرس IP ی dns.google استفاده می کنیم اما از آدرس دامنه ی example.com برای SNI استفاده می کنیم:</p><div dir=ltr><p><code>$ curl -v -m30 --resolve example.com:443:8.8.4.4 https://example.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png alt="HTTPS curl example.com with dns.google ip"></p></div><p>در اینجا می بینیم که سیستم سانسور جمهوری اسلامی فقط نسبت به هر ارتباط TLS به این IP حساس است و آدرس دامنه را ملاک قرار نمی دهد.</p><p>البته این رفتار در همه ی شبکه ها و یا نسبت به همه ی آدرس ها یکسان نیست.
-به عنوان مثال، تست های بالا را که در مخابرات (AS58224) انجام شده بود را در همراه اول (AS197207) تکرار می کنیم:</p><div dir=ltr><p><code>$ curl -v -m30 --resolve dns.google:443:8.8.4.4 https://dns.google/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-8844-ip.jpg alt="HTTPS mci curl dns.google with 8.8.4.4 ip"></p></div><p>می بینیم که بعد از به پایان رسیدن TLS Handshake ارتباط وارد سیاه چاله شده است؛ زمانی که ارتباط HTTP شروع می شود.
+آیا از هر ارتباط TLS به سمت آدرس 8.8.4.4 جلوگیری می شود؟</p>
+<p>برای پاسخ به این سوال، این بار از آدرس IP ی dns.google استفاده می کنیم اما از آدرس دامنه ی example.com برای SNI استفاده می کنیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 --resolve example.com:443:8.8.4.4 https://example.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-curl-exampledotcom-with-dnsgoogle-ip.png alt="HTTPS curl example.com with dns.google ip"></p>
+</div>
+<p>در اینجا می بینیم که سیستم سانسور جمهوری اسلامی فقط نسبت به هر ارتباط TLS به این IP حساس است و آدرس دامنه را ملاک قرار نمی دهد.</p>
+<p>البته این رفتار در همه ی شبکه ها و یا نسبت به همه ی آدرس ها یکسان نیست.
+به عنوان مثال، تست های بالا را که در مخابرات (AS58224) انجام شده بود را در همراه اول (AS197207) تکرار می کنیم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 --resolve dns.google:443:8.8.4.4 https://dns.google/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-8844-ip.jpg alt="HTTPS mci curl dns.google with 8.8.4.4 ip"></p>
+</div>
+<p>می بینیم که بعد از به پایان رسیدن TLS Handshake ارتباط وارد سیاه چاله شده است؛ زمانی که ارتباط HTTP شروع می شود.
 این می تواند به دلیل تاخیر در واکنش سیستم سانسور باشد که اولین بار این رفتار
-<a href=https://github.com/net4people/bbs/issues/43#issuecomment-673490763>در چین مشاهده شد</a>.</p><p>البته در اینجا حساسیت فقط به آدرس <code>dns.google</code> نیست.
+<a href=https://github.com/net4people/bbs/issues/43#issuecomment-673490763>در چین مشاهده شد</a>.</p>
+<p>البته در اینجا حساسیت فقط به آدرس <code>dns.google</code> نیست.
 به عنوان مثال در تست بعدی، همانند قبل پیش می رویم و از IP ی سایت <code>example.com</code> استفاده می کنیم.
-همچنین به دلیل اینکه مسدود شدن ارتباط بعد از TLS Handshake اتفاق افتاده بود، در تست بعدی از <code>-k</code> نیز استفاده می کنیم تا تفاوت certificate با آدرس درخواستی در SNI، باعث پایان یافتن ارتباط قبل از شروع HTTP نشود.</p><div dir=ltr><p><code>$ curl -v -m30 -k --resolve dns.google:443:93.184.216.34 https://dns.google/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-with-exampledotcom-ip-1.jpg alt="HTTPS mci curl dns.google with example.com ip part 1"><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-with-exampledotcom-ip-2.jpg alt="HTTPS mci curl dns.google with example.com ip part 2"></p></div><p>ارتباط مسدود نشده است.</p><p>و در تست بعدی، از IP ی <code>dns.google</code> استفاده می کنیم و SNI را برای <code>example.com</code> در نظر می گیریم:</p><div dir=ltr><p><code>$ curl -v -m30 -k --resolve example.com:443:8.8.4.4 https://example.com/</code><br></p><p><img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-exampledotcom-with-dnsgoogle-ip.jpg alt="HTTPS mci curl example.com with dns.google 8.8.4.4 ip"></p></div><p>در نتیجه در این شبکه، بعضی از سرویس ها فقط در صورت ای مسدود خواهند شد که هم آدرس در SNI و هم آدرس IP با rule تنظیم شده در سیستم سانسور مطابقت داشته باشند.
-در مورد این موضوع در بخش مسدود سازی random سرویس ها باز هم توضیح داده خواهد شد.</p><h2 id=تشخیص-تحریم-از-فیلتر>تشخیص تحریم از فیلتر
-<a class=anchor href=#%d8%aa%d8%b4%d8%ae%db%8c%d8%b5-%d8%aa%d8%ad%d8%b1%db%8c%d9%85-%d8%a7%d8%b2-%d9%81%db%8c%d9%84%d8%aa%d8%b1>#</a></h2><p>برای تشخیص اینکه یک ارتباط فیلتر شده است و یا به دلیل تحریم امکان ارتباط با آن وجود ندارد، باید از ارتباط HTTPS استفاده شود.
-به دلیل اینکه این امکان فراهم می شود تا این بررسی، از دستکاری شدن محتوایش در مسیر ارتباط در امان بماند.</p><p>همچنین طی یک سال اخیر، در اکثر موارد تحریم بدون نمایش خطای HTTP، از ارتباط جلوگیری نشده است.
-یعنی اگر تحریم صورت گرفته باشد، ما معمولا می توانیم به صورت کامل TCP handshake و TLS handshake داشته باشیم.</p><p>به دلیل سادگی تشخیص تحریم و پیچیدگی فیلتر، بهتر است که از OONI همانطور که توضیح داده شد استفاده کنید.
-اما اگر به صورت دستی می خواهید این کار را انجام دهید، می توانید ابتدا یک بار آدرس را با استفاده از شبکه ی خود تست کنید و اگر خطای HTTP ی 403 و یا 404 دریافت کردید و اما وقتی از فیلترشکن استفاده می کنید خطایی مشابه دریافت نکردید، این نشان می دهد که ارتباط با ایران تحریم شده است.</p><p>البته گاهی ممکن است که یک آدرس، هم تحریم و هم فیلتر شود.
-مانند Firebase :</p><center><blockquote class=twitter-tweet data-lang=en data-dnt=true data-theme=dark><p lang=fa dir=rtl>دامنه‌ی <a href=https://t.co/dJqPfPjT8M>https://t.co/dJqPfPjT8M</a> از بیخ و بن فیلتر شد؟! 😕<a href="https://twitter.com/azarijahromi?ref_src=twsrc%5Etfw">@azarijahromi</a></p>&mdash; Shecan | شکن (@shecan_ir) <a href="https://twitter.com/shecan_ir/status/1263424522784591872?ref_src=twsrc%5Etfw">May 21, 2020</a></blockquote><script async src=https://platform.twitter.com/widgets.js></script></center><p>آدرس های مربوط به firebase همچنین از معدود سرویس هایی هستند که اعمال تحریم توسط شان در TLS handshake و با ارسال packet های FIN,ACK انجام می شود.
-این مسئله را در بخش آنالیز packet ها بیشتر توضیح خواهیم داد.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</li></ul><ul class=book-languages-list><li class=active><a href=https://wikicensorship.github.io/fa/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</a></li><li><a href=https://wikicensorship.github.io/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-English</a></li><li><a href=https://wikicensorship.github.io/ru/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Russian</a></li></ul></div><div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/11946c894ecddcb99ba1cbd434096778a2e9d840 title="آخرین بار ویرایش شده توسط xhdix | June 27, 2021" target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
-<span>June 27, 2021</span></a></div><div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/edit/main/content/docs/measure-internet-censorship/Application/_index.md target=_blank rel=noopener><img src=/svg/edit.svg class=book-icon alt=Edit>
-<span>این صفحه را ویرایش کنید</span></a></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>بررسی سانسور در ارتباط در لایه ی کاربرد</a><ul><li><a href=#ارتباط-http>ارتباط HTTP</a></li><li><a href=#ارتباط-https>ارتباط HTTPS</a><ul><li><a href=#بررسی-ساده-ی-sni-و-tls>بررسی ساده ی SNI و TLS</a></li></ul></li><li><a href=#تشخیص-تحریم-از-فیلتر>تشخیص تحریم از فیلتر</a></li></ul></li></ul></nav></div></aside></main></body></html>
+همچنین به دلیل اینکه مسدود شدن ارتباط بعد از TLS Handshake اتفاق افتاده بود، در تست بعدی از <code>-k</code> نیز استفاده می کنیم تا تفاوت certificate با آدرس درخواستی در SNI، باعث پایان یافتن ارتباط قبل از شروع HTTP نشود.</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 -k --resolve dns.google:443:93.184.216.34 https://dns.google/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-with-exampledotcom-ip-1.jpg alt="HTTPS mci curl dns.google with example.com ip part 1">
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-dnsgoogle-with-exampledotcom-ip-2.jpg alt="HTTPS mci curl dns.google with example.com ip part 2"></p>
+</div>
+<p>ارتباط مسدود نشده است.</p>
+<p>و در تست بعدی، از IP ی <code>dns.google</code> استفاده می کنیم و SNI را برای <code>example.com</code> در نظر می گیریم:</p>
+<div dir=ltr>
+<p><code>$ curl -v -m30 -k --resolve example.com:443:8.8.4.4 https://example.com/</code>
+<br></p>
+<p>
+<img src=/images/docs/measure-internet-censorship/Application/HTTPS-mci-curl-exampledotcom-with-dnsgoogle-ip.jpg alt="HTTPS mci curl example.com with dns.google 8.8.4.4 ip"></p>
+</div>
+<p>در نتیجه در این شبکه، بعضی از سرویس ها فقط در صورت ای مسدود خواهند شد که هم آدرس در SNI و هم آدرس IP با rule تنظیم شده در سیستم سانسور مطابقت داشته باشند.
+در مورد این موضوع در بخش مسدود سازی random سرویس ها باز هم توضیح داده خواهد شد.</p>
+<h2 id=تشخیص-تحریم-از-فیلتر>
+تشخیص تحریم از فیلتر
+<a class=anchor href=#%d8%aa%d8%b4%d8%ae%db%8c%d8%b5-%d8%aa%d8%ad%d8%b1%db%8c%d9%85-%d8%a7%d8%b2-%d9%81%db%8c%d9%84%d8%aa%d8%b1>#</a>
+</h2>
+<p>برای تشخیص اینکه یک ارتباط فیلتر شده است و یا به دلیل تحریم امکان ارتباط با آن وجود ندارد، باید از ارتباط HTTPS استفاده شود.
+به دلیل اینکه این امکان فراهم می شود تا این بررسی، از دستکاری شدن محتوایش در مسیر ارتباط در امان بماند.</p>
+<p>همچنین طی یک سال اخیر، در اکثر موارد تحریم بدون نمایش خطای HTTP، از ارتباط جلوگیری نشده است.
+یعنی اگر تحریم صورت گرفته باشد، ما معمولا می توانیم به صورت کامل TCP handshake و TLS handshake داشته باشیم.</p>
+<p>به دلیل سادگی تشخیص تحریم و پیچیدگی فیلتر، بهتر است که از OONI همانطور که توضیح داده شد استفاده کنید.
+اما اگر به صورت دستی می خواهید این کار را انجام دهید، می توانید ابتدا یک بار آدرس را با استفاده از شبکه ی خود تست کنید و اگر خطای HTTP ی 403 و یا 404 دریافت کردید و اما وقتی از فیلترشکن استفاده می کنید خطایی مشابه دریافت نکردید، این نشان می دهد که ارتباط با ایران تحریم شده است.</p>
+<p>البته گاهی ممکن است که یک آدرس، هم تحریم و هم فیلتر شود.
+مانند Firebase :</p>
+<center>
+<blockquote class=twitter-tweet data-lang=en data-dnt=true data-theme=dark><p lang=fa dir=rtl>دامنه‌ی <a href=https://t.co/dJqPfPjT8M>https://t.co/dJqPfPjT8M</a> از بیخ و بن فیلتر شد؟! 😕<a href="https://twitter.com/azarijahromi?ref_src=twsrc%5Etfw">@azarijahromi</a></p>&mdash; Shecan | شکن (@shecan_ir) <a href="https://twitter.com/shecan_ir/status/1263424522784591872?ref_src=twsrc%5Etfw">May 21, 2020</a></blockquote> <script async src=https://platform.twitter.com/widgets.js></script>
+</center>
+<p>آدرس های مربوط به firebase همچنین از معدود سرویس هایی هستند که اعمال تحریم توسط شان در TLS handshake و با ارسال packet های FIN,ACK انجام می شود.
+این مسئله را در بخش آنالیز packet ها بیشتر توضیح خواهیم داد.</p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div class=book-languages tabindex=0 aria-haspopup=true>
+<ul>
+<li class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</li>
+</ul>
+<ul class=book-languages-list>
+<li class=active>
+<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+English
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Russian
+</a>
+</li>
+</ul>
+</div>
+<div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/11946c894ecddcb99ba1cbd434096778a2e9d840 title="آخرین بار ویرایش شده توسط xhdix | June 27, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>June 27, 2021</span>
+</a>
+</div>
+<div>
+<a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/edit/main/content/docs/measure-internet-censorship/Application/_index.md target=_blank rel=noopener>
+<img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>این صفحه را ویرایش کنید</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#بررسی-سانسور-در-ارتباط-در-لایه-ی-کاربرد>بررسی سانسور در ارتباط در لایه ی کاربرد</a>
+<ul>
+<li><a href=#ارتباط-http>ارتباط HTTP</a></li>
+<li><a href=#ارتباط-https>ارتباط HTTPS</a>
+<ul>
+<li><a href=#بررسی-ساده-ی-sni-و-tls>بررسی ساده ی SNI و TLS</a></li>
+</ul>
+</li>
+<li><a href=#تشخیص-تحریم-از-فیلتر>تشخیص تحریم از فیلتر</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

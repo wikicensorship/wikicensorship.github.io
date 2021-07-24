@@ -1,56 +1,337 @@
-<!doctype html><html lang=fa dir=rtl><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="DNS over UDP"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://wikicensorship.github.io/fa/tags/DNS-over-UDP/"><meta name=twitter:card content="summary"><meta name=twitter:title content="DNS over UDP"><meta name=twitter:description content><title>DNS over UDP | ویکی سانسور</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.ico type=image/x-icon><link rel=stylesheet href=/book.min.9f6235ecf09d876f5ca0cc5cb4ae005fc907bd8c23450f5e9fcb2f4b66cb7e5e.css integrity="sha256-n2I17PCdh29coMxctK4AX8kHvYwjRQ9en8svS2bLfl4=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script><script defer src=/fa.search.min.7803af8a41d15a70038690948afa545e689ad6dcea6b04e00a977d5d8c9a68f2.js integrity="sha256-eAOvikHRWnADhpCUivpUXmia1tzqawTgCpd9XYyaaPI=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/tags/DNS-over-UDP/index.xml title="ویکی سانسور"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"></head><body dir=rtl><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a href=/fa/><span>ویکی سانسور</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a><ul></ul></li><li><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a><ul></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a><ul></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a><ul></ul></li></ul></li></ul><ul><li><a href=/fa/glossary/>فرهنگ لغات فنی</a></li><li><a href=/fa/posts/>بلاگ</a></li><li><a href=https://github.com/wikicensorship target=_blank rel=noopener>GitHub</a></li></ul></nav><script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Languages</li></ul><ul class=book-languages-list><li class=active><a href=https://wikicensorship.github.io/fa/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</a></li><li><a href=https://wikicensorship.github.io/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-English</a></li><li><a href=https://wikicensorship.github.io/ru/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Russian</a></li></ul></div></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+<!doctype html><html lang=fa dir=rtl>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content>
+<meta name=theme-color content="#FFFFFF">
+<meta property="og:title" content="DNS over UDP">
+<meta property="og:description" content>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wikicensorship.github.io/fa/tags/DNS-over-UDP/">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="DNS over UDP">
+<meta name=twitter:description content>
+<title>DNS over UDP | ویکی سانسور</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.ico type=image/x-icon>
+<link rel=stylesheet href=/book.min.9f6235ecf09d876f5ca0cc5cb4ae005fc907bd8c23450f5e9fcb2f4b66cb7e5e.css integrity="sha256-n2I17PCdh29coMxctK4AX8kHvYwjRQ9en8svS2bLfl4=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/fa.search.min.d6c7a05125a1ba0d0c338bd75c2cafb6f5540eb9fa9dc705f7b400aaea2f3bbb.js integrity="sha256-1segUSWhug0MM4vXXCyvtvVUDrn6nccF97QAquovO7s=" crossorigin=anonymous></script>
+<script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
+<link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/tags/DNS-over-UDP/index.xml title="ویکی سانسور">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<meta name=msapplication-TileColor content="#da532c">
+<meta name=theme-color content="#ffffff">
+</head>
+<body dir=rtl>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a href=/fa/><span>ویکی سانسور</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a>
+<ul>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a>
+<ul>
+</ul>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=/fa/glossary/>
+فرهنگ لغات فنی
+</a>
+</li>
+<li>
+<a href=/fa/posts/>
+بلاگ
+</a>
+</li>
+<li>
+<a href=https://github.com/wikicensorship target=_blank rel=noopener>
+GitHub
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+<div class=book-languages tabindex=0 aria-haspopup=true>
+<ul>
+<li class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Languages
+</li>
+</ul>
+<ul class=book-languages-list>
+<li class=active>
+<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+English
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Russian
+</a>
+</li>
+</ul>
+</div>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
 <strong>DNS over UDP</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav><ul><li class=book-section-flat><strong>Categories</strong><ul></ul></li><li class=book-section-flat><strong>Tags</strong><ul><li class="flex justify-between"><a href=/fa/tags/Application/>Application</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Application-layer/>Application layer</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/curl/>curl</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS/>DNS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-TCP/>DNS over TCP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-TLS/>DNS over TLS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Do53/>Do53</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DoH/>DoH</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DoT/>DoT</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Host-name-blocking/>Host name blocking</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/HTTP/>HTTP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/HTTPS/>HTTPS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/ICMP/>ICMP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/IP-blocking/>IP blocking</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Network/>Network</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/non-transparent-proxy/>non-transparent proxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/null-route/>null route</a>
-<span>2</span></li><li class="flex justify-between"><a href=/fa/tags/OONI/>OONI</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/OONI-Probe/>OONI Probe</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/ping/>ping</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/RST-injection/>RST injection</a>
-<span>2</span></li><li class="flex justify-between"><a href=/fa/tags/TCP/>TCP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/trace/>trace</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/traceroute/>traceroute</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/UDP/>UDP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A2%DB%8C-%D9%BE%DB%8C/>آی پی</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
-<span>4</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-403/>خطای 403</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-503/>خطای 503</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C/>داده کاوی</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B5%D9%81%D8%AD%D9%87%DB%8C-%D9%BE%DB%8C%D9%88%D9%86%D8%AF%D9%87%D8%A7/>صفحه‌ی پیوندها</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%DA%A9%D8%A7%D9%88%D8%B4%DA%AF%D8%B1-OONI/>کاوشگر OONI</a>
-<span>1</span></li></ul></li></ul></nav></aside></header><article class="markdown book-post"><h2><a href=/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a></h2><div><a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>,
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav>
+<ul>
+<li class=book-section-flat>
+<strong>Categories</strong>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<strong>Tags</strong>
+<ul>
+<li class="flex justify-between">
+<a href=/fa/tags/Application/>Application</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Application-layer/>Application layer</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/curl/>curl</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS/>DNS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-TCP/>DNS over TCP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-TLS/>DNS over TLS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Do53/>Do53</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DoH/>DoH</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DoT/>DoT</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Host-name-blocking/>Host name blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/HTTP/>HTTP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/HTTPS/>HTTPS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/ICMP/>ICMP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/IP-blocking/>IP blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Network/>Network</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/non-transparent-proxy/>non-transparent proxy</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/null-route/>null route</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/OONI/>OONI</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/OONI-Probe/>OONI Probe</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/ping/>ping</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/RST-injection/>RST injection</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/TCP/>TCP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/trace/>trace</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/traceroute/>traceroute</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/UDP/>UDP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A2%DB%8C-%D9%BE%DB%8C/>آی پی</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
+<span>4</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-403/>خطای 403</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-503/>خطای 503</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C/>داده کاوی</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B5%D9%81%D8%AD%D9%87%DB%8C-%D9%BE%DB%8C%D9%88%D9%86%D8%AF%D9%87%D8%A7/>صفحه‌ی پیوندها</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%DA%A9%D8%A7%D9%88%D8%B4%DA%AF%D8%B1-OONI/>کاوشگر OONI</a>
+<span>1</span>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class="markdown book-post">
+<h2>
+<a href=/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a>
+</h2>
+<div>
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>,
 <a href=/fa/tags/DNS/>DNS</a>,
 <a href=/fa/tags/DoH/>DoH</a>,
 <a href=/fa/tags/DoT/>DoT</a>,
@@ -67,54 +348,245 @@ Russian</a></li></ul></div></div></aside><div class=book-page><header class=book
 <a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>,
 <a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>,
 <a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>,
-<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a></div><p>بررسی سانسور اینترنت در ارتباط DNS # اولین قدم برای دسترسی به اینترنت DNS است. وقتی شما آدرس نام دامنه را وارد می کنید، این نام باید به IP تبدیل شود تا دستگاه شما بتواند با سرور آن ارتباط برقرار کند. این کار توسط DNS انجام می شود. یکی از بهترین ابزار ها برای بررسی سانسور در DNS نرم افزار dig است. که علاوه بر لینوکس و Mac OS، در ویندوز هم قابل استفاده است.
-<a href=/fa/docs/measure-internet-censorship/DNS/>...</a></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</li></ul><ul class=book-languages-list><li class=active><a href=https://wikicensorship.github.io/fa/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian</a></li><li><a href=https://wikicensorship.github.io/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-English</a></li><li><a href=https://wikicensorship.github.io/ru/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
-Russian</a></li></ul></div></div><script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><strong>Categories</strong><ul></ul></li><li class=book-section-flat><strong>Tags</strong><ul><li class="flex justify-between"><a href=/fa/tags/Application/>Application</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Application-layer/>Application layer</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/curl/>curl</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS/>DNS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-TCP/>DNS over TCP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-TLS/>DNS over TLS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Do53/>Do53</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DoH/>DoH</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/DoT/>DoT</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Host-name-blocking/>Host name blocking</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/HTTP/>HTTP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/HTTPS/>HTTPS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/ICMP/>ICMP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/IP-blocking/>IP blocking</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/Network/>Network</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/non-transparent-proxy/>non-transparent proxy</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/null-route/>null route</a>
-<span>2</span></li><li class="flex justify-between"><a href=/fa/tags/OONI/>OONI</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/OONI-Probe/>OONI Probe</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/ping/>ping</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/RST-injection/>RST injection</a>
-<span>2</span></li><li class="flex justify-between"><a href=/fa/tags/TCP/>TCP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/trace/>trace</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/traceroute/>traceroute</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/UDP/>UDP</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A2%DB%8C-%D9%BE%DB%8C/>آی پی</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
-<span>4</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-403/>خطای 403</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-503/>خطای 503</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C/>داده کاوی</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D8%B5%D9%81%D8%AD%D9%87%DB%8C-%D9%BE%DB%8C%D9%88%D9%86%D8%AF%D9%87%D8%A7/>صفحه‌ی پیوندها</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
-<span>5</span></li><li class="flex justify-between"><a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
-<span>1</span></li><li class="flex justify-between"><a href=/fa/tags/%DA%A9%D8%A7%D9%88%D8%B4%DA%AF%D8%B1-OONI/>کاوشگر OONI</a>
-<span>1</span></li></ul></li></ul></nav></div></aside></main></body></html>
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
+</div>
+<p>بررسی سانسور اینترنت در ارتباط DNS # اولین قدم برای دسترسی به اینترنت DNS است. وقتی شما آدرس نام دامنه را وارد می کنید، این نام باید به IP تبدیل شود تا دستگاه شما بتواند با سرور آن ارتباط برقرار کند. این کار توسط DNS انجام می شود. یکی از بهترین ابزار ها برای بررسی سانسور در DNS نرم افزار dig است. که علاوه بر لینوکس و Mac OS، در ویندوز هم قابل استفاده است.
+<a href=/fa/docs/measure-internet-censorship/DNS/>...</a>
+</p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div class=book-languages tabindex=0 aria-haspopup=true>
+<ul>
+<li class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</li>
+</ul>
+<ul class=book-languages-list>
+<li class=active>
+<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+English
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Russian
+</a>
+</li>
+</ul>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav>
+<ul>
+<li class=book-section-flat>
+<strong>Categories</strong>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<strong>Tags</strong>
+<ul>
+<li class="flex justify-between">
+<a href=/fa/tags/Application/>Application</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Application-layer/>Application layer</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/curl/>curl</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS/>DNS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-TCP/>DNS over TCP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-TLS/>DNS over TLS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Do53/>Do53</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DoH/>DoH</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/DoT/>DoT</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Host-name-blocking/>Host name blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/HTTP/>HTTP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/HTTPS/>HTTPS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/ICMP/>ICMP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/IP-blocking/>IP blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Network/>Network</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/non-transparent-proxy/>non-transparent proxy</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/null-route/>null route</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/OONI/>OONI</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/OONI-Probe/>OONI Probe</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/ping/>ping</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/RST-injection/>RST injection</a>
+<span>2</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/TCP/>TCP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/trace/>trace</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/traceroute/>traceroute</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/UDP/>UDP</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A2%DB%8C-%D9%BE%DB%8C/>آی پی</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
+<span>4</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-403/>خطای 403</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AE%D8%B7%D8%A7%DB%8C-503/>خطای 503</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C/>داده کاوی</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D8%B5%D9%81%D8%AD%D9%87%DB%8C-%D9%BE%DB%8C%D9%88%D9%86%D8%AF%D9%87%D8%A7/>صفحه‌ی پیوندها</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
+<span>5</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/%DA%A9%D8%A7%D9%88%D8%B4%DA%AF%D8%B1-OONI/>کاوشگر OONI</a>
+<span>1</span>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
