@@ -18,7 +18,7 @@
 <link rel=icon href=/favicon.ico type=image/x-icon>
 <link rel=stylesheet href=/book.min.b27f302bda1f1993415b6ec973ab961b7d47e5e7e8f1f372426f957515bdc040.css integrity="sha256-sn8wK9ofGZNBW27Jc6uWG31H5efo8fNyQm+VdRW9wEA=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/fa.search.min.9991a1305d40f288d3b84c47aa72343facffae22a33ddb3d34e11a422ba67dac.js integrity="sha256-mZGhMF1A8ojTuExHqnI0P6z/riKjPds9NOEaQiumfaw=" crossorigin=anonymous></script>
+<script defer src=/fa.search.min.7f697f02c2943d04cf00da1842157582cb36b902e432a27b68905d8a565d62e8.js integrity="sha256-f2l/AsKUPQTPANoYQhV1gss2uQLkMqJ7aJBdilZdYug=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/index.xml title="ویکی سانسور">
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
@@ -232,8 +232,7 @@ OONI یک سَمَن یا سازمان غیردولتی است که توسط پ�
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-desktop-webconnectivity-add-urls-page.png alt="OONI desktop webconnectivity add urls page"></p>
 </center>
 <p>و در انتها بر روی دکمه ی Run و یا اجرا کلیک کنید تا اندازه گیری آغاز شود.</p>
-<p>در نسخه ی cli، به این صورت می توان انجام داد:
-اگر تابحال اجرا نکردید، کی بار مراحل و شرایط استفاده را بخوانید و در صورت موافقت تایید کنید:</p>
+<p>در نسخه ی cli، برای دفعه ی اول، ابتدا باید شرایط استفاده را بخوانید و در صورت موافقت، تایید کنید:</p>
 <div dir=ltr>
 <p><code>> .\ooniprobe.exe</code></p>
 </div>
@@ -288,10 +287,12 @@ OONI یک سَمَن یا سازمان غیردولتی است که توسط پ�
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-mobile-websites-test-results.png alt="OONI mobile websites test results"></p>
 </center>
 <p>از 7 مورد آزمایش شده، دو مورد را با اطمینان می توان گفت که ارتباطشان به دلیلی در آن لحظه مسدود شده است و چهار مورد در دسترس بودند.</p>
-<p>همچنین یک مورد با رنگ خاکستری است که سه دلیل شایع می تواند داشته باشد:
-غیرفعال بودن سایت اصلی
-قطع شدن لحظه ای ارتباط در زمان انجام آن تست
-وجود باگ یا ناتوانی در تحلیل.</p>
+<p>همچنین یک مورد با رنگ خاکستری است که سه دلیل شایع می تواند داشته باشد:</p>
+<ul>
+<li>غیرفعال بودن سایت مورد تست</li>
+<li>قطع شدن لحظه ای اینترنت کاربر در زمان انجام آن تست</li>
+<li>وجود باگ یا ناتوانی در تحلیل</li>
+</ul>
 <p>توضیحات آن نیز به این صورت است که علاوه بر مشاهده ی توضیحات بیشتر می توانید با زدن بر روی دکمه ی Try Again، دوباره اقدام به تست آن یک آدرس کنید:</p>
 <center>
 <p>
@@ -311,14 +312,15 @@ HTTP blocking (a blockpage might be served)
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-HTTP-blocking-blockpage.png alt="OONI result HTTP blocking blockpage served"></p>
 </center>
-<p>در این تست احتمال می رود که ممکن است صفحه ی مربوط به سانسور به جای صفحه ی اصلی دریافت شده است.
+<p>در این تست احتمال می رود که ممکن است صفحه ی مربوط به سانسور به جای صفحه ی اصلی دریافت شده باشد.
 این اتفاق فقط در ارتباط های غیر رمزنگاری شده و مخصوصا HTTP ممکن است.
-در این حالت چهار دلیل ممکن است:
-دریافت خطای 503، که خود نوعی سانسور است (در بخشی های بعدی توضیح داده خواهد شد)
-حساسیت به آدرس سایت در بخش Host ارتباط HTTP
-حساسیت به Request URI یا همان ادامه ی آدرس بعد از Hostname.
-(در این تست فقط / هست.)
-حساسیت به یک کلمه در آن سایت.</p>
+در این حالت چهار دلیل ممکن است:</p>
+<ul>
+<li>دریافت خطای 503، که خود نوعی سانسور است (در بخشی های بعدی توضیح داده خواهد شد)</li>
+<li>حساسیت به آدرس سایت در بخش Host ارتباط HTTP</li>
+<li>حساسیت به Request URI یا همان ادامه ی آدرس بعد از Hostname. (در این تست فقط / هست و حاوی path نیست.)</li>
+<li>حساسیت به یک کلمه در محتوای آن سایت.</li>
+</ul>
 <h4 id=dns-tampering>
 DNS tampering
 <a class=anchor href=#dns-tampering>#</a>
@@ -328,7 +330,7 @@ DNS tampering
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-DNS-tampering.png alt="OONI result DNS tampering"></p>
 </center>
 <p>در این تست احتمال می رود که یک IP ی جعلی دریافت شده است.
-در این حالت، از DNS مسدود شده است.</p>
+در این حالت، این ارتباط از طریق دستکاری DNS مسدود شده است.</p>
 <h4 id=tcpip-based-blocking>
 TCP/IP based blocking
 <a class=anchor href=#tcpip-based-blocking>#</a>
@@ -337,9 +339,9 @@ TCP/IP based blocking
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-tcp-ip-blocking.png alt="OONI result tcp ip blocking"></p>
 </center>
-<p>در این تست عمل TCP Handshake انجام نشده.
-که ممکن است به دلیل وارد سیاهچاله شدن ارتباط باشد و یا ارسال packet های RST.
-در این حالت IP مسدود شده است.</p>
+<p>در این تست، عمل TCP Handshake انجام نشده.
+که ممکن است به دلیل وارد سیاهچاله شدن ارتباط باشد و یا ارسال packet های RST از سوی سیستم سانسور.
+در این حالت، IP مسدود شده است.</p>
 <h4 id=http-blocking-http-requests-failed>
 HTTP blocking (HTTP requests failed)
 <a class=anchor href=#http-blocking-http-requests-failed>#</a>
@@ -349,7 +351,8 @@ HTTP blocking (HTTP requests failed)
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-HTTP-blocking-failed.png alt="OONI result HTTP blocking failed"></p>
 </center>
 <p>در این تست TCP Hnadshake انجام شده است (IP مسدود نیست) اما بعد از آن ناموفق بوده است.
-این خطا ممکن است در هر دو ارتباط HTTP و HTTPS مشاهده شود.</p>
+این خطا ممکن است در هر دو ارتباط HTTP و HTTPS مشاهده شود.
+(در نسخه ی فعلی)</p>
 <h3 id=آنالیز-پیشرفته-ی-نتایج>
 آنالیز پیشرفته ی نتایج
 <a class=anchor href=#%d8%a2%d9%86%d8%a7%d9%84%db%8c%d8%b2-%d9%be%db%8c%d8%b4%d8%b1%d9%81%d8%aa%d9%87-%db%8c-%d9%86%d8%aa%d8%a7%db%8c%d8%ac>#</a>
@@ -364,8 +367,8 @@ HTTP blocking (HTTP requests failed)
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-explorer-result-data.png alt="OONI explorer result data"></p>
 </center>
-<p>در این دیتا، اطلاعات کلی و جزئی هر اندازه گیری به صورت مجزا وجود دارد.</p>
-<p>توضیح بعضی از بخش ها:</p>
+<p>در این دیتا، اطلاعات کلی و جزئیِ هر اندازه گیری به صورت مجزا وجود دارد.</p>
+<p><strong>توضیح بعضی از بخش ها:</strong></p>
 <h4 id=probe_ip>
 probe_ip
 <a class=anchor href=#probe_ip>#</a>
@@ -376,14 +379,21 @@ probe_ip
 resolver_ip
 <a class=anchor href=#resolver_ip>#</a>
 </h4>
-<p>مقدار resolver_ip برابر IP سرور ای است که کاربر احتمالا در این تست از آن استفاده کرده است.
+<p>مقدار resolver_ip برابر IP سرور ای است که کاربر احتمالا* در این تست از آن استفاده کرده است.
 این مقدار با
 <a href=https://developer.akamai.com/blog/2018/05/10/introducing-new-whoami-tool-dns-resolver-information>درخواست DNS مستقل</a> به آدرس whoami.akamai.net محاسبه می شود.
 به صورت زیر:</p>
 <center>
 <p>
-<img src=/images/docs/measure-internet-censorship/OONI/Akamai-DNS-resolver-information-whoami.png alt="Akamai DNS resolver information whoami"></p>
+<img src=/images/docs/measure-internet-censorship/OONI/Akamai-DNS-resolver-information-whoami.png alt="Akamai DNS resolver information whoami">
+طراحی شده با
+<a href=https://draw.io/>draw.io</a></p>
 </center>
+<p>[*] به دلیل مستقل بودن هر درخواست، در برخی شبکه ها و در بعضی شرایط، ممکن است که دو درخواست، از دو DNS سرور متفاوت درخواست شوند. اگر:</p>
+<ul>
+<li>کاربر در تنظیمات DNS خودش، سرور دوم را از یک سرویس دهنده ی متفاوت استفاده کند.</li>
+<li>اگر ISP به صورت random از سرور های متفاوتی برای resolve کردن استفاده کند. (به عنوان مثال: DNS پیشفرض همراه اول)</li>
+</ul>
 <h4 id=test_keys>
 test_keys
 <a class=anchor href=#test_keys>#</a>
@@ -393,6 +403,7 @@ test_keys
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-test-keys.png alt="OONI result data test keys"></p>
 </center>
+<p><strong>توضیحات در مورد زیرمجموعه های test_keys:</strong></p>
 <h4 id=network_events>
 network_events
 <a class=anchor href=#network_events>#</a>
@@ -404,11 +415,14 @@ network_events
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-network-events.png alt="OONI result data network events"></p>
 </center>
+<p>در اینجا زمانی که TLS handshake شروع شد و write انجام داده است (معادل Client hello)، جواب دریافتی reset بود.
+(معادل packet های RST یا RST,ACK).
+بدان معنی که سیستم سانسور با مواجه شدن مقدار SNI در Client Hello، از ادامه ی ارتباط جلوگیری کرده است.</p>
 <h4 id=tls_handshakes>
 tls_handshakes
 <a class=anchor href=#tls_handshakes>#</a>
 </h4>
-<p>بخش tls_handshakes شامل certificate هایی است که در هر بار request از سرور دریافت می شود.</p>
+<p>بخش tls_handshakes شامل certificate هایی است که در هر بار request از سرور دریافت می شود. (در Server Hello)</p>
 <center>
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-tls-handshakes.png alt="OONI result data tls handshakes"></p>
@@ -428,6 +442,7 @@ queries
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-queries.png alt="OONI result data queries"></p>
 </center>
+<p>همچنین در این بخش، در همان لحظه، IP های دریافتی بررسی می شوند که متعلق به کدام شبکه هستند.</p>
 <h4 id=dns_consistency>
 dns_consistency
 <a class=anchor href=#dns_consistency>#</a>
@@ -442,6 +457,7 @@ control
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-control.png alt="OONI result data control"></p>
 </center>
+<p>(در مورد موارد درون این بخش در ادامه توضیح داده <strong>نخواهد</strong> شد. به دلیل تکراری بودن با مواردی که در خود شبکه در حال تست است. و همچنین نبود سانسور در این شبکه ی سرور OONI.)</p>
 <h4 id=tcp_connect>
 tcp_connect
 <a class=anchor href=#tcp_connect>#</a>
@@ -458,20 +474,21 @@ requests
 <p>بخش requests مربوط می شود به درخواست ها و جواب هایی که در سطح HTTP انجام می شوند.</p>
 <center>
 <p>
-<img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-requests.png alt="OONI result data requests"></p>
-</center>
-در اینجا درخواست انجام نشده.
-<center>
-<p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-requests-error.png alt="OONI result data requests error"></p>
 </center>
-<p>در اینجا جوابی با iframe از صفحه ی سیستم سانسور جمهوری اسلامی بازگردانده شده.</p>
-<h4 id=بیشتر>
-بیشتر
-<a class=anchor href=#%d8%a8%db%8c%d8%b4%d8%aa%d8%b1>#</a>
+<p>در اینجا از ادامه ی ارتباط جلوگیری شده.
+به این معنی که احتمالا سیستم سانسور بعد از مشاهده ی مقدار Host در packet ارسالی یک packet با پرچم حاوی RST برای کاربر ارسال کرده است.</p>
+<center>
+<p>
+<img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-requests.png alt="OONI result data requests"></p>
+</center>
+<p>در اینجا جوابی با iframe از صفحه ی سیستم سانسور جمهوری اسلامی بازگردانده/تزریق شده.</p>
+<h4 id=موارد-بیشتر>
+موارد بیشتر
+<a class=anchor href=#%d9%85%d9%88%d8%a7%d8%b1%d8%af-%d8%a8%db%8c%d8%b4%d8%aa%d8%b1>#</a>
 </h4>
 <p>بخش های دیگر نیز نسبت به HTTP و یا HTTPS بودن ارتباط متفاوت است.</p>
-<p>در اینجا نشان می دهد که تبادل HTTP در HTTPS به درستی انجام نشده است:</p>
+<p>به عنوان مثال، در اینجا نشان می دهد که تبادل HTTP در HTTPS به درستی انجام نشده است:</p>
 <center>
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-result-data-match-HTTPS-reset.png alt="OONI result data match HTTPS reset"></p>
@@ -527,9 +544,11 @@ requests
 <p>
 <img src=/images/docs/measure-internet-censorship/OONI/OONI-probe-service-failed.png alt="OONI probe service failed"></p>
 </center>
-<p>برای حل این مشکل، تیم OONI دو تغییر مهم ایجاد کردند:
-تغییر TLS fingerprint برای تقلید fingerprint مرورگر
-اضافه کردن بخش Proxy برای ارتباط با backend</p>
+<p>برای حل این مشکل، تیم OONI دو تغییر مهم ایجاد کردند:</p>
+<ul>
+<li>تغییر TLS fingerprint برای تقلید fingerprint مرورگر</li>
+<li>اضافه کردن بخش Proxy برای ارتباط با backend</li>
+</ul>
 <p>برای فعال کردن proxy، به بخش تنظیمات رفته و OONI backend Proxy را انتخاب می کنیم:</p>
 <center>
 <p>
@@ -660,9 +679,9 @@ Russian
 </li>
 </ul>
 </div>
-<div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/4bd6abda798d64f7d6fe2d991f39b92adcdcbd1d title="آخرین بار ویرایش شده توسط xhdix | June 12, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/2f5f19f64fba97931babc186b3bcd1764074857b title="آخرین بار ویرایش شده توسط xhdix | July 26, 2021" target=_blank rel=noopener>
 <img src=/svg/calendar.svg class=book-icon alt=Calendar>
-<span>June 12, 2021</span>
+<span>July 26, 2021</span>
 </a>
 </div>
 <div>
