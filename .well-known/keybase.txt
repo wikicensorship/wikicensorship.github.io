@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/xhdix
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://wikicensorship.github.io
+  * I am xhdix (https://keybase.io/xhdix) on keybase.
+  * I have a public key with fingerprint 3A5B B30E 23ED 4A9B E00A  126D DAFD F2C4 11F7 A37F
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101dc642598c5a050830654b56363f032c22689580c0209a63a0614d13862c536690a",
+      "fingerprint": "3a5bb30e23ed4a9be00a126ddafdf2c411f7a37f",
+      "host": "keybase.io",
+      "key_id": "dafdf2c411f7a37f",
+      "kid": "0101dc642598c5a050830654b56363f032c22689580c0209a63a0614d13862c536690a",
+      "uid": "daca0040bd0425eca9f0c15e0be0aa19",
+      "username": "xhdix"
+    },
+    "service": {
+      "hostname": "wikicensorship.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1627465422,
+  "expire_in": 157680000,
+  "prev": "f78a94098ef9406bc3f10148cb0a73dd835f8610453fe07d340f4894e10ea67f",
+  "seqno": 29,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUm1QVFUY3pXVkEZAprHJCYFLK4QI537uvWsNjaIgEAWZNjBB9+Pc5bqwu+ze
+XVgIkK8IEGkC0TGTZrBpSBxSsmDEnAocQmzcEFBMPgbK5GMyhWJMoLuE//rZ+fPO
+ec7zPu/zPnM+2OCh8lQPLz7o2vhXU5H66j1OxapDVPkIZxaciD4fMcKVAjMFaJPT
+jZKA6BGAAlTgKQIjGZonWUACGgcUSXAkhVO4CHCMxzCKZkga8AADDEvhLKBQQkBx
+msJ4EqcoBrBIOCJKJgO0WqySSVZkcZbkOBxADIcCwTIcBIBFMUoQWFEQMZ5AUVHH
+4jpRacww29wdijmOtcEIyaxgyiV9xd5/8P9n3/bVOTwLAAE4ASiSkGcZEfAoCYHi
+nGVRxk20QauJzYIKOzdDkHKRgnBEgRwSD92putdYfc6RjApospmttgzJEmGQ5Aw7
+9+9iFqtZNvPmTIWVIcsWm96tIjstK22QS18VTOckk6AEqnQ4oNUmmU2IHlWYvCy5
+J6AUpiOUZTEsHIG5FskK0yU3g9RRNFCOew50IJweEXU0yxCAoaGoFIrjcVEJjqB5
+DrA6XBBonBRpCgUEiYsQ6AScACJBMwREAWSplbxtMNtkRvQYoxhlDYpPm2QwsbLd
+CpECr8o1uEal9lT5bwrS6FPbvINn4z4a8/LLevIL165xf0GV13rfJ8iRBl9VT8OW
+EZXvH1+Bgh8T585cXsJe7tO3U6+keCe3lB9e8lhKWvdS7d+FAMctzTnDFxsXYh5u
+TNDO+lWfbtd1G6SofnvZ6KTjmZT3z3tE9y5/F5L3zVTkuWbmaGP42R9K8M7y0JrG
+keGTFV9Luo5BKSquqV61YXLvfe2sFLkYICffGy3t8qr+6VBNHe/K196Mc/3a8pu/
+pNkqp1QO0k2F41+27Du4329PRW1Yv5iWtnVv4OZC1+TZmTe/AHnOE+o7E55zl/Nm
+7HnNCUfqe4seDDDFdWG7/ww9HE8sjA1er8tbt/93x8Frnr+03j7/anuFfn70+LVK
+TWbujvuq9vodE11SYGfCu097Fdpf2PzI6tIPlC7dWrvlNXm9s6p72/MnYyGV1XY6
+9q5jYDopIPad4O7+qdaivpgLA+Om8QMtk59kL+wKeu+M89vQo23qSO/Ou6mXOg0f
+/xw9HMBHTfnOvyVf5zslXdjO8ucS/Q0wv6AqreTTmI6nbrKfXdQae+uT90W/Hjxv
+5EcXXlzWnFgeTWrePhTv07zwtr94wzWjuW27Yiz2uXS1pEwrdHt+X/V4qHp6+4hT
+iACpu0BlV0Vi36H4beK5mo4Ppxtu3Vg6dSWklZjYU/s4aaz3We2I5s7nJQf8gqa7
+KGLnomMysGf3o8FNIz0RZW+UN3hkH3s41xZYfCrnwlCpS/D5Bw==
+=tFiw
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/xhdix
+
+==================================================================
