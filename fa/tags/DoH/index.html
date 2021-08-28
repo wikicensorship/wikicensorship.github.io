@@ -14,7 +14,7 @@
 <title>DoH | ویکی سانسور</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.ico type=image/x-icon>
-<link rel=stylesheet href=/book.min.b27f302bda1f1993415b6ec973ab961b7d47e5e7e8f1f372426f957515bdc040.css integrity="sha256-sn8wK9ofGZNBW27Jc6uWG31H5efo8fNyQm+VdRW9wEA=" crossorigin=anonymous>
+<link rel=stylesheet href=/book.min.bdfc774d365a87ad2612011eada5ea8005e4585ac8961a179c41c429a45538c3.css integrity="sha256-vfx3TTZah60mEgEeraXqgAXkWFrIlhoXnEHEKaRVOMM=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
 <script defer src=/fa.search.min.7f697f02c2943d04cf00da1842157582cb36b902e432a27b68905d8a565d62e8.js integrity="sha256-f2l/AsKUPQTPANoYQhV1gss2uQLkMqJ7aJBdilZdYug=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
@@ -34,14 +34,42 @@
 <div class=book-menu-content>
 <nav>
 <h2 class=book-brand>
-<a href=/fa/><span>ویکی سانسور</span>
+<a class="flex align-center" href=/fa/><img src=/logo.png alt=Logo><span>ویکی سانسور</span>
 </a>
 </h2>
+<div>
+<a href=https://github.com/wikicensorship/wikicensorship.github.io class=btn-with-count><svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16" data-view-component="true" class="octicon-star"><path fill-rule="evenodd" d="M8 .25a.75.75.0 01.673.418l1.882 3.815 4.21.612a.75.75.0 01.416 1.279l-3.046 2.97.719 4.192a.75.75.0 01-1.088.791L8 12.347l-3.766 1.98a.75.75.0 01-1.088-.79l.72-4.194L.818 6.374a.75.75.0 01.416-1.28l4.21-.611L7.327.668A.75.75.0 018 .25zm0 2.445L6.615 5.5a.75.75.0 01-.564.41l-3.097.45 2.24 2.184a.75.75.0 01.216.664l-.528 3.084 2.769-1.456a.75.75.0 01.698.0l2.77 1.456-.53-3.084a.75.75.0 01.216-.664l2.24-2.183-3.096-.45a.75.75.0 01-.564-.41L8 2.694v.001z"/></svg>
+<span class=social-count data-view-component=true></span>
+</a>
+</div>
 <div class=book-search>
 <input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys>
 <div class="book-search-spinner hidden"></div>
 <ul id=book-search-results></ul>
 </div>
+<ul class=book-languages>
+<li>
+<input type=checkbox id=languages class=toggle>
+<label for=languages class="flex justify-between">
+<a role=button class="flex align-center">
+<img src=/svg/translate.svg class=book-icon alt=Languages>
+Persian
+</a>
+</label>
+<ul>
+<li>
+<a href=https://wikicensorship.github.io/>
+English
+</a>
+</li>
+<li>
+<a href=https://wikicensorship.github.io/ru/>
+Russian
+</a>
+</li>
+</ul>
+</li>
+</ul>
 <ul>
 <li class=book-section-flat>
 <a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a>
@@ -356,36 +384,10 @@ Russian
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div class=book-languages tabindex=0 aria-haspopup=true>
-<ul>
-<li class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian
-</li>
-</ul>
-<ul class=book-languages-list>
-<li class=active>
-<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-Persian
-</a>
-</li>
-<li>
-<a href=https://wikicensorship.github.io/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-English
-</a>
-</li>
-<li>
-<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-Russian
-</a>
-</li>
-</ul>
-</div>
 </div>
 <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+<script>var BookGitHubUser='wikicensorship',BookGitHubRepo='wikicensorship.github.io'</script>
+<script>var callbackName='ghButtonCallback'+Math.floor(Math.random()*1e4),button=document.querySelector('.btn-with-count'),script;window[callbackName]=function(a){var b=addCommas(a.data.stargazers_count);button.querySelector('.social-count').textContent=b};function addCommas(a){return new String(a).replace(/(\d)(?=(\d{3})+$)/g,'$1,')}script=document.createElement('script'),script.src='https://api.github.com/repos/'+BookGitHubUser+'/'+BookGitHubRepo+'?callback='+callbackName,document.head.appendChild(script)</script>
 </footer>
 <label for=menu-control class="hidden book-menu-overlay"></label>
 </div>
