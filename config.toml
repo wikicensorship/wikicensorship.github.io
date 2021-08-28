@@ -53,7 +53,7 @@ enableGitInfo = true
 
   # (Optional, default none) Set the path to a logo for the book. If the logo is
   # /static/logo.png then the path would be logo.png
-  # BookLogo = 'logo.png'
+  BookLogo = '/logo.png'
 
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
@@ -109,3 +109,7 @@ enableGitInfo = true
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly = false
+
+  BookGitHubUser = 'wikicensorship'
+
+  BookGitHubRepo = 'wikicensorship.github.io'
