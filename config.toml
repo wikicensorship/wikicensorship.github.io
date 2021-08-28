@@ -22,7 +22,7 @@ enableGitInfo = true
 [languages]
 [languages.fa]
   languagedirection= 'rtl'
-  languageName = 'Persian'
+  languageName = 'فارسی'
   contentDir = 'content'
   weight = 1
 [languages.en]
@@ -30,7 +30,7 @@ enableGitInfo = true
   contentDir = 'content.en'
   weight = 2
 [languages.ru]
-  languageName = 'Russian'
+  languageName = 'Русский'
   contentDir = 'content.ru'
   weight = 3
 
