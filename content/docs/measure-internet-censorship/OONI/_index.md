@@ -561,7 +561,7 @@ total 15M
 یک طرح ساده از مورد استفاده شده از داده های NDT ی OONI را می توانید در اینجا ببینید:
 
 <center>
-<iframe width="600" height="1080" src="https://datastudio.google.com/embed/reporting/07f6c648-1551-4a62-9865-6d509594273f/page/3lYOC" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe width="100%" height="1080" src="https://datastudio.google.com/embed/reporting/07f6c648-1551-4a62-9865-6d509594273f/page/3lYOC" frameborder="0" style="border:0" allowfullscreen></iframe>
 </center>
 
 برای دریافت توضیحات بیشتر در این رابطه، می توانید [متن OONI در مورد داده کاوی نتایج](https://ooni.org/post/mining-ooni-data/) را مطالعه کنید.
