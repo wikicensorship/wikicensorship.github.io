@@ -3,7 +3,6 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
-<meta name=theme-color content="#FFFFFF">
 <meta property="og:title" content="ICMP">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
@@ -25,6 +24,7 @@
 <link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
 <meta name=msapplication-TileColor content="#da532c">
 <meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
 </head>
 <body dir=rtl>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -367,7 +367,7 @@ English
 </div>
 <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
 <script>var BookGitHubUser='wikicensorship',BookGitHubRepo='wikicensorship.github.io'</script>
-<script>var callbackName='ghButtonCallback'+Math.floor(Math.random()*1e4),button=document.querySelector('.btn-with-count'),script;window[callbackName]=function(a){var b=addCommas(a.data.stargazers_count);button.querySelector('.social-count').textContent=b};function addCommas(a){return new String(a).replace(/(\d)(?=(\d{3})+$)/g,'$1,')}script=document.createElement('script'),script.src='https://api.github.com/repos/'+BookGitHubUser+'/'+BookGitHubRepo+'?callback='+callbackName,document.head.appendChild(script);const prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");currentTheme=="dark"?document.documentElement.classList.toggle("dark"):currentTheme=="light"&&document.documentElement.classList.toggle("light");function toggletheme(){var a;prefersDarkScheme.matches?(document.documentElement.classList.toggle("light"),a=document.documentElement.classList.contains("light")?"light":"dark"):(document.documentElement.classList.toggle("dark"),a=document.documentElement.classList.contains("dark")?"dark":"light"),localStorage.setItem("theme",a)}</script>
+<script>var callbackName='ghButtonCallback'+Math.floor(Math.random()*1e4),button=document.querySelector('.btn-with-count'),script;window[callbackName]=function(a){var b=addCommas(a.data.stargazers_count);button.querySelector('.social-count').textContent=b};function addCommas(a){return new String(a).replace(/(\d)(?=(\d{3})+$)/g,'$1,')}script=document.createElement('script'),script.src='https://api.github.com/repos/'+BookGitHubUser+'/'+BookGitHubRepo+'?callback='+callbackName,document.head.appendChild(script);const themeColor=document.querySelector('meta[name="theme-color"]'),colorScheme=document.querySelector('meta[name="color-scheme"]'),body=document.body,prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");currentTheme=="dark"?(prefersDarkScheme.matches||document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content="dark"):currentTheme=="light"&&(prefersDarkScheme.matches&&document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content="light");function toggletheme(){var a;prefersDarkScheme.matches?(document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark",a=document.documentElement.classList.contains("light")?"light":"dark"):(document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark",a=document.documentElement.classList.contains("dark")?"dark":"light"),localStorage.setItem("theme",a)}</script>
 </footer>
 <label for=menu-control class="hidden book-menu-overlay"></label>
 </div>
