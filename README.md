@@ -19,7 +19,7 @@ See our activities and progress here: https://github.com/orgs/wikicensorship/pro
 
 - [x] Measuring censorship with OONI
 - [x] DNS
-  - [ ] Find the source of the DNS injection
+  - [x] Find the source of the DNS injection
   - [ ] Find the DNS caching system
 - [x] Network and Transport Layers
   - [ ] Fingerprint blocking

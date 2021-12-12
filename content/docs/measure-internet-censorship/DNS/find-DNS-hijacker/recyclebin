@@ -1,0 +1,2557 @@
+
+<div dir="ltr">
+
+```py
+from scapy.all import *
+from time import sleep
+sleeptime = 10
+for myttl in range(30):
+    i = 0
+    while i < 3:
+        i += 1
+        dns_request = IP(dst="8.8.8.8", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.google.com"))
+        print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+        req_answer = sr1(dns_request, verbose=0, timeout=3)
+        if req_answer is not None:
+            backttl = 0
+            if req_answer[IP].ttl <= 64 :
+                backttl = 64 - req_answer[IP].ttl
+            elif req_answer[IP].ttl <= 128 :
+                backttl = 128 - req_answer[IP].ttl
+            else :
+                backttl = 255 - req_answer[IP].ttl
+            print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+            print("      " + req_answer.summary())
+        else:
+            print(" *** no response *** ")
+        print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+        sleep(sleeptime)
+        dns_request = IP(dst="8.8.4.4", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.google.com"))
+        print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+        req_answer = sr1(dns_request, verbose=0, timeout=3)
+        if req_answer is not None:
+            backttl = 0
+            if req_answer[IP].ttl <= 64 :
+                backttl = 64 - req_answer[IP].ttl
+            elif req_answer[IP].ttl <= 128 :
+                backttl = 128 - req_answer[IP].ttl
+            else :
+                backttl = 255 - req_answer[IP].ttl
+            print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+            print("      " + req_answer.summary())
+        else:
+            print(" *** no response *** ")
+        print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+        sleep(sleeptime)
+        dns_request = IP(dst="4.2.2.4", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.google.com"))
+        print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+        req_answer = sr1(dns_request, verbose=0, timeout=3)
+        if req_answer is not None:
+            backttl = 0
+            if req_answer[IP].ttl <= 64 :
+                backttl = 64 - req_answer[IP].ttl
+            elif req_answer[IP].ttl <= 128 :
+                backttl = 128 - req_answer[IP].ttl
+            else :
+                backttl = 255 - req_answer[IP].ttl
+            print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+            print("      " + req_answer.summary())
+        else:
+            print(" *** no response *** ")
+        print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+        print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+        print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+        sleep(sleeptime)
+    print(" ********************************************************************** ")
+    dns_request = IP(dst="8.8.8.8", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.twitter.com"))
+    print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+    req_answer = sr1(dns_request, verbose=0, timeout=3)
+    if req_answer is not None:
+        backttl = 0
+        if req_answer[IP].ttl <= 64 :
+            backttl = 64 - req_answer[IP].ttl
+        elif req_answer[IP].ttl <= 128 :
+            backttl = 128 - req_answer[IP].ttl
+        else :
+            backttl = 255 - req_answer[IP].ttl
+        print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+        print("      " + req_answer.summary())
+    else:
+        print(" *** no response *** ")
+    print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+    sleep(sleeptime)
+    dns_request = IP(dst="8.8.4.4", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.twitter.com"))
+    print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+    req_answer = sr1(dns_request, verbose=0, timeout=3)
+    if req_answer is not None:
+        backttl = 0
+        if req_answer[IP].ttl <= 64 :
+            backttl = 64 - req_answer[IP].ttl
+        elif req_answer[IP].ttl <= 128 :
+            backttl = 128 - req_answer[IP].ttl
+        else :
+            backttl = 255 - req_answer[IP].ttl
+        print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+        print("      " + req_answer.summary())
+    else:
+        print(" *** no response *** ")
+    print(" · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · ")
+    sleep(sleeptime)
+    dns_request = IP(dst="1.1.1.1", id=RandShort(), ttl=myttl)/UDP(sport=RandShort(), dport=53)/DNS(rd=1, id=RandShort(), qd=DNSQR(qname="www.twitter.com"))
+    print(">>>request:" + "   ip.dst: " + dns_request[IP].dst + "   ip.ttl: " + str(myttl))
+    req_answer = sr1(dns_request, verbose=0, timeout=3)
+    if req_answer is not None:
+        backttl = 0
+        if req_answer[IP].ttl <= 64 :
+            backttl = 64 - req_answer[IP].ttl
+        elif req_answer[IP].ttl <= 128 :
+            backttl = 128 - req_answer[IP].ttl
+        else :
+            backttl = 255 - req_answer[IP].ttl
+        print("   <<< answer:" + "   ip.src: " + req_answer[IP].src + "   ip.ttl: " + str(req_answer[IP].ttl) + "   back-ttl: " + str(backttl))
+        print("      " + req_answer.summary())
+    else:
+        print(" *** no response *** ")
+    sleep(sleeptime)
+    print(" ********************************************************************** ")
+    print(" ********************************************************************** ")
+    print(" ********************************************************************** ")
+```
+
+
+
+```c
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+   <<< answer:   ip.src: 87.236.213.193   ip.ttl: 64   back-ttl: 0
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 0
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 0
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 0
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 1
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 1
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 1
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.twitter.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.twitter.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 2
+   <<< answer:   ip.src: 87.236.213.129   ip.ttl: 63   back-ttl: 1
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.twitter.com.'" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 3
+   <<< answer:   ip.src: 10.234.118.89   ip.ttl: 253   back-ttl: 2
+      IP / ICMP 10.234.118.89 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.249   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.249 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.249   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.249 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.249   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.249 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.249   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.249 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.253   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.253 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 4
+   <<< answer:   ip.src: 10.234.8.249   ip.ttl: 252   back-ttl: 3
+      IP / ICMP 10.234.8.249 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.3   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.3 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.11   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.11 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.10   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.10 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.3   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.3 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.11   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.11 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.10   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.10 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.3   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.3 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.11   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.11 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.10   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.10 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.3   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.3 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.11   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.11 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 5
+   <<< answer:   ip.src: 10.234.198.4   ip.ttl: 251   back-ttl: 4
+      IP / ICMP 10.234.198.4 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 6
+   <<< answer:   ip.src: 10.234.196.2   ip.ttl: 249   back-ttl: 6
+      IP / ICMP 10.234.196.2 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 6
+   <<< answer:   ip.src: 10.234.196.2   ip.ttl: 249   back-ttl: 6
+      IP / ICMP 10.234.196.2 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+   <<< answer:   ip.src: 10.234.196.70   ip.ttl: 249   back-ttl: 6
+      IP / ICMP 10.234.196.70 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 6
+   <<< answer:   ip.src: 10.234.196.2   ip.ttl: 249   back-ttl: 6
+      IP / ICMP 10.234.196.2 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+INFO: DNS wrong value: DNS.qdcount=13857
+INFO: DNS wrong value: DNS.ancount=3392
+INFO: DNS wrong value: DNS.nscount=13691
+INFO: DNS wrong value: DNS.arcount=28717
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 6
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 6
+INFO: DNS wrong value: DNS.qdcount=30285
+INFO: DNS RR prematured end (ofs=104, len=68)
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.30   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.98   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 7
+   <<< answer:   ip.src: 78.38.241.74   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.30   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 7
+   <<< answer:   ip.src: 78.38.241.74   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.98   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.30   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.6.98   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 7
+   <<< answer:   ip.src: 78.38.241.74   ip.ttl: 249   back-ttl: 6
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 7
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 7
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.10   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 8
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 8
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 8
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.20   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.20   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.20   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.20   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.20   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 245   back-ttl: 10
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 9
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 9
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 9
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 10
+   <<< answer:   ip.src: 85.185.45.33   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 10
+   <<< answer:   ip.src: 85.185.45.33   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 10
+   <<< answer:   ip.src: 10.21.21.22   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 10
+   <<< answer:   ip.src: 85.185.45.33   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 10
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 10
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+   <<< answer:   ip.src: 85.185.45.133   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 11
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 213.202.4.172 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 11
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+   <<< answer:   ip.src: 85.185.45.133   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 11
+   <<< answer:   ip.src: 134.0.220.186   ip.ttl: 245   back-ttl: 10
+      IP / ICMP 134.0.220.186 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 11
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+   <<< answer:   ip.src: 85.185.45.133   ip.ttl: 246   back-ttl: 9
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 11
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 213.202.4.172 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 11
+   <<< answer:   ip.src: 10.21.211.10   ip.ttl: 248   back-ttl: 7
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 1   back-ttl: 63
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 11
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 1   back-ttl: 63
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 11
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 1   back-ttl: 63
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+   <<< answer:   ip.src: 10.202.4.206   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 12
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 12
+   <<< answer:   ip.src: 193.251.150.199   ip.ttl: 247   back-ttl: 8
+      IP / ICMP 193.251.150.199 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+   <<< answer:   ip.src: 10.202.4.206   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 12
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 12
+   <<< answer:   ip.src: 193.251.150.199   ip.ttl: 247   back-ttl: 8
+      IP / ICMP 193.251.150.199 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+   <<< answer:   ip.src: 10.202.4.206   ip.ttl: 247   back-ttl: 8
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 12
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 12
+   <<< answer:   ip.src: 193.251.150.199   ip.ttl: 247   back-ttl: 8
+      IP / ICMP 193.251.150.199 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 2   back-ttl: 62
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 12
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 2   back-ttl: 62
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 12
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 2   back-ttl: 62
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 213.202.4.172 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 13
+   <<< answer:   ip.src: 216.239.48.87   ip.ttl: 52   back-ttl: 12
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 13
+   <<< answer:   ip.src: 193.251.151.155   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 193.251.151.155 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 213.202.4.172 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 13
+   <<< answer:   ip.src: 216.239.48.87   ip.ttl: 52   back-ttl: 12
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 13
+   <<< answer:   ip.src: 193.251.132.163   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 193.251.132.163 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 213.202.4.172 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 13
+   <<< answer:   ip.src: 216.239.48.133   ip.ttl: 45   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 13
+   <<< answer:   ip.src: 193.251.133.5   ip.ttl: 246   back-ttl: 9
+      IP / ICMP 193.251.133.5 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 3   back-ttl: 61
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 13
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 3   back-ttl: 61
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 13
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 3   back-ttl: 61
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 14
+   <<< answer:   ip.src: 172.253.51.137   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 14
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 14
+   <<< answer:   ip.src: 216.239.51.115   ip.ttl: 49   back-ttl: 15
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 14
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 14
+   <<< answer:   ip.src: 108.170.233.243   ip.ttl: 240   back-ttl: 15
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 14
+ *** no response *** 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 4   back-ttl: 60
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 14
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 4   back-ttl: 60
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 14
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 4   back-ttl: 60
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+   <<< answer:   ip.src: 216.239.48.133   ip.ttl: 45   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 15
+   <<< answer:   ip.src: 4.69.163.18   ip.ttl: 240   back-ttl: 15
+      IP / ICMP 4.69.163.18 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+   <<< answer:   ip.src: 216.239.48.133   ip.ttl: 45   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 15
+   <<< answer:   ip.src: 4.69.163.18   ip.ttl: 240   back-ttl: 15
+      IP / ICMP 4.69.163.18 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+   <<< answer:   ip.src: 216.239.48.87   ip.ttl: 52   back-ttl: 12
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 15
+   <<< answer:   ip.src: 4.69.163.22   ip.ttl: 240   back-ttl: 15
+      IP / ICMP 4.69.163.22 > 87.236.213.195 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 5   back-ttl: 59
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 5   back-ttl: 59
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 15
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 5   back-ttl: 59
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+   <<< answer:   ip.src: 142.251.48.1   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 16
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+   <<< answer:   ip.src: 142.251.48.1   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 16
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+   <<< answer:   ip.src: 142.251.48.1   ip.ttl: 236   back-ttl: 19
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 16
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 6   back-ttl: 58
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 6   back-ttl: 58
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 16
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 6   back-ttl: 58
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 114   back-ttl: 14
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 17
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 17
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.23.36" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 17
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 7   back-ttl: 57
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 7   back-ttl: 57
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 17
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 7   back-ttl: 57
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 107   back-ttl: 21
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 18
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 18
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 18
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 18
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 8   back-ttl: 56
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 8   back-ttl: 56
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 18
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 8   back-ttl: 56
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 19
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 19
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 19
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 9   back-ttl: 55
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 9   back-ttl: 55
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 19
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 9   back-ttl: 55
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 20
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 20
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 20
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 10   back-ttl: 54
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 10   back-ttl: 54
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 20
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 10   back-ttl: 54
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 21
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 21
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 21
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 11   back-ttl: 53
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 11   back-ttl: 53
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 21
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 11   back-ttl: 53
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 22
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 114   back-ttl: 14
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 22
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 22
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 22
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 12   back-ttl: 52
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 12   back-ttl: 52
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 22
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 12   back-ttl: 52
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 23
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 23
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 23
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 13   back-ttl: 51
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 13   back-ttl: 51
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 23
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 13   back-ttl: 51
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 24
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 24
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 24
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 24
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 14   back-ttl: 50
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 14   back-ttl: 50
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 24
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 14   back-ttl: 50
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 25
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.23.36" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 25
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 25
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 15   back-ttl: 49
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 15   back-ttl: 49
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 25
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 15   back-ttl: 49
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 26
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 26
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 26
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.22.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 16   back-ttl: 48
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 16   back-ttl: 48
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 26
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 16   back-ttl: 48
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 27
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "216.58.207.132" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 27
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.36.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 27
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.36.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 17   back-ttl: 47
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 17   back-ttl: 47
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 27
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 17   back-ttl: 47
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+INFO: DNS wrong value: DNS.qdcount=260
+INFO: DNS wrong value: DNS.ancount=1648
+INFO: DNS wrong value: DNS.nscount=30050
+INFO: DNS wrong value: DNS.arcount=27753
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 28
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.20.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 111   back-ttl: 17
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 28
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.36.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 115   back-ttl: 13
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 28
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.20.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 18   back-ttl: 46
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 18   back-ttl: 46
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 28
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 18   back-ttl: 46
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 52   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 116   back-ttl: 12
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 29
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.20.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 113   back-ttl: 15
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 53   back-ttl: 11
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 29
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 112   back-ttl: 16
+      IP / UDP / DNS Ans "172.217.169.228" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 4.2.2.4   ip.ttl: 29
+   <<< answer:   ip.src: 4.2.2.4   ip.ttl: 49   back-ttl: 15
+      IP / UDP / DNS Ans "142.251.37.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+ ********************************************************************** 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 19   back-ttl: 45
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.4.4   ip.ttl: 19   back-ttl: 45
+      IP / UDP / DNS Ans "10.10.34.35" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 1.1.1.1   ip.ttl: 29
+   <<< answer:   ip.src: 1.1.1.1   ip.ttl: 19   back-ttl: 45
+      IP / UDP / DNS Ans "10.10.34.35" 
+ ********************************************************************** 
+ ********************************************************************** 
+ **********************************************************************
+```
+
+</div>
+
+
+
+
+
+## بررسی وجود سیستم cache برای درخواست های DNS
+
+اما همچنان یک سوال دیگر باقی می ماند؛ آیا فقط Packet مرسوم است و یا باید شامل دامنه ی مرسوم هم باشد؟ برای جواب دادن به این سوال، دوباره یک Packet را که یک دامنه ی جدید و random ای را درخواست می کند را کپی می کنیم. (آدرسی که انتظار می رود تابحال درخواست داده نشده است.)
+
+<div dir="ltr">
+
+![dig random domain 8888](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/dig-random-domain-8888.png)
+</div>
+
+تست عادی با شکست مواجه شد. این packet را کپی می کنیم و دوباره با TTL های افزایشی ارسال می کنیم:
+
+<div dir="ltr">
+
+![scapy copy dig packet random domain 8888](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/scapy-copy-dig-packet-random-domain-8888.png)
+</div>
+
+رفتار شبیه به درخواستی هست که در مورد دامنه ی Google داشتیم. با این تفاوت که چند درخواست در ابتدا و چند درخواست در میانه، بی جواب بوده اند. لاگ کامل:
+
+<div dir="ltr">
+
+```c
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+   <<< answer:   ip.src: 172.22.8.3   ip.ttl: 255
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'dassdsdnjasde7z.1.2.3.4.xip.io.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+   <<< answer:   ip.src: 172.22.6.2   ip.ttl: 254
+      IP / ICMP 172.22.6.2 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+   <<< answer:   ip.src: 172.22.9.2   ip.ttl: 62
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'dassdsdnjasde7z.1.2.3.4.xip.io.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+WARNING: DNS RR prematured end (ofs=28, len=28)
+WARNING: DNS RR prematured end (ofs=32, len=28)
+   <<< answer:   ip.src: 10.202.5.49   ip.ttl: 252
+      IP / ICMP 10.202.5.49 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+WARNING: more DNS RR prematured end (ofs=28, len=28)
+   <<< answer:   ip.src: 10.202.4.83   ip.ttl: 251
+      IP / ICMP 10.202.4.83 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+   <<< answer:   ip.src: 85.185.45.133   ip.ttl: 250
+      IP / ICMP 85.185.45.133 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+   <<< answer:   ip.src: 10.202.4.206   ip.ttl: 251
+      IP / ICMP 10.202.4.206 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+   <<< answer:   ip.src: 213.202.4.172   ip.ttl: 249
+      IP / ICMP 213.202.4.172 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+   <<< answer:   ip.src: 213.202.5.239   ip.ttl: 238
+      IP / ICMP 213.202.5.239 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+   <<< answer:   ip.src: 216.239.48.133   ip.ttl: 50
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'dassdsdnjasde7z.1.2.3.4.xip.io.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+   <<< answer:   ip.src: 108.170.227.189   ip.ttl: 238
+      IP / ICMP 108.170.227.189 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 55
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 118
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 118
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 119
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 119
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 119
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 114
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 55
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 118
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 114
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 119
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 55
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 55
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 116
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 114
+      IP / UDP / DNS Ans "1.2.3.4" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+   <<< answer:   ip.src: 8.8.8.8   ip.ttl: 118
+      IP / UDP / DNS Ans 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+```
+</div>
+
+باز هم سوالی پیش می آید که آیا این رفتار به خاطر سیستم Cache در گوگل (آدرس 8.8.8.8) است یا رفتار سیستم Cache در زیرساخت ایران؟
+
+برای اطمینان از اینکه آیا تغییر IP.TTL رفتار سرور داخلی گوگل هست و یا چیز دیگر، درخواست را از طریق سرور خارجی انجام می دهیم و با سه بار تکرار در هر مرحله:
+
+<div dir="ltr">
+
+![scapy germany copy dig packet google 8888](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/scapy-germany-copy-dig-packet-google-8888.png)
+
+<br/>
+
+```c
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 0
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 1
+  <<< answer:   ip.src: 192.168.128.1   ip.ttl: 64
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+  <<< answer:   ip.src: 172.31.1.1   ip.ttl: 254
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+  <<< answer:   ip.src: 172.31.1.1   ip.ttl: 254
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 2
+  <<< answer:   ip.src: 172.31.1.1   ip.ttl: 254
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  / Padding
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+  <<< answer:   ip.src: 116.203.162.75   ip.ttl: 63
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+  <<< answer:   ip.src: 116.203.162.75   ip.ttl: 63
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 3
+  <<< answer:   ip.src: 116.203.162.75   ip.ttl: 63
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 4
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+  <<< answer:   ip.src: 88.198.253.21   ip.ttl: 252
+     IP / ICMP 88.198.253.21 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+  <<< answer:   ip.src: 88.198.253.21   ip.ttl: 252
+     IP / ICMP 88.198.253.21 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 5
+  <<< answer:   ip.src: 88.198.253.21   ip.ttl: 252
+     IP / ICMP 88.198.253.21 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+  <<< answer:   ip.src: 85.10.250.213   ip.ttl: 251
+     IP / ICMP 85.10.250.213 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+  <<< answer:   ip.src: 85.10.228.85   ip.ttl: 251
+     IP / ICMP 85.10.228.85 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 6
+  <<< answer:   ip.src: 85.10.250.209   ip.ttl: 251
+     IP / ICMP 85.10.250.209 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+  <<< answer:   ip.src: 213.239.252.21   ip.ttl: 250
+     IP / ICMP 213.239.252.21 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 7
+  <<< answer:   ip.src: 213.239.252.21   ip.ttl: 250
+     IP / ICMP 213.239.252.21 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+  <<< answer:   ip.src: 72.14.218.176   ip.ttl: 249
+     IP / ICMP 72.14.218.176 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+  <<< answer:   ip.src: 142.250.160.234   ip.ttl: 53
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 8
+  <<< answer:   ip.src: 72.14.218.176   ip.ttl: 249
+     IP / ICMP 72.14.218.176 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+  <<< answer:   ip.src: 108.170.252.65   ip.ttl: 245
+     IP / ICMP 108.170.252.65 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+  <<< answer:   ip.src: 108.170.251.129   ip.ttl: 55
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 9
+  <<< answer:   ip.src: 108.170.252.65   ip.ttl: 245
+     IP / ICMP 108.170.252.65 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+  <<< answer:   ip.src: 142.250.214.189   ip.ttl: 54
+     IP / ICMP / IPerror / UDPerror / DNS Qry "b'www.google.com.'"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+  <<< answer:   ip.src: 142.250.46.247   ip.ttl: 244
+     IP / ICMP 142.250.46.247 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 10
+  <<< answer:   ip.src: 142.250.46.247   ip.ttl: 244
+     IP / ICMP 142.250.46.247 > 192.168.128.121 time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 11
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 12
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 13
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 14
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 15
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 16
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.74.196"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 17
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 18
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 19
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.74.196"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 20
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "172.217.18.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 21
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.186.36"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.74.196"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 22
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.186.36"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 23
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.186.36"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 24
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.186.36"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 25
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.68"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.74.196"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 26
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.74.196"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.100"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 27
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 28
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 120
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+>>>request:   ip.dst: 8.8.8.8   ip.ttl: 29
+  <<< answer:   ip.src: 8.8.8.8   ip.ttl: 121
+     IP / UDP / DNS Ans "142.250.185.164"  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·  
+· · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·
+```
+</div>
+
+دوباره یک آدرس جدید و random را از خارج از ایران از DNS دوم گوگل که سیستم Cache نیست درخواست می دهیم، و سریعا به جواب می رسیم:
+
+<div dir="ltr">
+
+![dig germany random domain 2 8844](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/dig-germany-random-domain-2-8844.png)
+</div>
+
+اینبار از ایران این درخواست را تکرار می کنیم و با کمال تعجب، همانند دفعه ی قبل با شکست مواجه می شود:
+
+<div dir="ltr">
+
+![dig iran random domain 2 8844](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/dig-iran-random-domain-2-8844.png)
+</div>
+
+این Packet را کپی می کنیم و دوباره به شیوه ی قبل ارسال می کنیم:
+
+<div dir="ltr">
+
+![scapy copy dig packet random domain 2 8844](/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/scapy-copy-dig-packet-random-domain-2-8844.png)
+</div>
+
+همانطور که پیداست بعد از Hop چهارم تمام packet ها وارد سیاهچاله شدند. لاگ کامل:
+
+<div dir="ltr">
+
+```c
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 0
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 1
+   <<< answer:   ip.src: 172.22.8.3   ip.ttl: 255
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'dassdsdsdsdnjasde7z.1.2.3.4.xip.io.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 2
+   <<< answer:   ip.src: 172.22.6.2   ip.ttl: 254
+      IP / ICMP 172.22.6.2 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 3
+   <<< answer:   ip.src: 172.22.9.2   ip.ttl: 62
+      IP / ICMP / IPerror / UDPerror / DNS Qry "b'dassdsdsdsdnjasde7z.1.2.3.4.xip.io.'" 
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 4
+WARNING: DNS RR prematured end (ofs=28, len=28)
+WARNING: DNS RR prematured end (ofs=32, len=28)
+   <<< answer:   ip.src: 10.202.5.49   ip.ttl: 252
+      IP / ICMP 10.202.5.49 > 185.*.*.* time-exceeded ttl-zero-during-transit / IPerror / UDPerror / Raw
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 5
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 6
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 7
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 8
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 9
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 10
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 11
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 12
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 13
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 14
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 15
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 16
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 17
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 18
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 19
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 20
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 21
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 22
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 23
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 24
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 25
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 26
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 27
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 28
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · · 
+>>>request:   ip.dst: 8.8.4.4   ip.ttl: 29
+ · · · − − − · · ·     · · · − − − · · ·     · · · − − − · · ·
+```
+</div>
+
+میتوان به این نتیجه رسید که در حال حاضر، در این شبکه یک لیست سفید از packet های DNS over UDP وجود دارد که محدود به دامنه های خاص هم می شود. این عمل به نظر برای ناکارآمد کردن DNS Tunneling در زمان قطع اینترنت دوباره و برنامه ریزی شده است که حتی از دیتاسنتر های داخلی هم این کار امکان پذیر نباشد.
+
+ذکر این نکته مهم است که  DNS over UDP مهمترین پروتکل و ابتدایی ترین درخواست برای شروع کار اینترنت است که حتی اکثر DoT و DoH ها نیز به آن وابسته هستند. این شیوه ی قطع دسترسی، باعث اختلال زیاد در کارکرد اینترنت می شود و به مرور نصف سرویس های باقی مانده در ایران که فیلتر نشدند، با این روش از کار خواهند افتاد. 
+
+
+

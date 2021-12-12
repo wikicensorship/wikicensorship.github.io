@@ -1,6 +1,6 @@
 ---
 weight: 20
-bookCollapseSection: false
+bookCollapseSection: true
 title: "بررسی سانسور اینترنت در ارتباط DNS"
 description: "انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."
 tags: ["سانسور", "DNS", "DoH", "DoT", "دی ان اس", "Do53", "DNS over UDP", "DNS over TCP", "DNS over HTTPS", "DNS over TLS", "DNSCrypt", "بررسی DNS", "فیلتر", "فیلترنت", "تحریم", "اینترنت", "بررسی سانسور اینترنت", "سانسور اینترنت"]
