@@ -3,6 +3,8 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content>
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark">
 <meta property="og:title" content="کاوشگر OONI">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
@@ -13,9 +15,9 @@
 <title>کاوشگر OONI | ویکی سانسور</title>
 <link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.ico type=image/x-icon>
-<link rel=stylesheet href=/book.min.8e30d00e4728d9e91d902a20489f134c4f25eb67cd3cc7542c9e062cfef25a27.css integrity="sha256-jjDQDkco2ekdkCogSJ8TTE8l62fNPMdULJ4GLP7yWic=" crossorigin=anonymous>
+<link rel=stylesheet href=/book.min.bf48c08c1757e28bd568f9fc5bd996c3ee746aa0a8e9d8784203e622eb81f220.css integrity="sha256-v0jAjBdX4ovVaPn8W9mWw+50aqCo6dh4QgPmIuuB8iA=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/fa.search.min.7f697f02c2943d04cf00da1842157582cb36b902e432a27b68905d8a565d62e8.js integrity="sha256-f2l/AsKUPQTPANoYQhV1gss2uQLkMqJ7aJBdilZdYug=" crossorigin=anonymous></script>
+<script defer src=/fa.search.min.e8a199e77e910c252ece1add338a515e921328e4eba8fc69d2eb9482402b9f87.js integrity="sha256-6KGZ536RDCUuzhrdM4pRXpITKOTrqPxp0uuUgkArn4c=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
 <link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/tags/%DA%A9%D8%A7%D9%88%D8%B4%DA%AF%D8%B1-OONI/index.xml title="ویکی سانسور">
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
@@ -23,8 +25,6 @@
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
 <link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
 <meta name=msapplication-TileColor content="#da532c">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
 </head>
 <body dir=rtl>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -60,8 +60,16 @@
 </ul>
 </li>
 <li>
+<input type=checkbox id=section-b27922a206ba3ea02b04ee458849072c class=toggle>
+<label for=section-b27922a206ba3ea02b04ee458849072c class="flex justify-between">
 <a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/>بررسی سانسور اینترنت در ارتباط DNS</a>
+</label>
 <ul>
+<li>
+<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/find-DNS-hijacker/>یافتن دستگاه سانسور کننده ی DNS</a>
+<ul>
+</ul>
+</li>
 </ul>
 </li>
 <li class=book-section-flat>
@@ -162,7 +170,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS/>DNS</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
@@ -178,7 +186,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
@@ -186,7 +194,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/Do53/>Do53</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DoH/>DoH</a>
@@ -214,6 +222,10 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/IP-blocking/>IP blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Middlebox/>Middlebox</a>
 <span>1</span>
 </li>
 <li class="flex justify-between">
@@ -257,6 +269,10 @@ English
 <span>1</span>
 </li>
 <li class="flex justify-between">
+<a href=/fa/tags/TraceVis/>TraceVis</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
 <a href=/fa/tags/UDP/>UDP</a>
 <span>1</span>
 </li>
@@ -266,15 +282,15 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
@@ -294,15 +310,15 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
@@ -314,11 +330,11 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
@@ -390,7 +406,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS/>DNS</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS-over-HTTPS/>DNS over HTTPS</a>
@@ -406,7 +422,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNS-over-UDP/>DNS over UDP</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DNSCrypt/>DNSCrypt</a>
@@ -414,7 +430,7 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/Do53/>Do53</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/DoH/>DoH</a>
@@ -442,6 +458,10 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/IP-blocking/>IP blocking</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
+<a href=/fa/tags/Middlebox/>Middlebox</a>
 <span>1</span>
 </li>
 <li class="flex justify-between">
@@ -485,6 +505,10 @@ English
 <span>1</span>
 </li>
 <li class="flex justify-between">
+<a href=/fa/tags/TraceVis/>TraceVis</a>
+<span>1</span>
+</li>
+<li class="flex justify-between">
 <a href=/fa/tags/UDP/>UDP</a>
 <span>1</span>
 </li>
@@ -494,15 +518,15 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-DNS/>بررسی DNS</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%A8%D8%B1%D8%B1%D8%B3%DB%8C-%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>بررسی سانسور اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%AA%D8%AD%D8%B1%DB%8C%D9%85/>تحریم</a>
@@ -522,15 +546,15 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%AF%DB%8C-%D8%A7%D9%86-%D8%A7%D8%B3/>دی ان اس</a>
-<span>1</span>
+<span>2</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1/>سانسور</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B3%D8%A7%D9%86%D8%B3%D9%88%D8%B1-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA/>سانسور اینترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D8%B4%D8%A8%DA%A9%D9%87/>شبکه</a>
@@ -542,11 +566,11 @@ English
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1/>فیلتر</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%81%DB%8C%D9%84%D8%AA%D8%B1%D9%86%D8%AA/>فیلترنت</a>
-<span>5</span>
+<span>6</span>
 </li>
 <li class="flex justify-between">
 <a href=/fa/tags/%D9%84%D8%A7%DB%8C%D9%87-%DB%8C-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF/>لایه ی کاربرد</a>
