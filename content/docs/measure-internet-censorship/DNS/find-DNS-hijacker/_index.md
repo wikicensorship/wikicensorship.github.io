@@ -1,7 +1,7 @@
 ---
 weight: 10
 title: "یافتن دستگاه سانسور کننده ی DNS"
-description: "یافتن hop دستکاری کننده ی DNS"
+description: "یافتن Middlebox و منشاء اختلالات و فیلترینگ. ساخت گراف مسیر packet ها. معرفی TraceVis"
 tags: ["سانسور", "DNS", "دی ان اس", "Do53", "DNS over UDP", "بررسی DNS", "فیلتر", "Middlebox", "فیلترنت", "اینترنت", "TraceVis", "بررسی سانسور اینترنت", "سانسور اینترنت"]
 images:
 - "/images/docs/measure-internet-censorship/DNS/find-DNS-hijacker/scapy-copy-dig-packet-twitter-8888.png"
