@@ -1,7 +1,9 @@
-# wikicensorship.github.io
+# [wikicensorship.github.io](https://wikicensorship.github.io/)
   
-![2*2=5](https://github.com/wikicensorship/wikicensorship.github.io/raw/main/static/android-chrome-192x192.png) 
+[![2*2=5](https://github.com/wikicensorship/wikicensorship.github.io/raw/main/static/android-chrome-192x192.png)](https://wikicensorship.github.io/)
 An open encyclopedia of Internet censorship 
+
+[![GitHubPage](https://github.com/wikicensorship/wikicensorship.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/wikicensorship/wikicensorship.github.io/actions/workflows/gh-pages.yml)
 
 Internet censorship is increasing every day and it is becoming more and more difficult to verify and confirm its existence and origin. 
 Dictatorships and totalitarian regimes try to censor or shut down the Internet more obscurely every day.
