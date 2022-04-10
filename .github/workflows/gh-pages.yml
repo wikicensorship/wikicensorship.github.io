@@ -31,6 +31,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
+      - name: Deploy to cloudflare-mirror
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./public
+          publish_branch: master
+          external_repository: wikicensorship/cloudflare-mirror
+
       - name: Copy static
         run: |
           cp -rf static/* ./public
