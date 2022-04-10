@@ -1,545 +1,152 @@
-<!doctype html><html lang=fa dir=rtl>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد.">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark">
-<meta property="og:title" content="بررسی سانسور اینترنت در ارتباط DNS">
-<meta property="og:description" content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/">
-<meta property="og:image" content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png">
-<meta name=twitter:title content="بررسی سانسور اینترنت در ارتباط DNS">
-<meta name=twitter:description content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد.">
-<title>بررسی سانسور اینترنت در ارتباط DNS | ویکی سانسور</title>
-<link rel=manifest href=/manifest.json>
-<link rel=icon href=/favicon.ico type=image/x-icon>
-<link rel=stylesheet href=/book.min.bf48c08c1757e28bd568f9fc5bd996c3ee746aa0a8e9d8784203e622eb81f220.css integrity="sha256-v0jAjBdX4ovVaPn8W9mWw+50aqCo6dh4QgPmIuuB8iA=" crossorigin=anonymous>
-<script defer src=/flexsearch.min.js></script>
-<script defer src=/fa.search.min.4209b7b03b46ff3373e8b8f5701b18f37e27b9244c1a66331176842f0fc5b169.js integrity="sha256-Qgm3sDtG/zNz6Lj1cBsY834nuSRMGmYzEXaELw/FsWk=" crossorigin=anonymous></script>
+<!doctype html><html lang=fa dir=rtl><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="بررسی سانسور اینترنت در ارتباط DNS"><meta property="og:description" content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."><meta property="og:type" content="website"><meta property="og:url" content="https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/"><meta property="og:image" content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://wikicensorship.github.io/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png"><meta name=twitter:title content="بررسی سانسور اینترنت در ارتباط DNS"><meta name=twitter:description content="انواع درخواست های DNS چیست و چطور میتوان سانسور و دستکاری صورت گرفته در آن را تشخیص داد."><title>بررسی سانسور اینترنت در ارتباط DNS | ویکی سانسور</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.ico type=image/x-icon><link rel=stylesheet href=/book.min.bf48c08c1757e28bd568f9fc5bd996c3ee746aa0a8e9d8784203e622eb81f220.css integrity="sha256-v0jAjBdX4ovVaPn8W9mWw+50aqCo6dh4QgPmIuuB8iA=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/fa.search.min.4456a647a44be39a545fe91b44f7f246b3ecc1081687cac5f25af355c7c39795.js integrity="sha256-RFamR6RL45pUX+kbRPfyRrPswQgWh8rF8lrzVcfDl5U=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/index.xml title="ویکی سانسور">
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<meta name=msapplication-TileColor content="#da532c">
-</head>
-<body dir=rtl>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/fa/><img src=/logo.png alt=Logo><span>ویکی سانسور</span>
-</a>
-</h2>
-<div>
-<a href=https://github.com/wikicensorship/wikicensorship.github.io target=_blank class=btn-with-count><svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16" data-view-component="true" class="octicon-star"><path fill-rule="evenodd" d="M8 .25a.75.75.0 01.673.418l1.882 3.815 4.21.612a.75.75.0 01.416 1.279l-3.046 2.97.719 4.192a.75.75.0 01-1.088.791L8 12.347l-3.766 1.98a.75.75.0 01-1.088-.79l.72-4.194L.818 6.374a.75.75.0 01.416-1.28l4.21-.611L7.327.668A.75.75.0 018 .25zm0 2.445L6.615 5.5a.75.75.0 01-.564.41l-3.097.45 2.24 2.184a.75.75.0 01.216.664l-.528 3.084 2.769-1.456a.75.75.0 01.698.0l2.77 1.456-.53-3.084a.75.75.0 01.216-.664l2.24-2.183-3.096-.45a.75.75.0 01-.564-.41L8 2.694v.001z"/></svg>
-<span class=social-count data-view-component=true></span>
-</a>
+<link rel=alternate type=application/rss+xml href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/index.xml title="ویکی سانسور"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"></head><body dir=rtl><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/fa/><img src=/logo.png alt=Logo><span>ویکی سانسور</span></a></h2><div><a href=https://github.com/wikicensorship/wikicensorship.github.io target=_blank class=btn-with-count><svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16" data-view-component="true" class="octicon-star"><path fill-rule="evenodd" d="M8 .25a.75.75.0 01.673.418l1.882 3.815 4.21.612a.75.75.0 01.416 1.279l-3.046 2.97.719 4.192a.75.75.0 01-1.088.791L8 12.347l-3.766 1.98a.75.75.0 01-1.088-.79l.72-4.194L.818 6.374a.75.75.0 01.416-1.28l4.21-.611L7.327.668A.75.75.0 018 .25zm0 2.445L6.615 5.5a.75.75.0 01-.564.41l-3.097.45 2.24 2.184a.75.75.0 01.216.664l-.528 3.084 2.769-1.456a.75.75.0 01.698.0l2.77 1.456-.53-3.084a.75.75.0 01.216-.664l2.24-2.183-3.096-.45a.75.75.0 01-.564-.41L8 2.694v.001z"/></svg><span class=social-count data-view-component=true></span></a>
 <span>&nbsp;</span>
-<span id=moon onclick=toggletheme()>&#127763;</span>
-</div>
-<div>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li class=book-section-flat>
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a>
-<ul>
-<li class=book-section-flat>
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a>
-<ul>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-b27922a206ba3ea02b04ee458849072c class=toggle checked>
-<label for=section-b27922a206ba3ea02b04ee458849072c class="flex justify-between">
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/ class=active>بررسی سانسور اینترنت در ارتباط DNS</a>
-</label>
-<ul>
-<li>
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/find-DNS-hijacker/>یافتن دستگاه سانسور کننده ی DNS</a>
-<ul>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a>
-<ul>
-</ul>
-</li>
-<li class=book-section-flat>
-<a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a>
-<ul>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href=/fa/glossary/>
-فرهنگ لغات فنی
-</a>
-</li>
-<li>
-<a href=/fa/posts/>
-بلاگ
-</a>
-</li>
-<li>
-<a href=https://github.com/wikicensorship target=_blank rel=noopener>
-GitHub
-</a>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-<div class=book-languages tabindex=0 aria-haspopup=true>
-<ul>
-<li class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-Languages
-</li>
-</ul>
-<ul class=book-languages-list>
-<li class=active>
-<a href=https://wikicensorship.github.io/fa/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-فارسی
-</a>
-</li>
-<li>
-<a href=https://wikicensorship.github.io/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-English
-</a>
-</li>
-<li>
-<a href=https://wikicensorship.github.io/ru/ class="flex align-center">
-<img src=/svg/translate.svg class=book-icon alt=Languages>
-Русский
-</a>
-</li>
-</ul>
-</div>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<span id=moon onclick=toggletheme()>&#127763;</span></div><div><div class=book-search><input type=text id=book-search-input placeholder=جستجو aria-label=جستجو maxlength=64 data-hotkeys><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/>بررسی سانسور اینترنت: مقدمه</a><ul><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/OONI/>بررسی سانسور اینترنت از طریق کاوشگر OONI</a><ul></ul></li><li><input type=checkbox id=section-b27922a206ba3ea02b04ee458849072c class=toggle checked>
+<label for=section-b27922a206ba3ea02b04ee458849072c class="flex justify-between"><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/ class=active>بررسی سانسور اینترنت در ارتباط DNS</a></label><ul><li><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/find-DNS-hijacker/>یافتن دستگاه سانسور کننده ی DNS</a><ul></ul></li></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Network/>بررسی سانسور در ارتباط با سرور در لایه‌ی شبکه و انتقال</a><ul></ul></li><li class=book-section-flat><a href=https://wikicensorship.github.io/fa/docs/measure-internet-censorship/Application/>بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد</a><ul></ul></li></ul></li></ul><ul><li><a href=/fa/glossary/>فرهنگ لغات فنی</a></li><li><a href=/fa/posts/>بلاگ</a></li><li><a href=https://github.com/wikicensorship target=_blank rel=noopener>GitHub</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+Languages</li></ul><ul class=book-languages-list><li class=active><a href=https://wikicensorship.github.io/fa/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+فارسی</a></li><li><a href=https://wikicensorship.github.io/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</a></li><li><a href=https://wikicensorship.github.io/ru/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+Русский</a></li></ul></div></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>بررسی سانسور اینترنت در ارتباط DNS</strong>
-<label for=toc-control>
-<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#بررسی-سانسور-اینترنت-در-ارتباط-dns>بررسی سانسور اینترنت در ارتباط DNS</a>
-<ul>
-<li><a href=#dns-over-udp>DNS over UDP</a>
-<ul>
-<li><a href=#ipv6>IPv6</a></li>
-<li><a href=#لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی</a></li>
-</ul>
-</li>
-<li><a href=#dns-over-tcp>DNS over TCP</a></li>
-<li><a href=#dns-over-https>DNS over HTTPS</a></li>
-<li><a href=#dns-over-tls>DNS over TLS</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown ondblclick="this.setAttribute('contenteditable','true')"><h1 id=بررسی-سانسور-اینترنت-در-ارتباط-dns>
-بررسی سانسور اینترنت در ارتباط DNS
-<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%a7%db%8c%d9%86%d8%aa%d8%b1%d9%86%d8%aa-%d8%af%d8%b1-%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-dns>#</a>
-</h1>
-<p>اولین قدم برای دسترسی به اینترنت DNS است.
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#بررسی-سانسور-اینترنت-در-ارتباط-dns>بررسی سانسور اینترنت در ارتباط DNS</a><ul><li><a href=#dns-over-udp>DNS over UDP</a><ul><li><a href=#ipv6>IPv6</a></li><li><a href=#لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی</a></li></ul></li><li><a href=#dns-over-tcp>DNS over TCP</a></li><li><a href=#dns-over-https>DNS over HTTPS</a></li><li><a href=#dns-over-tls>DNS over TLS</a></li></ul></li></ul></nav></aside></header><article class=markdown ondblclick='this.setAttribute("contenteditable","true")'><h1 id=بررسی-سانسور-اینترنت-در-ارتباط-dns>بررسی سانسور اینترنت در ارتباط DNS
+<a class=anchor href=#%d8%a8%d8%b1%d8%b1%d8%b3%db%8c-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%a7%db%8c%d9%86%d8%aa%d8%b1%d9%86%d8%aa-%d8%af%d8%b1-%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-dns>#</a></h1><p>اولین قدم برای دسترسی به اینترنت DNS است.
 وقتی شما آدرس نام دامنه را وارد می کنید، این نام باید به IP تبدیل شود تا دستگاه شما بتواند با سرور آن ارتباط برقرار کند.
 این کار توسط DNS انجام می شود.
 یکی از بهترین ابزار ها برای بررسی سانسور در DNS نرم افزار dig است.
 که علاوه بر
 <a href=https://www.isc.org/download/#BIND>لینوکس و Mac OS، در ویندوز هم قابل استفاده است</a>.
-(پکیج dnsutils و یا bind-utils در لینوکس)</p>
-<p>در حال حاضر روش های مختلفی برای انجام تست DNS داریم.
-چند مورد پر استفاده و مهم از آنها عبارت اند از:</p>
-<ul>
-<li>DNS over UDP</li>
-<li>DNS over TCP</li>
-<li>DNS over HTTPS</li>
-<li>DNS over TLS</li>
-</ul>
-<h2 id=dns-over-udp>
-DNS over UDP
-<a class=anchor href=#dns-over-udp>#</a>
-</h2>
-<p>DNS over UDP روش پیشفرض اکثر سیستم عامل ها است.
+(پکیج dnsutils و یا bind-utils در لینوکس)</p><p>در حال حاضر روش های مختلفی برای انجام تست DNS داریم.
+چند مورد پر استفاده و مهم از آنها عبارت اند از:</p><ul><li>DNS over UDP</li><li>DNS over TCP</li><li>DNS over HTTPS</li><li>DNS over TLS</li></ul><h2 id=dns-over-udp>DNS over UDP
+<a class=anchor href=#dns-over-udp>#</a></h2><p>DNS over UDP روش پیشفرض اکثر سیستم عامل ها است.
 این روش توسط شخص ناشناس قابل مشاهده و یا دستکاری است.
 اکثر سیستم های سانسور و بدافزار های شبکه، از این روش برای تغییر مسیر کاربران استفاده می کنند.
-در ایران معمولا جواب درخواست های DNS سایت های فیلتر شده به یکی از سه آدرس <code>10.10.34.34</code>، <code>10.10.34.35</code>، <code>10.10.34.36</code>، تغییر می کنند.</p>
-<p>در ارتباط IPv6 نیز، سانسور به صورت سیاهچاله عمل می کند و یا آدرس <code>d0::11</code> را بر می گرداند.</p>
-<p>درخواست DNS از طریق مقدار پیشفرض DNS تنظیم شده در سیستم عامل:</p>
-<div dir=ltr>
-<p><code>$ dig twitter.com</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter.png alt="dns dig twitter"></p>
-</div>
-<p>درخواست DNS با تنظیم دستی سرور DNS:</p>
-<div dir=ltr>
-<p><code>$ dig twitter.com @8.8.8.8</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png alt="dns dig twitter at 8.8.8.8"></p>
-</div>
-<p>نمایش این packet ها در نرم افزار wireshark:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-twitter-wireshark-packet.png alt="dns twitter wireshark packet"></p>
-</div>
-<p>انجام این درخواست با ابزار پیشفرض سیستم عامل ویندوز:</p>
-<div dir=ltr>
-<p><code>> nslookup twitter.com</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-twitter.png alt="dns nslookup twitter"></p>
-</div>
-<p>و تنظیم آدرس سرور DNS اختصاصی:</p>
-<div dir=ltr>
-<p><code>>nslookup twitter.com 1.1.1.1</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-twitter-at1.png alt="dns nslookup twitter at 1.1.1.1"></p>
-</div>
-<p>البته ممکن است همیشه چنین جوابی دریافت نکنید و درخواست های شما با جوابی همراه نباشند.
-در این شرایط درخواست ها وارد سیاه چاله می شوند.</p>
-<div dir=ltr>
-<p><code>$ dig youtube.com</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-at8-timeout.png alt="dns dig youtube at 8.8.8.8 timeout"></p>
-</div>
-<p>در Wireshark هم می بینید که جوابی دریافت نشده:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-wireshark-dig-youtube-at8-timeout.png alt="dns wireshark dig youtube at 8.8.8.8 timeout"></p>
-</div>
-<p>و همینطور در سیستم عامل و سرور DNS متفاوت:</p>
-<div dir=ltr>
-<p><code>> nslookup youtube.com 1.1.1.1</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-youtube-at1-timeout.png alt="dns nslookup youtube at 1.1.1.1 timeout"></p>
-</div>
-<p>نکته ی مهم این است که در ایران فرقی نمی کند که از چه سرویس ای درخواست می کنید.
+در ایران معمولا جواب درخواست های DNS سایت های فیلتر شده به یکی از سه آدرس <code>10.10.34.34</code>، <code>10.10.34.35</code>، <code>10.10.34.36</code>، تغییر می کنند.</p><p>در ارتباط IPv6 نیز، سانسور به صورت سیاهچاله عمل می کند و یا آدرس <code>d0::11</code> را بر می گرداند.</p><p>درخواست DNS از طریق مقدار پیشفرض DNS تنظیم شده در سیستم عامل:</p><div dir=ltr><p><code>$ dig twitter.com</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter.png alt="dns dig twitter"></p></div><p>درخواست DNS با تنظیم دستی سرور DNS:</p><div dir=ltr><p><code>$ dig twitter.com @8.8.8.8</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-twitter-at8.png alt="dns dig twitter at 8.8.8.8"></p></div><p>نمایش این packet ها در نرم افزار wireshark:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-twitter-wireshark-packet.png alt="dns twitter wireshark packet"></p></div><p>انجام این درخواست با ابزار پیشفرض سیستم عامل ویندوز:</p><div dir=ltr><p><code>> nslookup twitter.com</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-twitter.png alt="dns nslookup twitter"></p></div><p>و تنظیم آدرس سرور DNS اختصاصی:</p><div dir=ltr><p><code>>nslookup twitter.com 1.1.1.1</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-twitter-at1.png alt="dns nslookup twitter at 1.1.1.1"></p></div><p>البته ممکن است همیشه چنین جوابی دریافت نکنید و درخواست های شما با جوابی همراه نباشند.
+در این شرایط درخواست ها وارد سیاه چاله می شوند.</p><div dir=ltr><p><code>$ dig youtube.com</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-at8-timeout.png alt="dns dig youtube at 8.8.8.8 timeout"></p></div><p>در Wireshark هم می بینید که جوابی دریافت نشده:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-wireshark-dig-youtube-at8-timeout.png alt="dns wireshark dig youtube at 8.8.8.8 timeout"></p></div><p>و همینطور در سیستم عامل و سرور DNS متفاوت:</p><div dir=ltr><p><code>> nslookup youtube.com 1.1.1.1</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-nslookup-youtube-at1-timeout.png alt="dns nslookup youtube at 1.1.1.1 timeout"></p></div><p>نکته ی مهم این است که در ایران فرقی نمی کند که از چه سرویس ای درخواست می کنید.
 حتی فرقی نمی کند که آیا IP ای که درخواست می شود، واقعا سرویس DNS است یا خیر.
 و یا حتی فعال است یا خیر.
-به عنوان مثال، اگر از <code>1.1.1.1</code> استفاده می کنید و درخواستی دارید که فیلتر شده باشد، درخواست شما توسط سیستم سانسور ضبط می شود و به <code>1.1.1.1</code> نمی رسد و جوابی مثل <code>10.10.34.34</code> برای شما ارسال می کند.</p>
-<p>برای امتحان، می توانید در سرور شخصی خود این دستور را اجرا کنید تا packet های ورودی مرتبط، به شما نشان داده شوند:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/tcpdump-server-port53.png alt="tcpdump server port53"></p>
-</div>
-<p>مقدار آخر برابر با IP ی دستگاه ایران شما است و <code>eth0</code> نام interface اصلی شما که می توانید با اجرای دستور زیر آن را به دست بیاورید:</p>
-<div dir=ltr>
-<p><code>$ ip link show</code></p>
-</div>
-<p>در ادامه ی بحث اصلی، اگر درخواست را به صورت زیر وارد کنید:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/dig-google-at-server.png alt="dig google at server"></p>
-</div>
-<p>که مقدار آخر برابر با IP ی سرور خارج شما است.
-چنین packet هایی در سرور دریافت می کنید:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/tcpdump-server-port53-incoming-dns-requests.png alt="tcpdump server port53 incoming dns requests"></p>
-</div>
-<p>اما اگر یک سایتی که فیلتر شده را به جای آدرس <code>google.com</code> وارد کنید، packet ای در سمت سرور دریافت نمی شود و سیستم سانسور از سمت سرور ای که هیچ سرویس DNS در آن فعال نیست.
-IP ای از <code>10.10.34.3x</code> را بر می گرداند:</p>
-<div dir=ltr>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/wireshark-hijacked-dns-dig-twitter-at-server.png alt="wireshark hijacked dns dig twitter at server"></p>
-</div>
-<p>سیستم سانسور چین، معمولا یک IP ی random در جواب DNS سایت های سانسور شده برای کاربر ارسال می کند.
+به عنوان مثال، اگر از <code>1.1.1.1</code> استفاده می کنید و درخواستی دارید که فیلتر شده باشد، درخواست شما توسط سیستم سانسور ضبط می شود و به <code>1.1.1.1</code> نمی رسد و جوابی مثل <code>10.10.34.34</code> برای شما ارسال می کند.</p><p>برای امتحان، می توانید در سرور شخصی خود این دستور را اجرا کنید تا packet های ورودی مرتبط، به شما نشان داده شوند:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/tcpdump-server-port53.png alt="tcpdump server port53"></p></div><p>مقدار آخر برابر با IP ی دستگاه ایران شما است و <code>eth0</code> نام interface اصلی شما که می توانید با اجرای دستور زیر آن را به دست بیاورید:</p><div dir=ltr><p><code>$ ip link show</code></p></div><p>در ادامه ی بحث اصلی، اگر درخواست را به صورت زیر وارد کنید:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/dig-google-at-server.png alt="dig google at server"></p></div><p>که مقدار آخر برابر با IP ی سرور خارج شما است.
+چنین packet هایی در سرور دریافت می کنید:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/tcpdump-server-port53-incoming-dns-requests.png alt="tcpdump server port53 incoming dns requests"></p></div><p>اما اگر یک سایتی که فیلتر شده را به جای آدرس <code>google.com</code> وارد کنید، packet ای در سمت سرور دریافت نمی شود و سیستم سانسور از سمت سرور ای که هیچ سرویس DNS در آن فعال نیست.
+IP ای از <code>10.10.34.3x</code> را بر می گرداند:</p><div dir=ltr><p><img src=/images/docs/measure-internet-censorship/DNS/wireshark-hijacked-dns-dig-twitter-at-server.png alt="wireshark hijacked dns dig twitter at server"></p></div><p>سیستم سانسور چین، معمولا یک IP ی random در جواب DNS سایت های سانسور شده برای کاربر ارسال می کند.
 از آنجایی که IP با آدرس درخواستی برابر نخواهد بود، نتیجتا باعث خطا می شود.
 یا سیستم سانسور بعضی از کشور ها <code>127.0.0.1</code> و یا <code>192.168.0.1</code> را در جواب سایت های سانسور شده ارسال می کنند.
 همچنین ممکن است بعضی از کشور ها از یک IP در دسترس اینترنت (IP public) برای سانسور استفاده کنند.
 مانند IP ای که ایران استفاده می کرده تا افرادی که سهوا و یا عمدا به سرویس های ممنوعه، همانند سایت قمار و شرطبندی،
 <a href=https://persian.iranhumanrights.org/1398/01/rapid-response-center-of-the-office-of-the-prosecutors-cyberspace/>تلگرام</a>،
-<a href=https://twitter.com/xhdix/status/1101586440025227264>سرویس کوتاه کننده ی لینک</a> و غیره رجوع می کردند، تحت پیگرد قانونی قرار دهد.</p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/prosecute-for-visiting-site-iran-pooyesh-pardaz-sorkh.png alt="prosecute the internet users for visiting a site in iran - pooyesh pardaz sorkh company"></p>
-<h3 id=ipv6>
-IPv6
-<a class=anchor href=#ipv6>#</a>
-</h3>
-<p>برای دریافت IPv6 یک سایت، به صورت زیر عمل می کنیم:</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ dig AAAA facebook.com @1.1.1.1
-
-; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.13-Ubuntu &lt;&lt;&gt;&gt; AAAA facebook.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER<span style=color:#e6db74>&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span style=color:#ae81ff>1468</span>
-;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span style=color:#ae81ff>0</span>
-
-;; QUESTION SECTION:
-;facebook.com.      IN  AAAA
-
-;; ANSWER SECTION:
-facebook.com.    <span style=color:#ae81ff>1</span>  IN  A  10.10.34.35
-
-;; Query time: <span style=color:#ae81ff>35</span> msec
-;; SERVER: 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span>
-;; WHEN: Tue Dec <span style=color:#ae81ff>29</span> 22:52:29 +0330 <span style=color:#ae81ff>2020</span>
-;; MSG SIZE  rcvd: <span style=color:#ae81ff>46</span>
-</code></pre></div></div>
-<p>درخواست از نوع AAAA بوده اما جواب از نوع A و سانسور شده.</p>
-<p>و یا در ویندوز به صورت زیر عمل می کنیم :</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>&gt; nslookup -type<span style=color:#f92672>=</span>AAAA facebook.com  217.219.103.5
-
-Server:  UnKnown
-Address:  217.219.103.5
-
-DNS request timed out.
-    timeout was <span style=color:#ae81ff>2</span> seconds.
-Non-authoritative answer:
-Name:    facebook.com
-Address:  10.10.34.35
-</code></pre></div></div>
-<p>البته این رفتار در هر شبکه و نسبت به هر resolver متفاوت است:</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>&gt; nslookup -type<span style=color:#f92672>=</span>AAAA facebook.com 5.200.200.200
-
-DNS request timed out.
-    timeout was <span style=color:#ae81ff>2</span> seconds.
-Server:  UnKnown
-Address:  5.200.200.200
-
-Non-authoritative answer:
-Name:    facebook.com
-Address:  2a03:2880:f11c:8183:face:b00c:0:25de
-</code></pre></div></div>
-<p>در اینجا جواب صحیح برگردانده شده است.
-اما اگر در شبکه ای که دارای IPv6 است و به سمت یک resolver با IPv6 تست کنیم نتیجه متفاوت خواهد بود:</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ dig AAAA facebook.com @2001:4860:4860::8888
-
-; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.13-Ubuntu &lt;&lt;&gt;&gt; AAAA facebook.com @2001:4860:4860::8888
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER<span style=color:#e6db74>&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span style=color:#ae81ff>56730</span>
-;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span style=color:#ae81ff>0</span>
-
-;; QUESTION SECTION:
-;facebook.com.      IN  AAAA
-
-;; ANSWER SECTION:
-facebook.com.    <span style=color:#ae81ff>1</span>  IN  AAAA  d0::11
-
-;; Query time: <span style=color:#ae81ff>28</span> msec
-;; SERVER: 2001:4860:4860::8888#53<span style=color:#f92672>(</span>2001:4860:4860::8888<span style=color:#f92672>)</span>
-;; WHEN: Tue Dec <span style=color:#ae81ff>29</span> 22:56:41 +0330 <span style=color:#ae81ff>2020</span>
-;; MSG SIZE  rcvd: <span style=color:#ae81ff>58</span>
-</code></pre></div></div>
-<p>در اینجا جواب نیز از نوع AAAA است اما آدرس <code>d0::11</code> که در پاسخ آمده، یک آدرس معتبر در IPv6 نیست. در نتیجه، همچون آدرس های <code>10.10.34.3x</code> دارای صفحه ی «پیوند ها» نیست.</p>
-<h3 id=لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>
-لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی
-<a class=anchor href=#%d9%84%db%8c%d8%b3%d8%aa-%d8%a2%d8%af%d8%b1%d8%b3-%d9%87%d8%a7%db%8c-%d9%85%d8%b1%d8%a8%d9%88%d8%b7-%d8%a8%d9%87-%d8%b3%db%8c%d8%b3%d8%aa%d9%85-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%ac%d9%85%d9%87%d9%88%d8%b1%db%8c-%d8%a7%d8%b3%d9%84%d8%a7%d9%85%db%8c>#</a>
-</h3>
-<p>برای پیگیری راحت تر موارد سانسور، آدرس هایی که توسط سیستم سانسور جمهوری اسلامی استفاده می شوند در ادامه همراه با لینک به یک نتیجه ی تست OONI که حاوی آن آدرس است، لیست می شوند:</p>
-<ul>
-<li>
-<a href="https://explorer.ooni.org/measurement/20170525T030641Z_AS50810_5iVwM98EMQORqXeZtbhiDquo9zifyYSMmE5AWTARCw3XJ1R4is?input=http://pesareghabile.blogspot.com"><code>10.10.34.34</code></a></li>
-<li>
-<a href="https://explorer.ooni.org/measurement/20210715T123812Z_webconnectivity_IR_58224_n1_9T08osRqZrcngBFZ?input=http%3A%2F%2Fwww.facebook.com%2F"><code>10.10.34.35</code></a></li>
-<li>
-<a href="https://explorer.ooni.org/measurement/20210701T022229Z_webconnectivity_IR_197207_n1_1gpWGw5V9YWvEa44?input=http%3A%2F%2Fwww.freeexpression.org%2F"><code>10.10.34.36</code></a></li>
-<li>
-<a href="https://explorer.ooni.org/measurement/20180627T180515Z_AS44244_Z8V0i4Cr6PoJHByQQ89uN3meAmQbvdUrBli1NqYU8786BLquMk?input=http://alone-persian-man.blogspot.com"><code>d0:0:0:0:0:0:0:11</code></a></li>
-<li>
-<a href="https://explorer.ooni.org/measurement/20210715T094141Z_webconnectivity_IR_44244_n1_GFBhOu2puPdz4SSt?input=https%3A%2F%2Fwww.sbs.com.au%2Flanguage%2Fcoronavirus%3Fcid%3Dinfocus"><code>d0::11</code></a></li>
-</ul>
-<h2 id=dns-over-tcp>
-DNS over TCP
-<a class=anchor href=#dns-over-tcp>#</a>
-</h2>
-<p>DNS over TCP هم از پورت مشابه DNS over UDP استفاده می کند و مشترکا Do53 معرفی می شوند.
+<a href=https://twitter.com/xhdix/status/1101586440025227264>سرویس کوتاه کننده ی لینک</a> و غیره رجوع می کردند، تحت پیگرد قانونی قرار دهد.</p><p><img src=/images/docs/measure-internet-censorship/DNS/prosecute-for-visiting-site-iran-pooyesh-pardaz-sorkh.png alt="prosecute the internet users for visiting a site in iran - pooyesh pardaz sorkh company"></p><h3 id=ipv6>IPv6
+<a class=anchor href=#ipv6>#</a></h3><p>برای دریافت IPv6 یک سایت، به صورت زیر عمل می کنیم:</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ dig AAAA facebook.com @1.1.1.1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.13-Ubuntu &lt;&lt;&gt;&gt; AAAA facebook.com
+</span></span><span style=display:flex><span>;; global options: +cmd
+</span></span><span style=display:flex><span>;; Got answer:
+</span></span><span style=display:flex><span>;; -&gt;&gt;HEADER<span style=color:#e6db74>&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span style=color:#ae81ff>1468</span>
+</span></span><span style=display:flex><span>;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; QUESTION SECTION:
+</span></span><span style=display:flex><span>;facebook.com.      IN  AAAA
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; ANSWER SECTION:
+</span></span><span style=display:flex><span>facebook.com.    <span style=color:#ae81ff>1</span>  IN  A  10.10.34.35
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; Query time: <span style=color:#ae81ff>35</span> msec
+</span></span><span style=display:flex><span>;; SERVER: 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>;; WHEN: Tue Dec <span style=color:#ae81ff>29</span> 22:52:29 +0330 <span style=color:#ae81ff>2020</span>
+</span></span><span style=display:flex><span>;; MSG SIZE  rcvd: <span style=color:#ae81ff>46</span>
+</span></span></code></pre></div></div><p>درخواست از نوع AAAA بوده اما جواب از نوع A و سانسور شده.</p><p>و یا در ویندوز به صورت زیر عمل می کنیم :</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; nslookup -type<span style=color:#f92672>=</span>AAAA facebook.com  217.219.103.5
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Server:  UnKnown
+</span></span><span style=display:flex><span>Address:  217.219.103.5
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DNS request timed out.
+</span></span><span style=display:flex><span>    timeout was <span style=color:#ae81ff>2</span> seconds.
+</span></span><span style=display:flex><span>Non-authoritative answer:
+</span></span><span style=display:flex><span>Name:    facebook.com
+</span></span><span style=display:flex><span>Address:  10.10.34.35
+</span></span></code></pre></div></div><p>البته این رفتار در هر شبکه و نسبت به هر resolver متفاوت است:</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; nslookup -type<span style=color:#f92672>=</span>AAAA facebook.com 5.200.200.200
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DNS request timed out.
+</span></span><span style=display:flex><span>    timeout was <span style=color:#ae81ff>2</span> seconds.
+</span></span><span style=display:flex><span>Server:  UnKnown
+</span></span><span style=display:flex><span>Address:  5.200.200.200
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Non-authoritative answer:
+</span></span><span style=display:flex><span>Name:    facebook.com
+</span></span><span style=display:flex><span>Address:  2a03:2880:f11c:8183:face:b00c:0:25de
+</span></span></code></pre></div></div><p>در اینجا جواب صحیح برگردانده شده است.
+اما اگر در شبکه ای که دارای IPv6 است و به سمت یک resolver با IPv6 تست کنیم نتیجه متفاوت خواهد بود:</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ dig AAAA facebook.com @2001:4860:4860::8888
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.13-Ubuntu &lt;&lt;&gt;&gt; AAAA facebook.com @2001:4860:4860::8888
+</span></span><span style=display:flex><span>;; global options: +cmd
+</span></span><span style=display:flex><span>;; Got answer:
+</span></span><span style=display:flex><span>;; -&gt;&gt;HEADER<span style=color:#e6db74>&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span style=color:#ae81ff>56730</span>
+</span></span><span style=display:flex><span>;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; QUESTION SECTION:
+</span></span><span style=display:flex><span>;facebook.com.      IN  AAAA
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; ANSWER SECTION:
+</span></span><span style=display:flex><span>facebook.com.    <span style=color:#ae81ff>1</span>  IN  AAAA  d0::11
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; Query time: <span style=color:#ae81ff>28</span> msec
+</span></span><span style=display:flex><span>;; SERVER: 2001:4860:4860::8888#53<span style=color:#f92672>(</span>2001:4860:4860::8888<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>;; WHEN: Tue Dec <span style=color:#ae81ff>29</span> 22:56:41 +0330 <span style=color:#ae81ff>2020</span>
+</span></span><span style=display:flex><span>;; MSG SIZE  rcvd: <span style=color:#ae81ff>58</span>
+</span></span></code></pre></div></div><p>در اینجا جواب نیز از نوع AAAA است اما آدرس <code>d0::11</code> که در پاسخ آمده، یک آدرس معتبر در IPv6 نیست. در نتیجه، همچون آدرس های <code>10.10.34.3x</code> دارای صفحه ی «پیوند ها» نیست.</p><h3 id=لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی
+<a class=anchor href=#%d9%84%db%8c%d8%b3%d8%aa-%d8%a2%d8%af%d8%b1%d8%b3-%d9%87%d8%a7%db%8c-%d9%85%d8%b1%d8%a8%d9%88%d8%b7-%d8%a8%d9%87-%d8%b3%db%8c%d8%b3%d8%aa%d9%85-%d8%b3%d8%a7%d9%86%d8%b3%d9%88%d8%b1-%d8%ac%d9%85%d9%87%d9%88%d8%b1%db%8c-%d8%a7%d8%b3%d9%84%d8%a7%d9%85%db%8c>#</a></h3><p>برای پیگیری راحت تر موارد سانسور، آدرس هایی که توسط سیستم سانسور جمهوری اسلامی استفاده می شوند در ادامه همراه با لینک به یک نتیجه ی تست OONI که حاوی آن آدرس است، لیست می شوند:</p><ul><li><a href="https://explorer.ooni.org/measurement/20170525T030641Z_AS50810_5iVwM98EMQORqXeZtbhiDquo9zifyYSMmE5AWTARCw3XJ1R4is?input=http://pesareghabile.blogspot.com"><code>10.10.34.34</code></a></li><li><a href="https://explorer.ooni.org/measurement/20210715T123812Z_webconnectivity_IR_58224_n1_9T08osRqZrcngBFZ?input=http%3A%2F%2Fwww.facebook.com%2F"><code>10.10.34.35</code></a></li><li><a href="https://explorer.ooni.org/measurement/20210701T022229Z_webconnectivity_IR_197207_n1_1gpWGw5V9YWvEa44?input=http%3A%2F%2Fwww.freeexpression.org%2F"><code>10.10.34.36</code></a></li><li><a href="https://explorer.ooni.org/measurement/20180627T180515Z_AS44244_Z8V0i4Cr6PoJHByQQ89uN3meAmQbvdUrBli1NqYU8786BLquMk?input=http://alone-persian-man.blogspot.com"><code>d0:0:0:0:0:0:0:11</code></a></li><li><a href="https://explorer.ooni.org/measurement/20210715T094141Z_webconnectivity_IR_44244_n1_GFBhOu2puPdz4SSt?input=https%3A%2F%2Fwww.sbs.com.au%2Flanguage%2Fcoronavirus%3Fcid%3Dinfocus"><code>d0::11</code></a></li></ul><h2 id=dns-over-tcp>DNS over TCP
+<a class=anchor href=#dns-over-tcp>#</a></h2><p>DNS over TCP هم از پورت مشابه DNS over UDP استفاده می کند و مشترکا Do53 معرفی می شوند.
 هر دوی اینها توسط شخص ناشناس قابل مشاهده است اما در ایران DNS over TCP به سمت سرور های خارجی دستکاری نمی شود.
-توجه داشته باشید که اگر از یک DNS داخلی استفاده کنید، در اکثر آنها فرقی نمی کند که شما از چه پروتکل ای استفاده می کنید و جواب IP ی صفحه ی سانسور برای شما برگردانده می شود.</p>
-<div dir=ltr>
-<p><code>$ dig youtube.com +tcp</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-tcp.png alt="dns dig youtube tcp"></p>
-</div>
-<p>استفاده از سرور خارجی:</p>
-<div dir=ltr>
-<p><code>$ dig youtube.com +tcp @8.8.8.8</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-tcp-at8.png alt="dns dig youtube tcp at 8.8.8.8"></p>
-</div>
-<p>در ویندوز nslookup قابلیت DNS over TCP ندارد.
-خاطر همین ما از dig استفاده می کنیم:</p>
-<div dir=ltr>
-<p><code>> .\dig youtube.com +tcp "@8.8.8.8"</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-windows-dig-youtube-tcp-at8.png alt="DNS windows dig youtube tcp at 8.8.8.8"></p>
-</div>
-<p>گاهی مشاهده شده که بعضی درخواست هاتوسط سیستم سانسور وارد سیاهچاله می شوند.</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ dig +tcp youtube.com @1.1.1.1
-
-;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
-;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
-
-; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1-Debian &lt;&lt;&gt;&gt; +tcp youtube.com @1.1.1.1
-;; global options: +cmd
-;; connection timed out; no servers could be reached
-;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
-</code></pre></div></div>
-<h2 id=dns-over-https>
-DNS over HTTPS
-<a class=anchor href=#dns-over-https>#</a>
-</h2>
-<p>DNS over HTTPS یا به اختصار DoH، معروف ترین نوع DNS رمزنگاری شده است که اکنون استفاده می شود.
-پورت پیشفرض اش معمولا 443 است و در هر نرم افزاری که می تواند درخواست HTTPS انجام دهد قابل پیاده سازی است.</p>
-<p>در شرایط عادی شخص ناشناس فقط می تواند IP و یا نام دامنه (در صورت وجود) همین سرویس را مشاهده کند.
+توجه داشته باشید که اگر از یک DNS داخلی استفاده کنید، در اکثر آنها فرقی نمی کند که شما از چه پروتکل ای استفاده می کنید و جواب IP ی صفحه ی سانسور برای شما برگردانده می شود.</p><div dir=ltr><p><code>$ dig youtube.com +tcp</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-tcp.png alt="dns dig youtube tcp"></p></div><p>استفاده از سرور خارجی:</p><div dir=ltr><p><code>$ dig youtube.com +tcp @8.8.8.8</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-dig-youtube-tcp-at8.png alt="dns dig youtube tcp at 8.8.8.8"></p></div><p>در ویندوز nslookup قابلیت DNS over TCP ندارد.
+خاطر همین ما از dig استفاده می کنیم:</p><div dir=ltr><p><code>> .\dig youtube.com +tcp "@8.8.8.8"</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-windows-dig-youtube-tcp-at8.png alt="DNS windows dig youtube tcp at 8.8.8.8"></p></div><p>گاهی مشاهده شده که بعضی درخواست هاتوسط سیستم سانسور وارد سیاهچاله می شوند.</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ dig +tcp youtube.com @1.1.1.1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
+</span></span><span style=display:flex><span>;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1-Debian &lt;&lt;&gt;&gt; +tcp youtube.com @1.1.1.1
+</span></span><span style=display:flex><span>;; global options: +cmd
+</span></span><span style=display:flex><span>;; connection timed out; no servers could be reached
+</span></span><span style=display:flex><span>;; Connection to 1.1.1.1#53<span style=color:#f92672>(</span>1.1.1.1<span style=color:#f92672>)</span> <span style=color:#66d9ef>for</span> youtube.com failed: timed out.
+</span></span></code></pre></div></div><h2 id=dns-over-https>DNS over HTTPS
+<a class=anchor href=#dns-over-https>#</a></h2><p>DNS over HTTPS یا به اختصار DoH، معروف ترین نوع DNS رمزنگاری شده است که اکنون استفاده می شود.
+پورت پیشفرض اش معمولا 443 است و در هر نرم افزاری که می تواند درخواست HTTPS انجام دهد قابل پیاده سازی است.</p><p>در شرایط عادی شخص ناشناس فقط می تواند IP و یا نام دامنه (در صورت وجود) همین سرویس را مشاهده کند.
 اینکه درخواست و یا جواب چیست از دید شخص ناشناس پوشیده است.
 توضیح اینکه در شرایط عادی، برای آدرس سرور DoH، از نام دامنه استفاده می شود.
 به عنوان مثال <code>https://dns.google/dns-query</code> .
 قبل از اینکه درخواست DNS اصلی شما از سرور درخواست شود، باید آدرس dns.google به IP تبدیل شود.
 برای این کار از DNS پیشفرض سیستم عامل استفاده می شود که معمولا DNS over UDP است.
-بعد از انجام TCP handshake و بعد TLS handshake، درخواست کاربر که به صورت HTTP است رمزنگاری و ارسال و جواب دریافت می شود.</p>
-<p>در حال حاضر سیستم عامل های Windows، MacOS، iOS و همچنین مرورگر های بر پایه ی Chromium مانند Chrome، Edge، Opera، Brave و غیره و مرورگر Mozilla FireFox از DoH پشتیبانی می کنند.
+بعد از انجام TCP handshake و بعد TLS handshake، درخواست کاربر که به صورت HTTP است رمزنگاری و ارسال و جواب دریافت می شود.</p><p>در حال حاضر سیستم عامل های Windows، MacOS، iOS و همچنین مرورگر های بر پایه ی Chromium مانند Chrome، Edge، Opera، Brave و غیره و مرورگر Mozilla FireFox از DoH پشتیبانی می کنند.
 در کروم، روش پیشفرض به این صورت است که اگر DNS ای که کاربر تنظیم کرده است، قابل ارتقا به DoH را نیز داشته باشد، از آن استفاده می کند، مگر اینکه کاربر روش دیگری را انتخاب کرده باشد.
 در فایرفاکس در صورت فعال کردن DoH، روش پیشفرض به این صورت است که اگر درخواست DoH با شکست مواجه شد، از DNS پیشفرض سیستم استفاده کند.
 که یعنی اگر DNS پیشفرض سیستم عامل کاربر از نوع DNS over UDP باشد، در این شرایط شخص ناشناس می تواند درخواست و جواب را مشاهده و یا دستکاری کند.
-امنیت ارتباط در این روش به اعتبار root CA سیستم عامل و یا برنامه ی مورد استفاده ی شما بستگی دارد.</p>
-<p>برای انجام تست، می توانید از curl برای DoH استفاده کنید و جواب json دریافت کنید.</p>
-<p>درخواست ساده از گوگل:</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ curl -s  <span style=color:#e6db74>&#34;https://dns.google.com/resolve?name=www.who.int&amp;type=A&#34;</span>
-
-<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;Status&#34;</span>: 0,<span style=color:#e6db74>&#34;TC&#34;</span>: false,<span style=color:#e6db74>&#34;RD&#34;</span>: true,<span style=color:#e6db74>&#34;RA&#34;</span>: true,<span style=color:#e6db74>&#34;AD&#34;</span>: false,<span style=color:#e6db74>&#34;CD&#34;</span>: false,<span style=color:#e6db74>&#34;Question&#34;</span>:<span style=color:#f92672>[</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1<span style=color:#f92672>}]</span>,<span style=color:#e6db74>&#34;Answer&#34;</span>:<span style=color:#f92672>[</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:
-5,<span style=color:#e6db74>&#34;TTL&#34;</span>: 366,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1,<span style=color:#e6db74>&#34;TTL&#34;</span>: 216,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;104.17.113.188&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.w
-</span><span style=color:#e6db74>ho.int.cdn.cloudflare.net.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1,<span style=color:#e6db74>&#34;TTL&#34;</span>: 216,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;104.17.112.188&#34;</span><span style=color:#f92672>}]}</span>
-</code></pre></div></div>
-<p>از Cloudflare :</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ curl -H <span style=color:#e6db74>&#39;accept: application/dns-json&#39;</span> <span style=color:#e6db74>&#39;https://1.1.1.1/dns-query?name=www.who.int&amp;type=A&#39;</span>  
-              
-<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;Status&#34;</span>:0,<span style=color:#e6db74>&#34;TC&#34;</span>:false,<span style=color:#e6db74>&#34;RD&#34;</span>:true,<span style=color:#e6db74>&#34;RA&#34;</span>:true,<span style=color:#e6db74>&#34;AD&#34;</span>:false,<span style=color:#e6db74>&#34;CD&#34;</span>:false,<span style=color:#e6db74>&#34;Question&#34;</span>:<span style=color:#f92672>[{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1<span style=color:#f92672>}]</span>,<span style=color:#e6db74>&#34;Answer&#34;</span>:<span style=color:#f92672>[{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:5,<span style=color:#e6db74>&#34;TTL&#34;</span>:839,<span style=color:#e6db74>&#34;
-</span><span style=color:#e6db74>data&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1,<span style=color:#e6db74>&#34;TTL&#34;</span>:239,<span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;104.17.112.188&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.
-</span><span style=color:#e6db74>net&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1,<span style=color:#e6db74>&#34;TTL&#34;</span>:239,<span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;104.17.113.188&#34;</span><span style=color:#f92672>}]}</span>
-</code></pre></div></div>
-<p>( <code>-H</code> یک header به درخواست HTTP اضافه می کند.)</p>
-<p>در بعضی نسخه های لینوکس می توان از دستور doh استفاده کرد:</p>
-<div dir=ltr>
-<p><code>$ doh twitter.com</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-doh-twitter.png alt="dns doh twitter"></p>
-</div>
-<p>و یا اگر می خواهید در درخواست curl از DoH استفاده کنید:</p>
-<div dir=ltr>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$  curl --doh-url https://doh.powerdns.org/ https://www.google.com/.well-known/security.txt
-
-Contact: https://g.co/vulnz
-Contact: mailto:security@google.com
-Encryption: https://services.google.com/corporate/publickey.txt
-Acknowledgements: https://bughunter.withgoogle.com/
-Policy: https://g.co/vrp
-Hiring: https://g.co/SecurityPrivacyEngJobs
-<span style=color:#75715e># Flag: BountyCon{075e1e5eef2bc8d49bfe4a27cd17f0bf4b2b85cf}</span>
-</code></pre></div></div>
-<p>در بعضی ISP ها ممکن است با خطا مواجه شوید که به دلیل شیوه ای از سانسور اینترنت است که در بخش مربوط به بررسی سانسور در HTTPS توضیح داده شد.</p>
-<h2 id=dns-over-tls>
-DNS over TLS
-<a class=anchor href=#dns-over-tls>#</a>
-</h2>
-<p>DNS over TLS یا به اختصار DoT، روشی رمزنگاری شده از DNS over TCP است.
+امنیت ارتباط در این روش به اعتبار root CA سیستم عامل و یا برنامه ی مورد استفاده ی شما بستگی دارد.</p><p>برای انجام تست، می توانید از curl برای DoH استفاده کنید و جواب json دریافت کنید.</p><p>درخواست ساده از گوگل:</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ curl -s  <span style=color:#e6db74>&#34;https://dns.google.com/resolve?name=www.who.int&amp;type=A&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>{</span><span style=color:#e6db74>&#34;Status&#34;</span>: 0,<span style=color:#e6db74>&#34;TC&#34;</span>: false,<span style=color:#e6db74>&#34;RD&#34;</span>: true,<span style=color:#e6db74>&#34;RA&#34;</span>: true,<span style=color:#e6db74>&#34;AD&#34;</span>: false,<span style=color:#e6db74>&#34;CD&#34;</span>: false,<span style=color:#e6db74>&#34;Question&#34;</span>:<span style=color:#f92672>[</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1<span style=color:#f92672>}]</span>,<span style=color:#e6db74>&#34;Answer&#34;</span>:<span style=color:#f92672>[</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:
+</span></span><span style=display:flex><span>5,<span style=color:#e6db74>&#34;TTL&#34;</span>: 366,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1,<span style=color:#e6db74>&#34;TTL&#34;</span>: 216,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;104.17.113.188&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;www.w
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ho.int.cdn.cloudflare.net.&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>: 1,<span style=color:#e6db74>&#34;TTL&#34;</span>: 216,<span style=color:#e6db74>&#34;data&#34;</span>: <span style=color:#e6db74>&#34;104.17.112.188&#34;</span><span style=color:#f92672>}]}</span>
+</span></span></code></pre></div></div><p>از Cloudflare :</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ curl -H <span style=color:#e6db74>&#39;accept: application/dns-json&#39;</span> <span style=color:#e6db74>&#39;https://1.1.1.1/dns-query?name=www.who.int&amp;type=A&#39;</span>  
+</span></span><span style=display:flex><span>              
+</span></span><span style=display:flex><span><span style=color:#f92672>{</span><span style=color:#e6db74>&#34;Status&#34;</span>:0,<span style=color:#e6db74>&#34;TC&#34;</span>:false,<span style=color:#e6db74>&#34;RD&#34;</span>:true,<span style=color:#e6db74>&#34;RA&#34;</span>:true,<span style=color:#e6db74>&#34;AD&#34;</span>:false,<span style=color:#e6db74>&#34;CD&#34;</span>:false,<span style=color:#e6db74>&#34;Question&#34;</span>:<span style=color:#f92672>[{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1<span style=color:#f92672>}]</span>,<span style=color:#e6db74>&#34;Answer&#34;</span>:<span style=color:#f92672>[{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:5,<span style=color:#e6db74>&#34;TTL&#34;</span>:839,<span style=color:#e6db74>&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>data&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net.&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.net&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1,<span style=color:#e6db74>&#34;TTL&#34;</span>:239,<span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;104.17.112.188&#34;</span><span style=color:#f92672>}</span>,<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;www.who.int.cdn.cloudflare.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>net&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:1,<span style=color:#e6db74>&#34;TTL&#34;</span>:239,<span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;104.17.113.188&#34;</span><span style=color:#f92672>}]}</span>
+</span></span></code></pre></div></div><p>( <code>-H</code> یک header به درخواست HTTP اضافه می کند.)</p><p>در بعضی نسخه های لینوکس می توان از دستور doh استفاده کرد:</p><div dir=ltr><p><code>$ doh twitter.com</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-doh-twitter.png alt="dns doh twitter"></p></div><p>و یا اگر می خواهید در درخواست curl از DoH استفاده کنید:</p><div dir=ltr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$  curl --doh-url https://doh.powerdns.org/ https://www.google.com/.well-known/security.txt
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Contact: https://g.co/vulnz
+</span></span><span style=display:flex><span>Contact: mailto:security@google.com
+</span></span><span style=display:flex><span>Encryption: https://services.google.com/corporate/publickey.txt
+</span></span><span style=display:flex><span>Acknowledgements: https://bughunter.withgoogle.com/
+</span></span><span style=display:flex><span>Policy: https://g.co/vrp
+</span></span><span style=display:flex><span>Hiring: https://g.co/SecurityPrivacyEngJobs
+</span></span><span style=display:flex><span><span style=color:#75715e># Flag: BountyCon{075e1e5eef2bc8d49bfe4a27cd17f0bf4b2b85cf}</span>
+</span></span></code></pre></div></div><p>در بعضی ISP ها ممکن است با خطا مواجه شوید که به دلیل شیوه ای از سانسور اینترنت است که در بخش مربوط به بررسی سانسور در HTTPS توضیح داده شد.</p><h2 id=dns-over-tls>DNS over TLS
+<a class=anchor href=#dns-over-tls>#</a></h2><p>DNS over TLS یا به اختصار DoT، روشی رمزنگاری شده از DNS over TCP است.
 نوع ارتباط در ALPN از نوع dot است و طبق استاندارد، بر روی پورت 853 باید سرویس دهی شود.
 شناسایی و مسدود کردن این نوع توسط سیستم های سانسور بسیار راحت تر از DoH است.
 اما محتوای درخواست ها و جواب ها توسط شخص ناشناس قابل مشاهده نیست.
-این نوع نیز همانند DoH در صورت استفاده از نام دامنه، متکی به سرویس DNS over UDP پیشفرض است.</p>
-<p>در حال حاضر سیستم عامل های Android، Linux، iOS و MacOS از این نوع DNS پشتیبانی می کنند.</p>
-<p>در آخرین نسخه از dig (نسخه ی تست شده:‌ <code>9.17.11</code> ) این امکان فراهم شد تا بتوان درخواست DoT داشت.
-به صورت استفاده از <code>+tls</code>:</p>
-<div dir=ltr>
-<p><code>> .\dig telegram.org +tls "@dns9.quad9.net"</code>
-<br></p>
-<p>
-<img src=/images/docs/measure-internet-censorship/DNS/DNS-windows-dig-dot-tls-at9.png alt="dns windows dig dot tls at quad9"></p>
-</div>
-<p>البته این قابلیت در dig هنوز به صورت کامل استاندارد ها را رعایت نکرده و به صورت رسمی در لحظه ی نوشتن این مقاله، این قابلیت رونمایی نشده.</p>
-<p>توجه داشته باشید که DNS نقش حیاتی در امنیت ارتباطات شما دارد.
+این نوع نیز همانند DoH در صورت استفاده از نام دامنه، متکی به سرویس DNS over UDP پیشفرض است.</p><p>در حال حاضر سیستم عامل های Android، Linux، iOS و MacOS از این نوع DNS پشتیبانی می کنند.</p><p>در آخرین نسخه از dig (نسخه ی تست شده:‌ <code>9.17.11</code> ) این امکان فراهم شد تا بتوان درخواست DoT داشت.
+به صورت استفاده از <code>+tls</code>:</p><div dir=ltr><p><code>> .\dig telegram.org +tls "@dns9.quad9.net"</code><br></p><p><img src=/images/docs/measure-internet-censorship/DNS/DNS-windows-dig-dot-tls-at9.png alt="dns windows dig dot tls at quad9"></p></div><p>البته این قابلیت در dig هنوز به صورت کامل استاندارد ها را رعایت نکرده و به صورت رسمی در لحظه ی نوشتن این مقاله، این قابلیت رونمایی نشده.</p><p>توجه داشته باشید که DNS نقش حیاتی در امنیت ارتباطات شما دارد.
 اگر از DNS نامعتبر استفاده کنید و یا اینکه شخص ناشناس بتواند محتوای ارسالی و یا دریافتی آن را دستکاری کند، امنیت شما به خطر می افتد.
 به این دلیل همیشه سعی کنید از DNS های معتبر و با قابلیت رمزنگاری محتوا استفاده کنید.
-در ارتباطات رمزنگاری شده، یا شما مشکلی نخواهید داشت، و یا ارتباط با آن سرور تماما مسدود می شود.</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/bd660580edbaaf98cda6f2f956a45e7b971be0f0 title="آخرین بار ویرایش شده توسط xhdix | December 12, 2021" target=_blank rel=noopener>
-<img src=/svg/calendar.svg class=book-icon alt=Calendar>
-<span>December 12, 2021</span>
-</a>
-</div>
-<div>
-<a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/edit/main/content/docs/measure-internet-censorship/DNS/_index.md target=_blank rel=noopener>
-<img src=/svg/edit.svg class=book-icon alt=Edit>
-<span>این صفحه را ویرایش کنید</span>
-</a>
-</div>
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-<script>var BookGitHubUser='wikicensorship',BookGitHubRepo='wikicensorship.github.io'</script>
-<script>var callbackName='ghButtonCallback'+Math.floor(Math.random()*1e4),button=document.querySelector('.btn-with-count'),script;window[callbackName]=function(a){var b=addCommas(a.data.stargazers_count);button.querySelector('.social-count').textContent=b};function addCommas(a){return new String(a).replace(/(\d)(?=(\d{3})+$)/g,'$1,')}script=document.createElement('script'),script.src='https://api.github.com/repos/'+BookGitHubUser+'/'+BookGitHubRepo+'?callback='+callbackName,document.head.appendChild(script);const themeColor=document.querySelector('meta[name="theme-color"]'),colorScheme=document.querySelector('meta[name="color-scheme"]'),body=document.body,prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");currentTheme=="dark"?(prefersDarkScheme.matches||document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content="dark"):currentTheme=="light"&&(prefersDarkScheme.matches&&document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content="light");function toggletheme(){var a;prefersDarkScheme.matches?(document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark",a=document.documentElement.classList.contains("light")?"light":"dark"):(document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark",a=document.documentElement.classList.contains("dark")?"dark":"light"),localStorage.setItem("theme",a)}</script>
-</footer>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#بررسی-سانسور-اینترنت-در-ارتباط-dns>بررسی سانسور اینترنت در ارتباط DNS</a>
-<ul>
-<li><a href=#dns-over-udp>DNS over UDP</a>
-<ul>
-<li><a href=#ipv6>IPv6</a></li>
-<li><a href=#لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی</a></li>
-</ul>
-</li>
-<li><a href=#dns-over-tcp>DNS over TCP</a></li>
-<li><a href=#dns-over-https>DNS over HTTPS</a></li>
-<li><a href=#dns-over-tls>DNS over TLS</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+در ارتباطات رمزنگاری شده، یا شما مشکلی نخواهید داشت، و یا ارتباط با آن سرور تماما مسدود می شود.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/commit/bd660580edbaaf98cda6f2f956a45e7b971be0f0 title="آخرین بار ویرایش شده توسط xhdix | December 12, 2021" target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>December 12, 2021</span></a></div><div><a class="flex align-center" href=https://github.com/wikicensorship/wikicensorship.github.io/edit/main/content/docs/measure-internet-censorship/DNS/_index.md target=_blank rel=noopener><img src=/svg/edit.svg class=book-icon alt=Edit>
+<span>این صفحه را ویرایش کنید</span></a></div></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script><script>var BookGitHubUser="wikicensorship",BookGitHubRepo="wikicensorship.github.io"</script><script>var callbackName="ghButtonCallback"+Math.floor(Math.random()*1e4),script,button=document.querySelector(".btn-with-count");window[callbackName]=function(e){var t=addCommas(e.data.stargazers_count);button.querySelector(".social-count").textContent=t};function addCommas(e){return new String(e).replace(/(\d)(?=(\d{3})+$)/g,"$1,")}script=document.createElement("script"),script.src="https://api.github.com/repos/"+BookGitHubUser+"/"+BookGitHubRepo+"?callback="+callbackName,document.head.appendChild(script);const themeColor=document.querySelector('meta[name="theme-color"]'),colorScheme=document.querySelector('meta[name="color-scheme"]'),body=document.body,prefersDarkScheme=window.matchMedia("(prefers-color-scheme: dark)"),currentTheme=localStorage.getItem("theme");currentTheme=="dark"?(prefersDarkScheme.matches||document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content="dark"):currentTheme=="light"&&(prefersDarkScheme.matches&&document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content="light");function toggletheme(){if(prefersDarkScheme.matches){document.documentElement.classList.toggle("light"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark";var e=document.documentElement.classList.contains("light")?"light":"dark"}else document.documentElement.classList.toggle("dark"),themeColor.content=getComputedStyle(body).color,colorScheme.content=colorScheme.content=="dark"?"light":"dark",e=document.documentElement.classList.contains("dark")?"dark":"light";localStorage.setItem("theme",e)}</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#بررسی-سانسور-اینترنت-در-ارتباط-dns>بررسی سانسور اینترنت در ارتباط DNS</a><ul><li><a href=#dns-over-udp>DNS over UDP</a><ul><li><a href=#ipv6>IPv6</a></li><li><a href=#لیست-آدرس-های-مربوط-به-سیستم-سانسور-جمهوری-اسلامی>لیست آدرس های مربوط به سیستم سانسور جمهوری اسلامی</a></li></ul></li><li><a href=#dns-over-tcp>DNS over TCP</a></li><li><a href=#dns-over-https>DNS over HTTPS</a></li><li><a href=#dns-over-tls>DNS over TLS</a></li></ul></li></ul></nav></div></aside></main></body></html>
