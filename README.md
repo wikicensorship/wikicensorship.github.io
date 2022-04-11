@@ -1,5 +1,11 @@
-# [wikicensorship.github.io](https://wikicensorship.github.io/)
-  
+# WikiCensorship
+
+mirrors:
+
+[wikicensorship.github.io](https://wikicensorship.github.io/)
+
+[wikicensorship.pages.dev](https://wikicensorship.pages.dev/)
+
 [![2*2=5](https://github.com/wikicensorship/wikicensorship.github.io/raw/main/static/android-chrome-192x192.png)](https://wikicensorship.github.io/)
 An open encyclopedia of Internet censorship 
 
@@ -36,3 +42,10 @@ See our activities and progress here: https://github.com/orgs/wikicensorship/pro
 - [ ] Glossary
 - [ ] Translations
 - [ ] Blog
+
+
+## Start the Hugo server:
+
+```bash
+hugo server --minify -D
+```
