@@ -6,6 +6,8 @@ mirrors:
 
 [wikicensorship.pages.dev](https://wikicensorship.pages.dev/)
 
+[wikicensorship.netlify.app](https://wikicensorship.netlify.app/)
+
 [![2*2=5](https://github.com/wikicensorship/wikicensorship.github.io/raw/main/static/android-chrome-192x192.png)](https://wikicensorship.github.io/)
 An open encyclopedia of Internet censorship 
 
