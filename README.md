@@ -34,7 +34,7 @@ See our activities and progress here: https://github.com/orgs/wikicensorship/pro
 - [x] Network and Transport Layers
   - [ ] Fingerprint blocking
 - [x] Application Layer
-  - [ ] Fingerprint blocking
+  - [x] Fingerprint blocking
 - [ ] Bandwidth throttling 
 - [ ] Packet analysis
   - [ ] Random blocking

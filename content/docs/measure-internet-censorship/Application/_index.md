@@ -1,6 +1,6 @@
 ---
 weight: 30
-bookFlatSection: true
+bookCollapseSection: true
 title: "بررسی سانسور در ارتباط با سرور در لایه‌ی کاربرد"
 description: "بررسی وجود سانسور و یا امکان دسترسی به سرور در لایه ی کاربرد. معنای لاگ های curl و تشخیص تحریم از فیلتر"
 tags: ["سانسور", "Application", "RST injection", "null route", "فیلتر", "فیلترنت", "curl", "صفحه‌ی پیوندها", "HTTP", "HTTPS", "Application layer", "اینترنت", "تحریم", "خطای 403", "خطای 503", "لایه ی کاربرد", "non-transparent proxy", "Host name blocking", "بررسی سانسور اینترنت", "سانسور اینترنت"]
