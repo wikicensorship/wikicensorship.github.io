@@ -75,7 +75,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/dns-middlebox-fingerprint.png)
+![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-example-dot-com.png)
 
 </div>
 
