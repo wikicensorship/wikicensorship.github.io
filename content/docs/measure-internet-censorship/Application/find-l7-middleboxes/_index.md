@@ -52,7 +52,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-set-ip-id-as-column.png)
+![wireshark set ip.id as column](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-set-ip-id-as-column.png)
 
 </div>
 
@@ -60,7 +60,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/dns-middlebox-fingerprint.png)
+![middlebox fingerprint in dns](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/dns-middlebox-fingerprint.png)
 
 </div>
 
@@ -75,7 +75,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-example-dot-com.png)
+![http example.com](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-example-dot-com.png)
 
 </div>
 
@@ -86,7 +86,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-middlebox-fingerprint-reddit-blocked.png)
+![middlebox fingerprint in http reddit. blocked](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-middlebox-fingerprint-reddit-blocked.png)
 
 </div>
 
@@ -98,7 +98,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-middlebox-fingerprint-reddit-example-dot-com-ip-blocked.png)
+![middlebox fingerprint in http reddit with example.com's ip. blocked](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/http-middlebox-fingerprint-reddit-example-dot-com-ip-blocked.png)
 
 </div>
 
@@ -113,11 +113,11 @@ weight: 10
 
 <div dir="ltr">
 
-[![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ooni-stackexchange-dot-com-blocked-2019-2020.png)](https://explorer.ooni.org/chart/mat?probe_cc=IR&test_name=web_connectivity&domain=stackexchange.com&since=2019-08-01&until=2020-05-01&axis_x=measurement_start_day)
+[![2019-2020 OONI results of stackexchange.com. blocked](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ooni-stackexchange-dot-com-blocked-2019-2020.png)](https://explorer.ooni.org/chart/mat?probe_cc=IR&test_name=web_connectivity&domain=stackexchange.com&since=2019-08-01&until=2020-05-01&axis_x=measurement_start_day)
 
 
 
-[![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ooni-stackexchange-dot-com-blocked-2021-2022.png)](https://explorer.ooni.org/chart/mat?probe_cc=IR&test_name=web_connectivity&domain=stackexchange.com&since=2021-06-27&until=2022-06-27&axis_x=measurement_start_day)
+[![2021-2022 OONI resutls of stackexchange.com. blocked](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ooni-stackexchange-dot-com-blocked-2021-2022.png)](https://explorer.ooni.org/chart/mat?probe_cc=IR&test_name=web_connectivity&domain=stackexchange.com&since=2021-06-27&until=2022-06-27&axis_x=measurement_start_day)
 
 </div>
 
@@ -125,7 +125,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/dns-stackexchange-dot-com.png)
+![dns stackexchange.com](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/dns-stackexchange-dot-com.png)
 
 </div>
 
@@ -133,7 +133,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-stackexchange-dot-com-with-example-dot-com-ip.png)
+![https stackexchange.com with example.com's ip](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-stackexchange-dot-com-with-example-dot-com-ip.png)
 
 </div>
 
@@ -145,7 +145,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprint-stackexchange-dot-com.png)
+![middlebox fingerprint in https stackexchange.com. hidden blocking](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprint-stackexchange-dot-com.png)
 
 </div>
 
@@ -160,7 +160,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprint-example-dot-com-with-stackexchange-dot-com-ip.png)
+![middlebox fingerprint in https example.com with stackexchange.com's ip. hidden blocking](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprint-example-dot-com-with-stackexchange-dot-com-ip.png)
 
 </div>
 
@@ -170,7 +170,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprints-ajax-aspnetcdn-dot-com.png)
+![middlebox fingerprints in https ajax.aspnetcdn.com. hidden blocking](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/https-middlebox-fingerprints-ajax-aspnetcdn-dot-com.png)
 
 </div>
 
@@ -191,11 +191,11 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ssh-middlebox-fingerprint-start.png)
+![middlebox fingerprint in SSH at start](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ssh-middlebox-fingerprint-start.png)
 
 
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ssh-middlebox-fingerprint-blocking-delay.png)
+![middlebox fingerprint in SSH with blocking delay](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/ssh-middlebox-fingerprint-blocking-delay.png)
 
 </div>
 
@@ -235,7 +235,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-blocked-server-packet-injection.png)
+![tracevis blocked server with packet injection](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-blocked-server-packet-injection.png)
 
 </div>
 
@@ -246,7 +246,7 @@ weight: 10
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-unblocked-server-no-packet-injection.png)
+![tracevis unblocked server with no packet injection](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-unblocked-server-no-packet-injection.png)
 
 </div>
 
@@ -313,7 +313,7 @@ docker run ghcr.io/wikicensorship/tracevis --dns
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-copy-hexdump.png)
+![wireshark copy hexdump](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-copy-hexdump.png)
 
 </div>
 
@@ -334,7 +334,7 @@ python3 ./tracevis.py -p
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paste-packet.png)
+![tracevis paste packet](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paste-packet.png)
 
 </div>
 
@@ -342,7 +342,7 @@ python3 ./tracevis.py -p
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paste-packet.png)
+![tracevis packet developed view](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-packet-developed-view.png)
 
 </div>
 
@@ -357,7 +357,7 @@ python3 ./tracevis.py -p
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paste-packet.png)
+![tracevis tcp handshake iptables rule is needed in Linux with kernel version > 5](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-tcp-handshake-iptables.png)
 
 </div>
 
@@ -369,7 +369,7 @@ python3 ./tracevis.py -p
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-second-packet.png)
+![tracevis second packet](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-second-packet.png)
 
 </div>
 
@@ -414,7 +414,7 @@ python3 ./tracevis.py --config ./samples/ntp.conf -i “1.2.3.4”
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-copy-retransmission-packet.png)
+![wireshark copy a packet in retransmission](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-copy-retransmission-packet.png)
 
 </div>
 
@@ -437,7 +437,7 @@ python3 ./tracevis.py --rexmit
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/paris-traceroute-technique.png)
+![paris traceroute technique](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/paris-traceroute-technique.png)
 
 </div>
 
@@ -447,7 +447,7 @@ python3 ./tracevis.py --rexmit
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-standard-traceroute-problem.png)
+![tracevis standard traceroute problem](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-standard-traceroute-problem.png)
 
 </div>
 
@@ -456,7 +456,7 @@ python3 ./tracevis.py --rexmit
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paris-traceroute.png)
+![paris technique in tracevis](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paris-traceroute.png)
 
 </div>
 
@@ -469,7 +469,7 @@ python3 ./tracevis.py --rexmit
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-loop-in-paris-technique.png)
+![tracevis loop in paris technique](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-loop-in-paris-technique.png)
 
 </div>
 
@@ -506,7 +506,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paris-instagram-intermittent-blcoking-tci.png)
+![tracevis paris technique. instagram intermittent blcoking in tci](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-paris-instagram-intermittent-blcoking-tci.png)
 
 </div>
 
@@ -517,7 +517,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-example-dot-com-and-twitter-tci.png)
+![tracevis dns example.com and twitter in tci](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-example-dot-com-and-twitter-tci.png)
 
 </div>
 
@@ -525,7 +525,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-instagram-blocking-zoom-middlebox-location.png)
+![tracevis instagram blocking. more zoom to see the middlebox location](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-instagram-blocking-zoom-middlebox-location.png)
 
 </div>
 
@@ -533,7 +533,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-zoom-middlebox-location.png)
+![tracevis dns. more zoom to see the middlebox location](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-zoom-middlebox-location.png)
 
 </div>
 
@@ -551,7 +551,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-help.png)
+![tracevis help](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-help.png)
 
 </div>
 
@@ -566,7 +566,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-cdn-comodo-middlebox-from-start-to-end.png)
+![wireshark cdn address of comodo. middlebox answers from start to the end](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-cdn-comodo-middlebox-from-start-to-end.png)
 
 </div>
 
@@ -591,7 +591,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-cdn-comodo-semi-fixed.png)
+![wireshark cdn address of comodo. semi-fixed blocking](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/wireshark-cdn-comodo-semi-fixed.png)
 
 </div>
 
@@ -614,7 +614,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/chrome-tls-fingerprint-blocking-aws-except-china.png)
+![chrome TLS fingerprint blocking. all AWS addresses except china](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/chrome-tls-fingerprint-blocking-aws-except-china.png)
 
 </div>
 
@@ -624,7 +624,7 @@ python3 ./tracevis.py -p -m 30 --paris -r 9
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/firefox-tls-fingerprint-accessibility.png)
+![firefox TLS fingerprint. AWS is accessible](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/firefox-tls-fingerprint-accessibility.png)
 
 </div>
 
@@ -658,7 +658,7 @@ Python3 ./tracevis.py  -f “./path/to/file-firefox.json” -f “./path/to/file
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-firefox-chrome-tls-fingerpring-blocking-aws.png)
+![tracevis. firefox and chrome TLS fingerpring blocking test with AWS IPs](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-firefox-chrome-tls-fingerpring-blocking-aws.png)
 
 </div>
 
@@ -667,7 +667,7 @@ Python3 ./tracevis.py  -f “./path/to/file-firefox.json” -f “./path/to/file
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-firefox-chrome-tls-fingerprint-blocking-zoom-middlebox-location.png)
+![tracevis. firefox and chrome TLS fingerprint blocking. more zoom to see the middlebox location](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-firefox-chrome-tls-fingerprint-blocking-zoom-middlebox-location.png)
 
 </div>
 
@@ -688,7 +688,7 @@ python ./tracevis.py --dns -i "13.226.135.75" -m 30 --paris
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-aws-example-dot-com-and-twitter.png)
+![tracevis DNS test towards AWS with example.com and twitter.com queries](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-aws-example-dot-com-and-twitter.png)
 
 </div>
 
@@ -696,7 +696,7 @@ python ./tracevis.py --dns -i "13.226.135.75" -m 30 --paris
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-aws-example-dot-com-and-twitter-zoom-middlebox-location.png)
+![tracevis DNS test towards AWS with example.com and twitter.com queries. more zoom to see the middlebox location](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-aws-example-dot-com-and-twitter-zoom-middlebox-location.png)
 
 </div>
 
@@ -718,7 +718,7 @@ python ./tracevis.py -p --annot1 "twitter.com chrome" -i "13.226.135.75"
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-sni-blocking-twitter-with-aws-ip.png)
+![tracevis SNI blocking test. twitter.com with AWS' ip](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-sni-blocking-twitter-with-aws-ip.png)
 
 </div>
 
@@ -726,7 +726,7 @@ python ./tracevis.py -p --annot1 "twitter.com chrome" -i "13.226.135.75"
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-sni-blocking-twitter-with-aws-ip-zoom.png)
+![tracevis SNI blocking test. twitter.com with AWS' ip. more zoom](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-sni-blocking-twitter-with-aws-ip-zoom.png)
 
 </div>
 
@@ -743,7 +743,7 @@ python ./tracevis.py -p --annot1 "twitter.com chrome" -i "13.226.135.75"
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-clubhouse-client-hello-blocking-mci.png)
+![tracevis clubhouse client hello blocking in mci](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-clubhouse-client-hello-blocking-mci.png)
 
 </div>
 
@@ -752,7 +752,7 @@ python ./tracevis.py -p --annot1 "twitter.com chrome" -i "13.226.135.75"
 
 <div dir="ltr">
 
-![imagename](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-main-middlbox-location-mci.png)
+![tracevis dns test to see the main middlbox location in mci](/images/docs/measure-internet-censorship/Application/find-l7-middleboxes/tracevis-dns-main-middlbox-location-mci.png)
 
 </div>
 
